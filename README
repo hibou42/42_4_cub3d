@@ -1,0 +1,11 @@
+So_long is my first graphical project in C.
+I use the MiniLibX, a library made by School 42 to help us to push pixels on a screen.
+
+To run the project, simply do a ```make``` and once you compile it, just run the programme with a map as first argument (the map needs to be in .ber format)
+exemple : ./so_long maps/map1.ber
+
+You are an Owl looking for some wood stick to make your nest. Once you collect all the wood stick, you will be able to make your nest in the tree.
+
+Wish you good luck!
+
+(Working on Linux and MacOs but you might install a few dependencies
