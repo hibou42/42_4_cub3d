@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../so_long.h"
+#include "../cub3d.h"
 
 void	move(t_map *map, int move_y, int move_x)
 {

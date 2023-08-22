@@ -1,0 +1,7 @@
+{
+    "files.associations": {
+        "*.excalidraw": "json",
+        "*.excalidrawlib": "json",
+        "cub3d.h": "c"
+    }
+}

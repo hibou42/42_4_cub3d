@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../so_long.h"
+#include "../cub3d.h"
 
 int	check_extension(char **argv, int size_argv)
 {

@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.c                                          :+:      :+:    :+:   */
+/*   cub3d.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aschaefe <aschaefe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "cub3d.h"
 
 void	init_struct(t_map *map)
 {
@@ -32,7 +32,7 @@ int	main(int argc, char **argv)
 	parsing(&map);
 	map.mlx = mlx_init();
 	map.mlx_win = mlx_new_window(map.mlx, map.x * SPRITE, \
-		map.y * SPRITE, "So Long");
+		map.y * SPRITE, "Cub3d");
 	init_img(&map);
 	mlx_key_hook(map.mlx_win, game, &map);
 	mlx_hook(map.mlx_win, 17, 1L << 0, close_window, &map);

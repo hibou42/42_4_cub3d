@@ -1,6 +1,6 @@
 #***** Name *****#
 
-NAME			=		so_long
+NAME			=		cub3d
 
 #***** Makeflags *****#
 
@@ -8,7 +8,7 @@ MAKEFLAGS += --no-print-directory
 
 #***** Sources / Objs *****#
 
-SRC				=		so_long.c \
+SRC				=		cub3d.c \
 						init/map.c \
 						init/img.c \
 						init/parsing.c \
@@ -71,13 +71,13 @@ lib:
 			@$(END_COMP_LIB)
 
 start:
-			@tput setaf 2; cat ascii_art/so_long; tput setaf default
+			@tput setaf 2; cat ascii_art/cub3d; tput setaf default
 			@$(START)
 
 logo :
 			@tput setaf 2; cat ascii_art/hibou; tput setaf default
 
-%.o:		%.c ./libft/libft.h Makefile so_long.h
+%.o:		%.c ./libft/libft.h Makefile cub3d.h
 			@$(CC) $(CFLAGS) -c $< -o $@
 			@$(CHARG_LINE)
 

@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../so_long.h"
+#include "../cub3d.h"
 
 void	push_img(t_map *map, int x, int y, void *img)
 {

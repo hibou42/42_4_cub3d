@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../so_long.h"
+#include "../cub3d.h"
 
 int	element_check(t_map *map, int x, int y)
 {
