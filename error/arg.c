@@ -19,11 +19,11 @@ int	check_extension(char **argv, int size_argv)
 	res = 0;
 	if (argv[1][size_argv - 4] != '.')
 		res = 1;
-	if (argv[1][size_argv - 3] != 'b')
+	if (argv[1][size_argv - 3] != 'c')
 		res = 1;
-	if (argv[1][size_argv - 2] != 'e')
+	if (argv[1][size_argv - 2] != 'u')
 		res = 1;
-	if (argv[1][size_argv - 1] != 'r')
+	if (argv[1][size_argv - 1] != 'b')
 		res = 1;
 	return (res);
 }
@@ -35,7 +35,7 @@ int	check_arg(int argc, char **argv)
 	if (argc != 2)
 	{
 		ft_printf("Error\nVeuillez charger une seule map...\n");
-		exit(0);
+		exit(1);
 	}
 	size_argv = 0;
 	while (argv[1][size_argv] != '\0')
@@ -43,7 +43,7 @@ int	check_arg(int argc, char **argv)
 	if (check_extension(argv, size_argv) == 1)
 	{
 		ft_printf("Error\nProbleme d'extension de map...\n");
-		exit(0);
+		exit(1);
 	}
 	return (0);
 }
