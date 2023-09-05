@@ -1,34 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   exit.c                                             :+:      :+:    :+:   */
+/*   check_parsing.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aschaefe <aschaefe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/06 15:56:40 by aschaefe          #+#    #+#             */
-/*   Updated: 2023/01/11 13:32:45 by aschaefe         ###   ########.fr       */
+/*   Created: 2023/01/04 10:37:51 by aschaefe          #+#    #+#             */
+/*   Updated: 2023/01/13 17:13:35 by aschaefe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
 
-void	free_maps(t_cube *cube)
+void    check_parsing(t_cube *cube)
 {
-	int		i;
-
-	i = 0;
-	while (i < cube->map_y)
-	{
-		free(cube->maps[i]);
-		i++;
-	}
-	free(cube->maps);
-}
-
-int	close_window(t_cube *cube)
-{
-	if (cube->maps != NULL)
-		free_maps(cube);
-	(void)cube;
-	exit(1);
+    (void)cube;
 }

@@ -42,20 +42,15 @@
 
 # include "./libft/libft.h"
 
-typedef struct s_map
+typedef struct s_cube
 {
 	void	*mlx;
 	void	*mlx_win;
 	char	**maps;
-	char	**cpy_maps;
-	int		x;
-	int		y;
-	int		nb_coin;
+	int		map_x;
+	int		map_y;
 	int		pos_x;
 	int		pos_y;
-	int		exit_x;
-	int		exit_y;
-	int		step_cpt;
 	void	*img_ground;
 	void	*img_wall;
 	void	*img_player;
@@ -65,19 +60,14 @@ typedef struct s_map
 	int		img_x;
 	int		img_y;
 
-}		t_map;
+}		t_cube;
 
-int		check_arg(int argc, char **argv);
-void	init_map(char **argv, t_map *map);
-void	check_tab(t_map *map);
-void	parsing(t_map *map);
-void	watch_e(t_map *map);
-int		element_check(t_map *map, int x, int y);
-int		element_check2(t_map *map, int x, int y);
-void	init_img(t_map *map);
-void	push_img(t_map *map, int x, int y, void *img);
-int		game(int key, t_map *map);
-int		close_window(t_map *map);
-int		free_and_exit(t_map *map);
+void	check_arg(int argc, char **argv);
+void	parsing(t_cube *cube, char **argv);
+void    check_parsing(t_cube *cube);
+//void	init_img(t_map *map);
+void	push_img(t_cube *cube, int x, int y, void *img);
+int		game(int key, t_cube *cube);
+int		close_window(t_cube *cube);
 
 #endif

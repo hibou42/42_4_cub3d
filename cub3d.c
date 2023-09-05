@@ -12,31 +12,26 @@
 
 #include "cub3d.h"
 
-void	init_struct(t_map *map)
+void	init_struct(t_cube *cube)
 {
-	map->maps = NULL;
-	map->x = 0;
-	map->y = 0;
-	map->nb_coin = 0;
-	map->img_player = NULL;
-	map->step_cpt = 0;
+	cube->maps = NULL;
 }
 
 int	main(int argc, char **argv)
 {
-	t_map	map;
+	t_cube	cube;
 
-	init_struct(&map);
+	init_struct(&cube);
 	check_arg(argc, argv);
-	init_map(argv, &map);
-	parsing(&map);
-	map.mlx = mlx_init();
-	map.mlx_win = mlx_new_window(map.mlx, map.x * SPRITE, \
-		map.y * SPRITE, "Cub3d");
-	init_img(&map);
-	mlx_key_hook(map.mlx_win, game, &map);
-	mlx_hook(map.mlx_win, 17, 1L << 0, close_window, &map);
-	mlx_loop(map.mlx);
+	parsing(&cube, argv);
+	check_parsing(&cube);
+	cube.mlx = mlx_init();
+	cube.mlx_win = mlx_new_window(cube.mlx, 1920, 1080, "Cub3d");
+	//init_img(&cube);
+	mlx_key_hook(cube.mlx_win, game, &cube);
+	mlx_hook(cube.mlx_win, 17, 1L << 0, close_window, &cube);
+	mlx_loop(cube.mlx);
+	close_window(&cube);
 	return (0);
 }
 

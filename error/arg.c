@@ -12,10 +12,14 @@
 
 #include "../cub3d.h"
 
-int	check_extension(char **argv, int size_argv)
+int	check_extension(char **argv)
 {
+	int	size_argv;
 	int	res;
 
+	size_argv = 0;
+	while (argv[1][size_argv] != '\0')
+		size_argv ++;
 	res = 0;
 	if (argv[1][size_argv - 4] != '.')
 		res = 1;
@@ -28,22 +32,38 @@ int	check_extension(char **argv, int size_argv)
 	return (res);
 }
 
-int	check_arg(int argc, char **argv)
+int		is_access(char **argv)
 {
-	int	size_argv;
+	int		fd;
+	int		read_ret;
+	int		res;
+	char	*buffer;
 
+	fd = open(argv[1], 0);
+	read_ret = read(fd, &buffer, 2);
+	if (read_ret < 0)
+		res = 1;
+	else
+		res = 0;
+	close(fd);
+	return (res);
+}
+
+void	check_arg(int argc, char **argv)
+{
 	if (argc != 2)
 	{
-		ft_printf("Error\nVeuillez charger une seule map...\n");
+		ft_printf("Error\nVeuillez charger une seule fiche de donnees...\n");
 		exit(1);
 	}
-	size_argv = 0;
-	while (argv[1][size_argv] != '\0')
-		size_argv ++;
-	if (check_extension(argv, size_argv) == 1)
+	if (check_extension(argv) == 1)
 	{
-		ft_printf("Error\nProbleme d'extension de map...\n");
+		ft_printf("Error\nProbleme d'extension des donnees...\n");
 		exit(1);
 	}
-	return (0);
+	if (is_access(argv) == 1)
+	{
+		ft_printf("Error\nLes donnees ne sont pas accessible\n");
+		exit(1);
+	}
 }

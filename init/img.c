@@ -12,6 +12,7 @@
 
 #include "../cub3d.h"
 
+/*
 void	push_img(t_map *map, int x, int y, void *img)
 {
 	mlx_put_image_to_window(map->mlx, map->mlx_win, img, x, y);
@@ -78,3 +79,4 @@ void	init_img(t_map *map)
 		y++;
 	}
 }
+*/

@@ -12,6 +12,7 @@
 
 #include "../cub3d.h"
 
+/*
 void	move(t_map *map, int move_y, int move_x)
 {
 	char	next_case;
@@ -40,46 +41,37 @@ void	move(t_map *map, int move_y, int move_x)
 		close_window(map);
 	}
 }
+*/
 
-void	deal_key(int key, t_map *map)
+void	deal_key(int key, t_cube *cube)
 {
 	if (key == LEFT_KEY || key == A_KEY)
 	{
-		move(map, 0, -1);
+		//move(map, 0, -1);
+		printf("Gauche\n");
 	}
 	if (key == DOWN_KEY || key == S_KEY)
 	{
-		move(map, 1, 0);
+		//move(map, 1, 0);
+		printf("Bas\n");
 	}
 	if (key == RIGHT_KEY || key == D_KEY)
 	{
-		move(map, 0, 1);
+		//move(map, 0, 1);
+		printf("Droite\n");
 	}
 	if (key == UP_KEY || key == W_KEY)
 	{
-		move(map, -1, 0);
+		//move(map, -1, 0);
+		printf("Haut\n");
 	}
 	if (key == ESC)
-		close_window(map);
+		close_window(cube);
 }
 
-void	ctrl_coin(t_map *map)
-{
-	int	x;
-	int	y;
 
-	x = map->exit_x;
-	y = map->exit_y;
-	if (map->nb_coin == 0)
-	{
-		push_img(map, x * SPRITE, y * SPRITE, map->img_exit_full);
-		map->maps[map->exit_y][map->exit_x] = 'V';
-	}
-}
-
-int	game(int key, t_map *map)
+int	game(int key, t_cube *cube)
 {
-	deal_key(key, map);
-	ctrl_coin(map);
+	deal_key(key, cube);
 	return (0);
 }

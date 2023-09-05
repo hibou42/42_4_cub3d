@@ -9,15 +9,12 @@ MAKEFLAGS += --no-print-directory
 #***** Sources / Objs *****#
 
 SRC				=		cub3d.c \
-						init/map.c \
 						init/img.c \
 						init/parsing.c \
-						init/parsing2.c \
 						game/game.c \
 						error/exit.c \
 						error/arg.c \
-						error/tab.c \
-						error/elements.c \
+						error/check_parsing.c \
 
 OBJS			=		$(SRC:.c=.o)
 
