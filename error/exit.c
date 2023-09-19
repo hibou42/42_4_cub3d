@@ -17,7 +17,7 @@ void	free_maps(t_cube *cube)
 	int		i;
 
 	i = 0;
-	while (i < cube->map_y)
+	while (cube->maps[i])
 	{
 		free(cube->maps[i]);
 		i++;

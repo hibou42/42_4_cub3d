@@ -47,10 +47,8 @@ typedef struct s_cube
 	void	*mlx;
 	void	*mlx_win;
 	char	**maps;
-	int		map_x;
-	int		map_y;
-	int		pos_x;
-	int		pos_y;
+	int		player_x;
+	int		player_y;
 	void	*img_ground;
 	void	*img_wall;
 	void	*img_player;
