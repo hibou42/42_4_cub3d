@@ -17,17 +17,17 @@ void	free_maps(t_cube *cube)
 	int		i;
 
 	i = 0;
-	while (cube->maps[i])
+	while (cube->map.maps[i])
 	{
-		free(cube->maps[i]);
+		free(cube->map.maps[i]);
 		i++;
 	}
-	free(cube->maps);
+	free(cube->map.maps);
 }
 
 int	close_window(t_cube *cube)
 {
-	if (cube->maps != NULL)
+	if (cube->map.maps != NULL)
 		free_maps(cube);
 	(void)cube;
 	exit(1);

@@ -12,6 +12,29 @@
 
 #include "../cub3d.h"
 
+int	check_extension(char **argv);
+int	is_access(char **argv);
+
+
+void	check_arg(int argc, char **argv)
+{
+	if (argc != 2)
+	{
+		ft_printf("Error\nVeuillez charger une seule fiche de donnees...\n");
+		exit(1);
+	}
+	if (check_extension(argv) == 1)
+	{
+		ft_printf("Error\nProbleme d'extension de la fiche de donnees...\n");
+		exit(1);
+	}
+	if (is_access(argv) == 1)
+	{
+		ft_printf("Error\nLa fiche de donnees n'est pas accessible...\n");
+		exit(1);
+	}
+}
+
 int	check_extension(char **argv)
 {
 	int	size_argv;
@@ -47,23 +70,4 @@ int		is_access(char **argv)
 		res = 0;
 	close(fd);
 	return (res);
-}
-
-void	check_arg(int argc, char **argv)
-{
-	if (argc != 2)
-	{
-		ft_printf("Error\nVeuillez charger une seule fiche de donnees...\n");
-		exit(1);
-	}
-	if (check_extension(argv) == 1)
-	{
-		ft_printf("Error\nProbleme d'extension des donnees...\n");
-		exit(1);
-	}
-	if (is_access(argv) == 1)
-	{
-		ft_printf("Error\nLes donnees ne sont pas accessible\n");
-		exit(1);
-	}
 }

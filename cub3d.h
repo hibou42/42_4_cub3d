@@ -42,21 +42,25 @@
 
 # include "./libft/libft.h"
 
-typedef struct s_cube
+typedef struct s_mlx
 {
-	void	*mlx;
+	void	*mlx_ptr;
 	void	*mlx_win;
+
+}		t_mlx;
+
+typedef struct s_map
+{
 	char	**maps;
 	int		player_x;
 	int		player_y;
-	void	*img_ground;
-	void	*img_wall;
-	void	*img_player;
-	void	*img_coin;
-	void	*img_exit_empty;
-	void	*img_exit_full;
-	int		img_x;
-	int		img_y;
+
+}		t_map;
+
+typedef struct s_cube
+{
+	struct s_mlx	mlx;
+	struct s_map	map;
 
 }		t_cube;
 
