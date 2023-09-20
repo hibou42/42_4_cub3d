@@ -6,7 +6,7 @@
 /*   By: aschaefe <aschaefe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/10 16:53:08 by aschaefe          #+#    #+#             */
-/*   Updated: 2023/01/13 15:48:09 by aschaefe         ###   ########.fr       */
+/*   Updated: 2023/09/20 12:13:30 by aschaefe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,10 +65,10 @@ typedef struct s_cube
 }		t_cube;
 
 void	check_arg(int argc, char **argv);
+void	init_struct(t_cube *cube);
 void	parsing(t_cube *cube, char **argv);
-void    check_parsing(t_cube *cube);
-//void	init_img(t_map *map);
-void	push_img(t_cube *cube, int x, int y, void *img);
+void	check_parsing(t_cube *cube);
+void	start_mlx(t_cube *cube);
 int		game(int key, t_cube *cube);
 int		close_window(t_cube *cube);
 

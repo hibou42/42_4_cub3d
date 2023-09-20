@@ -9,8 +9,9 @@ MAKEFLAGS += --no-print-directory
 #***** Sources / Objs *****#
 
 SRC				=		cub3d.c \
-						init/img.c \
-						init/parsing.c \
+						init/struct.c \
+						init/mlx.c \
+						parsing/parsing.c \
 						game/game.c \
 						error/exit.c \
 						error/arg.c \

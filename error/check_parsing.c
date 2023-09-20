@@ -6,13 +6,13 @@
 /*   By: aschaefe <aschaefe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/04 10:37:51 by aschaefe          #+#    #+#             */
-/*   Updated: 2023/01/13 17:13:35 by aschaefe         ###   ########.fr       */
+/*   Updated: 2023/09/20 12:11:17 by aschaefe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
 
-void    check_parsing(t_cube *cube)
+void	check_parsing(t_cube *cube)
 {
-    (void)cube;
+	(void)cube;
 }

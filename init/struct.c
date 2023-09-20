@@ -1,36 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   exit.c                                             :+:      :+:    :+:   */
+/*   struct.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aschaefe <aschaefe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/06 15:56:40 by aschaefe          #+#    #+#             */
-/*   Updated: 2023/09/20 12:12:45 by aschaefe         ###   ########.fr       */
+/*   Created: 2023/01/04 10:23:53 by aschaefe          #+#    #+#             */
+/*   Updated: 2023/09/20 12:07:05 by aschaefe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
 
-void	free_maps(t_cube *cube);
-
-int	close_window(t_cube *cube)
+void	init_struct(t_cube *cube)
 {
-	if (cube->map.maps != NULL)
-		free_maps(cube);
-	(void)cube;
-	exit(1);
-}
+	t_mlx	mlx;
+	t_map	map;
 
-void	free_maps(t_cube *cube)
-{
-	int		i;
+	mlx = (t_mlx){};
+	map = (t_map){};
+	cube->mlx = mlx;
+	cube->map = map;
+	cube->map.maps = NULL;
 
-	i = 0;
-	while (cube->map.maps[i])
-	{
-		free(cube->map.maps[i]);
-		i++;
-	}
-	free(cube->map.maps);
 }
