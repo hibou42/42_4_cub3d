@@ -1,26 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   check_parsing.c                                    :+:      :+:    :+:   */
+/*   add_map.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aschaefe <aschaefe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/04 10:37:51 by aschaefe          #+#    #+#             */
-/*   Updated: 2023/09/20 16:02:25 by aschaefe         ###   ########.fr       */
+/*   Created: 2023/01/06 15:37:23 by aschaefe          #+#    #+#             */
+/*   Updated: 2023/09/20 16:19:39 by aschaefe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
 
-void	check_parsing(t_cube *cube)
+void	add_map(t_cube *cube, int start_map, char **argv)
 {
-	int	i;
-
-	i = 0;
-	while (cube->cpy_data[i])
-	{
-		printf("%s", cube->cpy_data[i]);
-		i++;
-	}
 	(void)cube;
 }

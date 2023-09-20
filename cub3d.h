@@ -6,7 +6,7 @@
 /*   By: aschaefe <aschaefe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/10 16:53:08 by aschaefe          #+#    #+#             */
-/*   Updated: 2023/09/20 12:13:30 by aschaefe         ###   ########.fr       */
+/*   Updated: 2023/09/20 15:50:07 by aschaefe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,12 @@ typedef struct s_mlx
 {
 	void	*mlx_ptr;
 	void	*mlx_win;
+	char	*path_no;
+	char	*path_so;
+	char	*path_we;
+	char	*path_ea;
+	int		*floor_color;
+	int		*roof_color;
 
 }		t_mlx;
 
@@ -61,12 +67,17 @@ typedef struct s_cube
 {
 	struct s_mlx	mlx;
 	struct s_map	map;
+	char			**cpy_data;
 
 }		t_cube;
 
 void	check_arg(int argc, char **argv);
 void	init_struct(t_cube *cube);
 void	parsing(t_cube *cube, char **argv);
+int		is_empty(char *str);
+int		is_only_nb(char *str);
+void	add_info(t_cube *cube, char *buffer);
+void	add_map(t_cube *cube, int start_map, char **argv);
 void	check_parsing(t_cube *cube);
 void	start_mlx(t_cube *cube);
 int		game(int key, t_cube *cube);

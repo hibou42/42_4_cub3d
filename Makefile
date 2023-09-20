@@ -12,6 +12,9 @@ SRC				=		cub3d.c \
 						init/struct.c \
 						init/mlx.c \
 						parsing/parsing.c \
+						parsing/parsing_utils.c \
+						parsing/add_infos.c \
+						parsing/add_map.c \
 						game/game.c \
 						error/exit.c \
 						error/arg.c \
