@@ -91,5 +91,6 @@ void	check_parsing(t_cube *cube);
 void	start_mlx(t_cube *cube);
 int		game(int key, t_cube *cube);
 int		close_window(t_cube *cube);
+void	verbose(t_cube *cube);
 
 #endif
