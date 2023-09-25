@@ -19,7 +19,8 @@ int	main(int argc, char **argv)
 	cube = (t_cube){};
 	init_struct(&cube);
 	check_arg(argc, argv);
-	parsing(&cube, argv);
+	add_read_arg(&cube, argv);
+	//parsing(&cube, argv);
 	check_parsing(&cube);
 	start_mlx(&cube);
 	mlx_key_hook(cube.mlx.mlx_win, game, &cube);

@@ -12,7 +12,7 @@
 
 #include "../cub3d.h"
 
-void	add_map(t_cube *cube, int start_map, char **argv)
+void	add_map(t_cube *cube)
 {
 	(void)cube;
 }

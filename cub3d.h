@@ -63,21 +63,30 @@ typedef struct s_map
 
 }		t_map;
 
+typedef struct s_info
+{
+	char			*str;
+	struct s_info	*next;
+
+}		t_info;
+
 typedef struct s_cube
 {
 	struct s_mlx	mlx;
-	struct s_map	map;
+	struct s_map	*map;
+	struct s_info	*info;
 	char			**cpy_data;
 
 }		t_cube;
 
 void	check_arg(int argc, char **argv);
 void	init_struct(t_cube *cube);
-void	parsing(t_cube *cube, char **argv);
+void	add_read_arg(t_cube *cube, char **argv);
+void	parsing(t_cube *cube);
 int		is_empty(char *str);
 int		is_only_nb(char *str);
 void	add_info(t_cube *cube, char *buffer);
-void	add_map(t_cube *cube, int start_map, char **argv);
+void	add_map(t_cube *cube);
 void	check_parsing(t_cube *cube);
 void	start_mlx(t_cube *cube);
 int		game(int key, t_cube *cube);

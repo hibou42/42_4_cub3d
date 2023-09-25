@@ -17,6 +17,9 @@ void	add_tab(t_cube *cube, int *tab, char *buffer);
 
 void	add_info(t_cube *cube, char *buffer)
 {
+	(void)cube;
+	(void)buffer;
+	/*
 	if(buffer[0] == 'N')
 		//add_path(cube, cube->mlx.path_no, buffer);
 	else if (buffer[0] == 'S')
@@ -34,6 +37,7 @@ void	add_info(t_cube *cube, char *buffer)
 		ft_printf("Error : Une ligne fout le zbeul\n");
 		close_window(cube);
 	}
+	*/
 }
 
 void	add_path(t_cube *cube, char *path_def, char *buffer)

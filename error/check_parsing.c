@@ -14,13 +14,14 @@
 
 void	check_parsing(t_cube *cube)
 {
-	int	i;
+	t_info	*tmp;
 
-	i = 0;
-	while (cube->cpy_data[i])
+	tmp = cube->info;
+	printf("START\n");
+	while (tmp)
 	{
-		printf("%s", cube->cpy_data[i]);
-		i++;
+		printf("%s", tmp->str);
+		tmp = tmp->next;
 	}
-	(void)cube;
+	printf("\nEND\n");
 }

@@ -11,6 +11,7 @@ MAKEFLAGS += --no-print-directory
 SRC				=		cub3d.c \
 						init/struct.c \
 						init/mlx.c \
+						init/add_read_arg.c \
 						parsing/parsing.c \
 						parsing/parsing_utils.c \
 						parsing/add_infos.c \

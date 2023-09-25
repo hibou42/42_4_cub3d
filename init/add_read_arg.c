@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   struct.c                                           :+:      :+:    :+:   */
+/*   add_read_arg.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aschaefe <aschaefe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -12,19 +12,38 @@
 
 #include "../cub3d.h"
 
-void	init_struct(t_cube *cube)
+void    add_new_chain(t_cube *cube, char *buffer);
+
+void	add_read_arg(t_cube *cube, char **argv)
 {
-	t_mlx	mlx;
-	t_map	*map;
-	t_info	*info;
+    int		fd;
+	char	*buffer;
 
-	mlx = (t_mlx){};
-	cube->mlx = mlx;
-	map = (t_map *)malloc(sizeof(t_map));
-	cube->map = map;
-	cube->map->maps = NULL;
-	info = (t_info *)malloc(sizeof(t_info));
-	cube->info = info;
-	cube->info->next = NULL;
+	fd = open(argv[1], 0);
+	buffer = get_next_line(fd);
+    cube->info->str = ft_strdup(buffer);
+	while (buffer)
+	{
+		free(buffer);
+		buffer = get_next_line(fd);
+		if (buffer)
+            add_new_chain(cube, buffer);
+	}
+    if (buffer)
+        free(buffer);
+    close(fd);
+}
 
+void    add_new_chain(t_cube *cube, char *buffer)
+{
+    t_info  *new;
+    t_info  *tmp;
+
+    new = (t_info *)malloc(sizeof(t_info));
+    new->str = ft_strdup(buffer);
+    new->next = NULL;
+    tmp = cube->info;
+    while (tmp->next != NULL)
+        tmp = tmp->next;
+    tmp->next = new;
 }
