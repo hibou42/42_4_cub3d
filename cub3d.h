@@ -50,8 +50,8 @@ typedef struct s_mlx
 	char	*path_so;
 	char	*path_we;
 	char	*path_ea;
-	int		*floor_color;
-	int		*roof_color;
+	char	**floor_color;
+	char	**roof_color;
 
 }		t_mlx;
 
@@ -85,8 +85,8 @@ void	add_read_arg(t_cube *cube, char **argv);
 void	parsing(t_cube *cube);
 int		is_empty(char *str);
 int		is_only_nb(char *str);
-void	add_info(t_cube *cube, char *buffer);
-void	add_map(t_cube *cube);
+void	add_info(t_cube *cube, char *str);
+void	add_map(t_cube *cube, t_info *tmp);
 void	check_parsing(t_cube *cube);
 void	start_mlx(t_cube *cube);
 int		game(int key, t_cube *cube);

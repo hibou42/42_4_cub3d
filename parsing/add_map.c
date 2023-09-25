@@ -12,7 +12,8 @@
 
 #include "../cub3d.h"
 
-void	add_map(t_cube *cube)
+void	add_map(t_cube *cube, t_info *tmp)
 {
 	(void)cube;
+	(void)tmp;
 }

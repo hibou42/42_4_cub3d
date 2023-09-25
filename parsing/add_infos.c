@@ -12,55 +12,130 @@
 
 #include "../cub3d.h"
 
-void	add_path(t_cube *cube, char *path_def, char *buffer);
-void	add_tab(t_cube *cube, int *tab, char *buffer);
+void	add_path1(t_cube *cube, int nb, char *str);
+void	add_path2(t_cube *cube, int nb, char *str);
+void	add_tab1(t_cube *cube, int nb, char *str);
+void	add_tab2(t_cube *cube, int nb, char *str);
 
-void	add_info(t_cube *cube, char *buffer)
+void	add_info(t_cube *cube, char *str)
 {
-	(void)cube;
-	(void)buffer;
-	/*
-	if(buffer[0] == 'N')
-		//add_path(cube, cube->mlx.path_no, buffer);
-	else if (buffer[0] == 'S')
-		//add_path(cube, cube->mlx.path_so, buffer);
-	else if (buffer[0] == 'W')
-		//add_path(cube, cube->mlx.path_we, buffer);
-	else if (buffer[0] == 'E')
-		//add_path(cube, cube->mlx.path_ea, buffer);
-	else if (buffer[0] == 'F')
-		//add_tab(cube, cube->mlx.floor_color, buffer);
-	else if (buffer[0] == 'C')
-		//add_tab(cube, cube->mlx.roof_color, buffer);
+	if(str[0] == 'N')
+		add_path1(cube, 1, str);
+	else if (str[0] == 'S')
+		add_path1(cube, 2, str);
+	else if (str[0] == 'W')
+		add_path2(cube, 3, str);
+	else if (str[0] == 'E')
+		add_path2(cube, 4, str);
+	else if (str[0] == 'F')
+		add_tab1(cube, 1, str);
+	else if (str[0] == 'C')
+		add_tab2(cube, 2, str);
 	else
 	{
 		ft_printf("Error : Une ligne fout le zbeul\n");
 		close_window(cube);
 	}
-	*/
 }
 
-void	add_path(t_cube *cube, char *path_def, char *buffer)
+void	add_path1(t_cube *cube, int nb, char *str)
 {
 	int	stop;
 
 	stop = 0;
-	if (path_def != NULL)
-		stop = 1;
-	else
+	if (nb == 1)
 	{
-		path_def = ft_substr(buffer, 3, ft_strlen(buffer) - 3);
+		if (cube->mlx.path_no == NULL)
+			cube->mlx.path_no = ft_substr(str, 3, ft_strlen(str) - 4);
+		else
+			stop = 1;
+	}
+	if (nb == 2)
+	{
+		if (cube->mlx.path_so == NULL)
+			cube->mlx.path_so = ft_substr(str, 3, ft_strlen(str) - 4);
+		else
+			stop = 1;
 	}
 	if (stop == 1)
 	{
-		ft_printf("Error : Probleme attribution de path\n");
+		ft_printf("Error : Path deja attribue\n");
 		close_window(cube);
 	}
 }
 
-void	add_tab(t_cube *cube, int *tab, char *buffer)
+void	add_path2(t_cube *cube, int nb, char *str)
 {
-	(void)cube;
-	(void)tab;
-	(void)buffer;
+	int	stop;
+
+	stop = 0;
+	if (nb == 3)
+	{
+		if (cube->mlx.path_we == NULL)
+			cube->mlx.path_we = ft_substr(str, 3, ft_strlen(str) - 4);
+		else
+			stop = 1;
+	}
+	if (nb == 4)
+	{
+		if (cube->mlx.path_ea == NULL)
+			cube->mlx.path_ea = ft_substr(str, 3, ft_strlen(str) - 4);
+		else
+			stop = 1;
+	}
+	if (stop == 1)
+	{
+		ft_printf("Error : Path deja attribue\n");
+		close_window(cube);
+	}
+}
+
+void	add_tab1(t_cube *cube, int nb, char *str)
+{
+	int		stop;
+	char	*tmp;
+
+	stop = 0;
+	if (nb == 1)
+	{
+		if (cube->mlx.floor_color == NULL)
+		{
+			tmp = ft_substr(str, 2, ft_strlen(str) - 3);
+			cube->mlx.floor_color = ft_split(tmp, ',');
+		}
+		else
+			stop = 1;
+	}
+	if (tmp)
+		free(tmp);
+	if (stop == 1)
+	{
+		ft_printf("Error : Color deja attribue\n");
+		close_window(cube);
+	}
+}
+
+void	add_tab2(t_cube *cube, int nb, char *str)
+{
+	int		stop;
+	char	*tmp;
+
+	stop = 0;
+	if (nb == 2)
+	{
+		if (cube->mlx.roof_color == NULL)
+		{
+			tmp = ft_substr(str, 2, ft_strlen(str) - 3);
+			cube->mlx.roof_color = ft_split(tmp, ',');
+		}
+		else
+			stop = 1;
+	}
+	if (tmp)
+		free(tmp);
+	if (stop == 1)
+	{
+		ft_printf("Error : Color deja attribue\n");
+		close_window(cube);
+	}
 }

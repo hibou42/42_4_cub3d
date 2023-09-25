@@ -14,5 +14,21 @@
 
 void	parsing(t_cube *cube)
 {
-	(void)cube;
+	t_info	*tmp;
+
+	tmp = cube->info;
+	while (tmp)
+	{
+		if (is_empty(tmp->str) != 0)
+		{
+			if (is_only_nb(tmp->str) == 0)
+			{
+				add_map(cube, tmp);
+				tmp->next = NULL;
+			}
+			else
+				add_info(cube, tmp->str);
+		}
+		tmp = tmp->next;
+	}
 }

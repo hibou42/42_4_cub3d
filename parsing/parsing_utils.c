@@ -12,38 +12,43 @@
 
 #include "../cub3d.h"
 
+/*
+	return 0 if the str is empty
+	return 1 if the str have something
+*/
+
 int	is_empty(char *str)
 {
 	int	res;
 	int	i;
 
-	res = 1;
+	res = 0;
 	i = 0;
 	while (str[i])
 	{
 		if (str[i] != ' ' && str[i] != '\t' && str[i] != '\n')
-		{
-			res = 0;
-		}
+			res = 1;
 		i++;
 	}
 	return (res);
 }
+
+/*
+	return 0 if the str is only number and space
+	return 1 if the str have char
+*/
 
 int	is_only_nb(char *str)
 {
 	int	res;
 	int	i;
 
-	res = 1;
+	res = 0;
 	i = 0;
-	while (str[i])
+	while (str[i] && res == 0)
 	{
-		if (str[i] != ' ' && str[i] != '\n' && ft_isdigit(str[i]) > 0)
-		{
-			if (ft_isdigit(str[i]) != 0)
-				res = 0;
-		}
+		if (str[i] != ' ' && str[i] != '\n' && ft_isalpha(str[i]) != 0)
+				res = 1;
 		i++;
 	}
 	return (res);
