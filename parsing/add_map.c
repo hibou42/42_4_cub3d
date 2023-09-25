@@ -12,8 +12,33 @@
 
 #include "../cub3d.h"
 
+int		nb_line(t_info *tmp);
+
 void	add_map(t_cube *cube, t_info *tmp)
 {
-	(void)cube;
-	(void)tmp;
+	int	size;
+	int	i;
+
+	size = nb_line(tmp);
+	cube->map->maps = malloc(size * sizeof(char *));
+	i = 0;
+	while (tmp && is_empty(tmp->str) == 1)
+	{
+		cube->map->maps[i] = ft_strtrim(tmp->str, "\n");
+		tmp = tmp->next;
+		i++;
+	}
+}
+
+int		nb_line(t_info *tmp)
+{
+	int	res;
+
+	res = 0;
+	while (tmp && is_empty(tmp->str) == 1)
+	{
+		tmp = tmp->next;
+		res++;
+	}
+	return (res);
 }

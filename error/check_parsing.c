@@ -51,6 +51,15 @@ void	check_parsing(t_cube *cube)
 			printf("Roof ???\n");
 		i++;
 	}
+	i = 0;
+	if (cube->map->maps)
+	{
+		while (cube->map->maps[i])
+		{
+			printf("%s\n", cube->map->maps[i]);
+			i++;
+		}
+	}
 	
 	printf("\nEND\n");
 }
