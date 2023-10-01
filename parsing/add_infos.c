@@ -14,23 +14,23 @@
 
 void	add_path1(t_cube *cube, int nb, char *str);
 void	add_path2(t_cube *cube, int nb, char *str);
-void	add_tab1(t_cube *cube, int nb, char *str);
-void	add_tab2(t_cube *cube, int nb, char *str);
+void	add_tab1(t_cube *cube, char *str);
+void	add_tab2(t_cube *cube, char *str);
 
 void	add_info(t_cube *cube, char *str)
 {
-	if(str[0] == 'N')
+	if(ft_strncmp(str, "NO", 2) == 0)
 		add_path1(cube, 1, str);
-	else if (str[0] == 'S')
+	else if (ft_strncmp(str, "SO", 2) == 0)
 		add_path1(cube, 2, str);
-	else if (str[0] == 'W')
+	else if (ft_strncmp(str, "WE", 2) == 0)
 		add_path2(cube, 3, str);
-	else if (str[0] == 'E')
+	else if (ft_strncmp(str, "EA", 2) == 0)
 		add_path2(cube, 4, str);
-	else if (str[0] == 'F')
-		add_tab1(cube, 1, str);
-	else if (str[0] == 'C')
-		add_tab2(cube, 2, str);
+	else if (ft_strncmp(str, "F", 1) == 0)
+		add_tab1(cube, str);
+	else if (ft_strncmp(str, "C", 1) == 0)
+		add_tab2(cube, str);
 	else
 	{
 		ft_printf("Error : Une ligne fout le zbeul\n");
@@ -90,22 +90,19 @@ void	add_path2(t_cube *cube, int nb, char *str)
 	}
 }
 
-void	add_tab1(t_cube *cube, int nb, char *str)
+void	add_tab1(t_cube *cube, char *str)
 {
 	int		stop;
 	char	*tmp;
 
 	stop = 0;
-	if (nb == 1)
+	if (cube->mlx.floor_color == NULL)
 	{
-		if (cube->mlx.floor_color == NULL)
-		{
-			tmp = ft_substr(str, 2, ft_strlen(str) - 3);
-			cube->mlx.floor_color = ft_split(tmp, ',');
-		}
-		else
-			stop = 1;
+		tmp = ft_substr(str, 2, ft_strlen(str) - 3);
+		cube->mlx.floor_color = ft_split(tmp, ',');
 	}
+	else
+		stop = 1;
 	if (tmp)
 		free(tmp);
 	if (stop == 1)
@@ -115,22 +112,19 @@ void	add_tab1(t_cube *cube, int nb, char *str)
 	}
 }
 
-void	add_tab2(t_cube *cube, int nb, char *str)
+void	add_tab2(t_cube *cube, char *str)
 {
 	int		stop;
 	char	*tmp;
 
 	stop = 0;
-	if (nb == 2)
+	if (cube->mlx.roof_color == NULL)
 	{
-		if (cube->mlx.roof_color == NULL)
-		{
-			tmp = ft_substr(str, 2, ft_strlen(str) - 3);
-			cube->mlx.roof_color = ft_split(tmp, ',');
-		}
-		else
-			stop = 1;
+		tmp = ft_substr(str, 2, ft_strlen(str) - 3);
+		cube->mlx.roof_color = ft_split(tmp, ',');
 	}
+	else
+		stop = 1;
 	if (tmp)
 		free(tmp);
 	if (stop == 1)
