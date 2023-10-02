@@ -6,7 +6,7 @@
 /*   By: aschaefe <aschaefe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/10 16:53:08 by aschaefe          #+#    #+#             */
-/*   Updated: 2023/09/20 15:50:07 by aschaefe         ###   ########.fr       */
+/*   Updated: 2023/10/02 17:28:40 by aschaefe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,10 +58,18 @@ typedef struct s_mlx
 typedef struct s_map
 {
 	char	**maps;
-	int		player_x;
-	int		player_y;
+	int		width;
+	int		hight;
 
 }		t_map;
+
+typedef struct s_game
+{
+	int		player_x;
+	int		player_y;
+	char	*direction;
+
+}		t_game;
 
 typedef struct s_info
 {
@@ -75,6 +83,7 @@ typedef struct s_cube
 	struct s_mlx	mlx;
 	struct s_map	*map;
 	struct s_info	*info;
+	struct s_game	*game;
 	char			**cpy_data;
 
 }		t_cube;
@@ -88,6 +97,7 @@ int		is_only_nb(char *str);
 void	add_info(t_cube *cube, char *str);
 void	add_map(t_cube *cube, t_info *tmp);
 void	check_parsing(t_cube *cube);
+void	check_parsing2(t_cube *cube);
 void	start_mlx(t_cube *cube);
 int		game(int key, t_cube *cube);
 int		close_window(t_cube *cube);

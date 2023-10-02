@@ -6,7 +6,7 @@
 /*   By: aschaefe <aschaefe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/06 15:37:23 by aschaefe          #+#    #+#             */
-/*   Updated: 2023/09/20 16:20:01 by aschaefe         ###   ########.fr       */
+/*   Updated: 2023/10/02 14:03:18 by aschaefe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,6 +96,7 @@ void	add_tab1(t_cube *cube, char *str)
 	char	*tmp;
 
 	stop = 0;
+	tmp = NULL;
 	if (cube->mlx.floor_color == NULL)
 	{
 		tmp = ft_substr(str, 2, ft_strlen(str) - 3);
@@ -118,6 +119,7 @@ void	add_tab2(t_cube *cube, char *str)
 	char	*tmp;
 
 	stop = 0;
+	tmp = NULL;
 	if (cube->mlx.roof_color == NULL)
 	{
 		tmp = ft_substr(str, 2, ft_strlen(str) - 3);

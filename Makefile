@@ -21,6 +21,7 @@ SRC				=		cub3d.c \
 						error/exit.c \
 						error/arg.c \
 						error/check_parsing.c \
+						error/check_parsing2.c \
 
 OBJS			=		$(SRC:.c=.o)
 

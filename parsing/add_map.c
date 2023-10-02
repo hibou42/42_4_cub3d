@@ -6,7 +6,7 @@
 /*   By: aschaefe <aschaefe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/06 15:37:23 by aschaefe          #+#    #+#             */
-/*   Updated: 2023/09/20 16:19:39 by aschaefe         ###   ########.fr       */
+/*   Updated: 2023/10/02 17:31:10 by aschaefe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ void	add_map(t_cube *cube, t_info *tmp)
 	int	i;
 
 	size = nb_line(tmp);
+	cube->map->hight = size;
 	cube->map->maps = malloc(size * sizeof(char *));
 	i = 0;
 	while (tmp && is_empty(tmp->str) == 1)
