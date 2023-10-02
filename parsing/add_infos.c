@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   add_infos.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aschaefe <aschaefe@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nrossel <nrossel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/06 15:37:23 by aschaefe          #+#    #+#             */
-/*   Updated: 2023/09/20 16:20:01 by aschaefe         ###   ########.fr       */
+/*   Updated: 2023/09/26 13:25:55 by nrossel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,6 +96,7 @@ void	add_tab1(t_cube *cube, int nb, char *str)
 	char	*tmp;
 
 	stop = 0;
+	tmp = NULL;
 	if (nb == 1)
 	{
 		if (cube->mlx.floor_color == NULL)
@@ -121,6 +122,7 @@ void	add_tab2(t_cube *cube, int nb, char *str)
 	char	*tmp;
 
 	stop = 0;
+	tmp = NULL;
 	if (nb == 2)
 	{
 		if (cube->mlx.roof_color == NULL)
