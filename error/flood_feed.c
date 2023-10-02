@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   check_parsing2.c                                   :+:      :+:    :+:   */
+/*   flood_feed.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aschaefe <aschaefe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -12,13 +12,7 @@
 
 #include "../cub3d.h"
 
-void	flood_feed(t_cube *cube);
 int		check_flood_feed(t_cube *cube, int x, int y);
-
-void	check_parsing2(t_cube *cube)
-{
-	flood_feed(cube);
-}
 
 void	flood_feed(t_cube *cube)
 {
@@ -65,3 +59,4 @@ int		check_flood_feed(t_cube *cube, int x, int y)
 		return (1);
 	return (0);
 }
+

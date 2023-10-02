@@ -97,10 +97,12 @@ int		is_only_nb(char *str);
 void	add_info(t_cube *cube, char *str);
 void	add_map(t_cube *cube, t_info *tmp);
 void	check_parsing(t_cube *cube);
-void	check_parsing2(t_cube *cube);
+void	flood_feed(t_cube *cube);
+void	update_map(t_cube *cube);
 void	start_mlx(t_cube *cube);
 int		game(int key, t_cube *cube);
 int		close_window(t_cube *cube);
+void	free_maps(t_cube *cube);
 void	verbose(t_cube *cube);
 
 #endif

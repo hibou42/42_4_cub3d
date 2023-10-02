@@ -36,6 +36,7 @@ void	free_maps(t_cube *cube)
 		i++;
 	}
 	free(cube->map->maps);
+	cube->map->maps = NULL;
 }
 
 void	free_path(t_cube *cube)

@@ -22,6 +22,7 @@ int	main(int argc, char **argv)
 	add_read_arg(&cube, argv);
 	parsing(&cube);
 	check_parsing(&cube);
+	update_map(&cube);
 	verbose(&cube);
 	start_mlx(&cube);
 	mlx_key_hook(cube.mlx.mlx_win, game, &cube);

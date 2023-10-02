@@ -31,7 +31,7 @@ void	check_parsing(t_cube *cube)
 		dead_path_color(cube, 1);
 	if (is_valid_color(cube->mlx.roof_color) != 0)
 		dead_path_color(cube, 1);
-	check_parsing2(cube);
+	flood_feed(cube);
 }
 
 int		is_valid_path(char *path)
