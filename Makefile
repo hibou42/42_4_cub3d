@@ -23,6 +23,7 @@ SRC				=		cub3d.c \
 						error/arg.c \
 						error/check_parsing.c \
 						error/flood_feed.c \
+						design/draw_pixel.c \
 
 OBJS			=		$(SRC:.c=.o)
 

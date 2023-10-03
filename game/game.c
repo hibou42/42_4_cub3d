@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   game.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aschaefe <aschaefe@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nrossel <nrossel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/04 10:23:53 by aschaefe          #+#    #+#             */
-/*   Updated: 2023/01/13 16:29:48 by aschaefe         ###   ########.fr       */
+/*   Updated: 2023/10/03 12:43:11 by nrossel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,30 +43,35 @@ void	move(t_map *map, int move_y, int move_x)
 }
 */
 
-void	deal_key(int key, t_cube *cube)
+int	deal_key(int key, t_cube *cube)
 {
 	if (key == LEFT_KEY || key == A_KEY)
 	{
 		//move(map, 0, -1);
+		cube->game->player_x -= 10;
 		printf("Gauche\n");
 	}
 	if (key == DOWN_KEY || key == S_KEY)
 	{
 		//move(map, 1, 0);
+		cube->game->player_y += 10;
 		printf("Bas\n");
 	}
 	if (key == RIGHT_KEY || key == D_KEY)
 	{
 		//move(map, 0, 1);
+		cube->game->player_x += 10;
 		printf("Droite\n");
 	}
 	if (key == UP_KEY || key == W_KEY)
 	{
 		//move(map, -1, 0);
+		cube->game->player_y -= 10;
 		printf("Haut\n");
 	}
 	if (key == ESC)
 		close_window(cube);
+	return (0);
 }
 
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   struct.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aschaefe <aschaefe@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nrossel <nrossel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/04 10:23:53 by aschaefe          #+#    #+#             */
-/*   Updated: 2023/10/02 14:33:45 by aschaefe         ###   ########.fr       */
+/*   Updated: 2023/10/03 12:49:07 by nrossel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,4 +30,6 @@ void	init_struct(t_cube *cube)
 	game = (t_game *)malloc(sizeof(t_game));
 	cube->game = game;
 	cube->game->direction = NULL;
+	cube->game->player_x = WIN_WIDTH / 2;
+	cube->game->player_y = WIN_HIGHT / 2;
 }
