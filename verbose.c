@@ -6,7 +6,11 @@
 /*   By: nrossel <nrossel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/04 10:23:53 by aschaefe          #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2023/09/26 13:29:10 by nrossel          ###   ########.fr       */
+=======
+/*   Updated: 2023/10/02 17:37:35 by aschaefe         ###   ########.fr       */
+>>>>>>> e7a4288b1741ab3a245432dcaeabf53c4fcf3cb1
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,12 +54,19 @@ void    verbose(t_cube *cube)
 			printf("Roof ???\n");
 		i++;
 	}
-    
+	
+    // info map print
+	printf("player x %d\n", cube->game->player_x);
+	printf("player y %d\n", cube->game->player_y);
+	printf("player direction %s\n", cube->game->direction);
+	printf("map width %d\n", cube->map->width);
+	printf("map hight %d\n", cube->map->hight);
+
     // map print
 	i = 0;
     if (cube->map->maps)
 	{
-		while (cube->map->maps[i])
+		while (i < cube->map->hight)
 		{
 			printf("%s\n", cube->map->maps[i]);
 			i++;

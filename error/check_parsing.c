@@ -6,7 +6,7 @@
 /*   By: aschaefe <aschaefe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/04 10:37:51 by aschaefe          #+#    #+#             */
-/*   Updated: 2023/09/20 16:02:25 by aschaefe         ###   ########.fr       */
+/*   Updated: 2023/10/02 16:54:18 by aschaefe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ void	check_parsing(t_cube *cube)
 		dead_path_color(cube, 1);
 	if (is_valid_color(cube->mlx.roof_color) != 0)
 		dead_path_color(cube, 1);
+	flood_feed(cube);
 }
 
 int		is_valid_path(char *path)
@@ -43,9 +44,6 @@ int		is_valid_path(char *path)
 	{
 		fd = open(path, 0);
 		read_ret = read(fd, &buffer, 2);
-		// erreur de free si je garde ces lignes. je pensais que read fait malloc a buffer
-		//if (buffer)
-		//	free(buffer);
 		close(fd);
 		if (read_ret > 0 && is_valid_ext(path) == 0)
 		{

@@ -17,10 +17,12 @@ SRC				=		cub3d.c \
 						parsing/parsing_utils.c \
 						parsing/add_infos.c \
 						parsing/add_map.c \
+						parsing/update_map.c \
 						game/game.c \
 						error/exit.c \
 						error/arg.c \
 						error/check_parsing.c \
+						error/flood_feed.c \
 
 OBJS			=		$(SRC:.c=.o)
 
