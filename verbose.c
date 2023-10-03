@@ -36,7 +36,7 @@ void    verbose(t_cube *cube)
 	while (cube->mlx.floor_color[i])
 	{
 		if (cube->mlx.floor_color[i] != NULL)
-			printf("Floor %d = |%s|\n", i, cube->mlx.roof_color[i]);
+			printf("Floor %d = |%s|\n", i, cube->mlx.floor_color[i]);
 		else
 			printf("Floor ???\n");
 		i++;
