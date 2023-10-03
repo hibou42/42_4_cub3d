@@ -6,7 +6,7 @@
 /*   By: nrossel <nrossel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/04 10:23:53 by aschaefe          #+#    #+#             */
-/*   Updated: 2023/09/26 13:05:33 by nrossel          ###   ########.fr       */
+/*   Updated: 2023/10/02 14:00:39 by nrossel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int	main(int argc, char **argv)
 	add_read_arg(&cube, argv);
 	parsing(&cube);
 	check_parsing(&cube);
-	verbose(&cube);
+	// verbose(&cube);
 	start_mlx(&cube);
 	mlx_key_hook(cube.mlx.mlx_win, game, &cube);
 	mlx_hook(cube.mlx.mlx_win, 17, 1L << 0, close_window, &cube);
