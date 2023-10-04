@@ -6,25 +6,27 @@
 /*   By: nrossel <nrossel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/27 08:34:28 by nrossel           #+#    #+#             */
-/*   Updated: 2023/10/03 12:43:46 by nrossel          ###   ########.fr       */
+/*   Updated: 2023/10/04 14:33:06 by nrossel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
 
-void	img_pix_put(t_img *img, int x, int y, int color);
-int		draw_player(t_cube *data, int player_x, int payer_y);
-void	black_screen(t_img *img);
+void		img_pix_put(t_img *img, int x, int y, int color);
+static int	draw_player(t_cube *cube, int zoom);
+static void	draw_map(t_cube *cube, char **map, int zoom);
+static void	black_screen(t_img *img);
 
 /* --------------- Window design --------------------*/
-int	render(t_cube *data)
+int	render(t_cube *cube)
 {
-	if (data->mlx.mlx_win == NULL)
+	if (cube->mlx.mlx_win == NULL)
 		return (ERROR);
-	// draw_map();
-	draw_player(data, data->game->player_x, data->game->player_y);
-	mlx_put_image_to_window(data->mlx.mlx_ptr, data->mlx.mlx_win,
-		data->img.mlx_img, 0, 0);
+	black_screen(&(cube->img));
+	draw_map(cube, cube->map->maps, cube->map->zoom);
+	draw_player(cube, cube->map->zoom);
+	mlx_put_image_to_window(cube->mlx.mlx_ptr, cube->mlx.mlx_win,
+		cube->img.mlx_img, 0, 0);
 	return (0);
 }
 
@@ -41,86 +43,85 @@ void	img_pix_put(t_img *img, int x, int y, int color)
 }
 
 /* --------------- Draw player --------------------*/
-int	draw_player(t_cube *data, int player_x, int player_y)
+static int	draw_player(t_cube *cube, int zoom)
 {
 	int	i;
 	int	j;
-	
-	black_screen(&(data->img));
-	i = player_y - 3;
-	while (i < player_y + 3)
+	int	pos_player_x;
+	int	pos_player_y;
+	int	start_mapx;
+	int	start_mapy;
+
+	start_mapx = cube->map->offset_x - ((cube->map->width / 2) * zoom);
+	start_mapy = cube->map->offset_y - ((cube->map->hight / 2) * zoom);
+	pos_player_x = start_mapx + (cube->game->player_x * zoom);
+	pos_player_y = start_mapy + (cube->game->player_y * zoom);
+	j = pos_player_y - (zoom / 10);
+	while (j < pos_player_y + 2)
 	{
-		j = player_x - 3;
-		while (j < player_x + 3)
-			img_pix_put(&(data->img), j++, i, GREEN);
-		i++;
+		i = pos_player_x - (zoom / 10);
+		while (i < pos_player_x + 2)
+			img_pix_put(&(cube->img), i++, j, GREEN);
+		j++;
 	}
 	
 	return (0);
 }
 
 /* --------------- Draw map 2d --------------------*/
-// int	draw_map(t_cube data, char **map)
-// {
-// 	int	j;
-// 	int	i;
-// 	int	x;
-// 	int	y;
+static void	draw_map(t_cube *cube, char **map, int zoom)
+{
+	int		i;
+	int		j;
+	int		x;
+	int		y;
+	float	x1;
+	float	y1;
+	int		start_x;
+	int		start_y;
+
+	start_x = cube->map->offset_x - ((cube->map->width / 2) * 20);
+	start_y = cube->map->offset_y - ((cube->map->hight / 2) * 20);
+	j = 0;
+	while (j < cube->map->hight)
+	{
+		i = 0;
+		y = start_y + (zoom * j);
+		while (i < cube->map->width)
+		{
+			img_pix_put(&(cube->img), x, y, RED);
+			x = start_x + (zoom * i);
+			if (map[j][i] == '0')
+			{
+				y1 = y - (zoom / 2);
+				while (y1 < y + zoom)
+				{
+					x1 = x - (zoom / 2);
+					while (x1 < x + zoom)
+						img_pix_put(&(cube->img), x1++, y1, BLACK);
+					y1++;
+				}
+			}
+			else if (map[j][i] == '1')
+			{
+				y1 = y - (zoom / 2);
+				while (y1 < y + zoom)
+				{
+					x1 = x - (zoom / 2);
+					while (x1 < x + zoom)
+						img_pix_put(&(cube->img), x1++, y1, WHITE);
+					y1++;
+				}
+			}
+			i++;
+		}
+		j++;
+	}
 	
-// 	j = 0;
-// 	x = WIN_WIDTH / 4;
-// 	y = WIN_HIGHT / 4;
-// 	while (map[j])
-// 	{
-// 		i = 0;
-// 		while (j < data.map.x)
-// 		{
-// 			if (map[j][i] == 2)
-// 			{
-// 				int x1;
-// 				int y1;
-// 				y1 = y;
-// 				while (y1 < y + 49)
-// 				{
-// 					x1 = x + 1;
-// 					while (x1 < x + 49)
-// 						img_pix_put(&(data.img), x1++, y1, RED);
-// 					y1++;
-// 				}
-// 			}
-// 			else if (map[j][i] == 1)
-// 			{
-// 				int x1;
-// 				int y1;
-// 				y1 = y;
-// 				while (y1 < y + 49)
-// 				{
-// 					x1 = x + 1;
-// 					while (x1 < x + 49)
-// 						img_pix_put(&(data.img), x1++, y1, WHITE);
-// 					y1++;
-// 				}
-// 			}
-// 			else
-// 			{
-// 				int x1;
-// 				int y1;
-// 				y1 = y;
-// 				while (y1 < y + 49)
-// 				{
-// 					x1 = x + 1;
-// 					while (x1 < x + 49)
-// 						img_pix_put(&(data.img), x1++, y1, BLACK);
-// 					y1++;
-// 				}
-// 			}
-// 		y += 50;
-// 		}
-// 	}
-// }
+}
 
 /* --------------- Refresh black screen --------------------*/
-void	black_screen(t_img *img)
+static void	black_screen(t_img *img)
 {
 	int	x;
 	int	y;

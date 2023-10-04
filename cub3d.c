@@ -6,7 +6,7 @@
 /*   By: nrossel <nrossel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/04 10:23:53 by aschaefe          #+#    #+#             */
-/*   Updated: 2023/10/03 14:27:17 by nrossel          ###   ########.fr       */
+/*   Updated: 2023/10/04 15:07:37 by nrossel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,8 @@ int	main(int argc, char **argv)
 static void	ft_mlx_hook(t_cube *cube)
 {
 	mlx_loop_hook(cube->mlx.mlx_ptr, &render, cube);
-	mlx_key_hook(cube->mlx.mlx_win, &deal_key, cube);
+	mlx_key_hook(cube->mlx.mlx_win, &deal_key, cube); // -->> Event KeyPress
+	// mlx_mouse_hook(cube->mlx.mlx_win, &mouse_handle, cube); // -->> Event Mouse
 	mlx_hook(cube->mlx.mlx_win, 17, 1L << 0, close_window, cube);
 	mlx_loop(cube->mlx.mlx_ptr);
 	mlx_destroy_image(cube->mlx.mlx_ptr, cube->img.mlx_img);

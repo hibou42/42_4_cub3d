@@ -6,7 +6,7 @@
 /*   By: nrossel <nrossel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/04 10:23:53 by aschaefe          #+#    #+#             */
-/*   Updated: 2023/10/03 12:23:58 by nrossel          ###   ########.fr       */
+/*   Updated: 2023/10/03 17:05:17 by nrossel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,8 +52,8 @@ void    verbose(t_cube *cube)
 	}
 	
     // info map print
-	printf("player x %d\n", cube->game->player_x);
-	printf("player y %d\n", cube->game->player_y);
+	printf("player x %f\n", cube->game->player_x);
+	printf("player y %f\n", cube->game->player_y);
 	printf("player direction %s\n", cube->game->direction);
 	printf("map width %d\n", cube->map->width);
 	printf("map hight %d\n", cube->map->hight);

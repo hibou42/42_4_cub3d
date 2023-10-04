@@ -6,7 +6,7 @@
 /*   By: nrossel <nrossel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/10 16:53:08 by aschaefe          #+#    #+#             */
-/*   Updated: 2023/10/03 12:40:23 by nrossel          ###   ########.fr       */
+/*   Updated: 2023/10/04 15:01:04 by nrossel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,9 @@
 #  define D_KEY					2
 #  define W_KEY					13
 #  define ESC 					53
+#  define ZOOM_IN				4
+#  define ZOOM_OUT				5
+
 
 /* --------------- LINUX OS --------------------*/
 # else
@@ -92,13 +95,16 @@ typedef struct s_map
 	char	**maps;
 	int		width;
 	int		hight;
+	int		offset_x;
+	int		offset_y;
+	float	zoom;
 
 }		t_map;
 
 typedef struct s_game
 {
-	int		player_x;
-	int		player_y;
+	float	player_x;
+	float	player_y;
 	char	*direction;
 
 }		t_game;
@@ -126,26 +132,27 @@ typedef struct s_cube
 int		render(t_cube *data);
 
 /* --------------- Parsing --------------------*/
-void	check_parsing(t_cube *cube);
 void	parsing(t_cube *cube);
+void	check_parsing(t_cube *cube);
 void	add_info(t_cube *cube, char *str);
 void	add_map(t_cube *cube, t_info *tmp);
 
 /* --------------- Events --------------------*/
 int		deal_key(int key, t_cube *cube);
+int		mouse_handle(int mousekey, t_cube *cube);
 int		close_window(t_cube *cube);
 
 /* --------------- ? --------------------*/
-void	check_arg(int argc, char **argv);
-void	init_struct(t_cube *cube);
-void	add_read_arg(t_cube *cube, char **argv);
 int		is_empty(char *str);
 int		is_only_nb(char *str);
-void	start_mlx(t_cube *cube);
 int		game(int key, t_cube *cube);
+void	free_maps(t_cube *cube);
+void	start_mlx(t_cube *cube);
 void	flood_feed(t_cube *cube);
 void	update_map(t_cube *cube);
-void	free_maps(t_cube *cube);
+void	init_struct(t_cube *cube);
+void	check_arg(int argc, char **argv);
+void	add_read_arg(t_cube *cube, char **argv);
 
 /* --------------- Verbose --------------------*/
 void	verbose(t_cube *cube);
