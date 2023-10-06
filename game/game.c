@@ -6,7 +6,7 @@
 /*   By: nrossel <nrossel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/04 10:23:53 by aschaefe          #+#    #+#             */
-/*   Updated: 2023/10/04 15:07:32 by nrossel          ###   ########.fr       */
+/*   Updated: 2023/10/06 08:15:11 by nrossel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,34 +45,49 @@ void	move(t_map *map, int move_y, int move_x)
 
 int	deal_key(int key, t_cube *cube)
 {
+	float	p_x;
+	float	p_y;
+
+	p_x = cube->game->player_x;
+	p_y = cube->game->player_y;
 	if (key == LEFT_KEY || key == A_KEY)
 	{
-		//move(map, 0, -1);
-		cube->game->player_x -= 0.2;
-		printf("Gauche\n");
+		if (cube->map->maps[(int)p_y][(int)(p_x - 0.2)] == '0')
+		{
+			cube->game->player_x -= 0.1;
+			printf("Gauche + %f\n", cube->game->player_x);
+		}
 	}
 	else if (key == DOWN_KEY || key == S_KEY)
 	{
-		//move(map, 1, 0);
-		cube->game->player_y += 0.2;
-		printf("Bas\n");
+		if (cube->map->maps[(int)(p_y + 0.2)][(int)p_x] == '0')
+		{
+			cube->game->player_y += 0.1;
+			printf("Bas + %f\n", cube->game->player_y);
+		}
 	}
 	else if (key == RIGHT_KEY || key == D_KEY)
 	{
-		//move(map, 0, 1);
-		cube->game->player_x += 0.2;
-		printf("Droite\n");
+		if (cube->map->maps[(int)p_y][(int)(p_x + 0.2)] == '0')
+		{
+			cube->game->player_x += 0.1;
+			printf("Droite + %f\n", cube->game->player_x);
+		}
 	}
 	else if (key == UP_KEY || key == W_KEY)
 	{
-		//move(map, -1, 0);
-		cube->game->player_y -= 0.2;
-		printf("Haut\n");
+		if (cube->map->maps[(int)(p_y - 0.2)][(int)p_x] == '0')
+		{
+			cube->game->player_y -= 0.1;
+			printf("Haut + %f\n", cube->game->player_y);
+		}
 	}
 	else if (key == ESC)
 		close_window(cube);
 	return (0);
 }
+
+
 
 // int	mouse_handle(int mousekey, t_cube *cube)
 // {

@@ -6,7 +6,7 @@
 /*   By: nrossel <nrossel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/27 08:34:28 by nrossel           #+#    #+#             */
-/*   Updated: 2023/10/04 14:33:06 by nrossel          ###   ########.fr       */
+/*   Updated: 2023/10/06 08:24:23 by nrossel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,43 +79,84 @@ static void	draw_map(t_cube *cube, char **map, int zoom)
 	float	y1;
 	int		start_x;
 	int		start_y;
-
-	start_x = cube->map->offset_x - ((cube->map->width / 2) * 20);
-	start_y = cube->map->offset_y - ((cube->map->hight / 2) * 20);
-	j = 0;
-	while (j < cube->map->hight)
+	
+	start_x = cube->map->offset_x - ((cube->map->width / 2) * zoom - 1);
+	start_y = cube->map->offset_y - ((cube->map->hight / 2) * zoom - 1);
+	if (TYPE == 1)
 	{
-		i = 0;
-		y = start_y + (zoom * j);
-		while (i < cube->map->width)
+		j = 0;
+		while (j < cube->map->hight)
 		{
-			img_pix_put(&(cube->img), x, y, RED);
-			x = start_x + (zoom * i);
-			if (map[j][i] == '0')
+			i = 0;
+			y = start_y + (zoom * j);
+			while (i < cube->map->width)
 			{
-				y1 = y - (zoom / 2);
-				while (y1 < y + zoom)
+				x = start_x + (zoom * i);
+				if (map[j][i] == '0')
 				{
-					x1 = x - (zoom / 2);
-					while (x1 < x + zoom)
-						img_pix_put(&(cube->img), x1++, y1, BLACK);
-					y1++;
+					y1 = y - (zoom / 2);
+					while (y1 < y + (zoom / 2))
+					{
+						x1 = x - (zoom / 2);
+						while (x1 < x + (zoom / 2))
+							img_pix_put(&(cube->img), x1++, y1, BLACK);
+						y1++;
+					}
 				}
-			}
-			else if (map[j][i] == '1')
-			{
-				y1 = y - (zoom / 2);
-				while (y1 < y + zoom)
+				else if (map[j][i] == '1')
 				{
-					x1 = x - (zoom / 2);
-					while (x1 < x + zoom)
-						img_pix_put(&(cube->img), x1++, y1, WHITE);
-					y1++;
+					y1 = y - (zoom / 2);
+					while (y1 < y + (zoom / 2))
+					{
+						x1 = x - (zoom / 2);
+						while (x1 < x + (zoom / 2))
+							img_pix_put(&(cube->img), x1++, y1, WHITE);
+						y1++;
+					}
 				}
+				img_pix_put(&(cube->img), x, y, RED);
+				i++;
 			}
-			i++;
+			j++;
 		}
-		j++;
+	}
+	else if (TYPE == 2)
+	{
+		j = 0;
+		while (j < cube->map->hight)
+		{
+			i = 0;
+			y = start_y + (zoom * j);
+			while (i < cube->map->width)
+			{
+				x = start_x + (zoom * i);
+				if (map[j][i] == '0')
+				{
+					y1 = y;
+					while (y1 < y + zoom)
+					{
+						x1 = x;
+						while (x1 < x + zoom)
+							img_pix_put(&(cube->img), x1++, y1, BLACK);
+						y1++;
+					}
+				}
+				else if (map[j][i] == '1')
+				{
+					y1 = y;
+					while (y1 < y + zoom)
+					{
+						x1 = x;
+						while (x1 < x + zoom)
+							img_pix_put(&(cube->img), x1++, y1, WHITE);
+						y1++;
+					}
+				}
+				img_pix_put(&(cube->img), x, y, RED);
+				i++;
+			}
+			j++;
+		}
 	}
 	
 }

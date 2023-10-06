@@ -6,7 +6,7 @@
 /*   By: nrossel <nrossel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/10 16:53:08 by aschaefe          #+#    #+#             */
-/*   Updated: 2023/10/04 15:01:04 by nrossel          ###   ########.fr       */
+/*   Updated: 2023/10/06 08:27:12 by nrossel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,31 +41,37 @@
 #  define D_KEY					100
 #  define W_KEY					119
 #  define ESC					65307
+#  define ZOOM_IN				4
+#  define ZOOM_OUT				5
 # endif
 
 /* --------------- SPRITE --------------------*/
-# define SPRITE					64
+# define SPRITE		64
+
+/* --------------- MAP TYPE --------------------*/
+# define TYPE		2
 
 /* --------------- WINDOW --------------------*/
-# define WIN_WIDTH 1920
-# define WIN_HIGHT 1080
-# define WIN_NAME "Cub3D"
+# define WIN_WIDTH	1920
+# define WIN_HIGHT	1080
+# define WIN_NAME	"Cub3D"
 
 /* --------------- COLORS --------------------*/
-# define GREEN 0x7CFC00
-# define RED 0x00960018
-# define WHITE 0xFFFFFF
-# define BLACK 0x00000
+# define GREEN		0x7CFC00
+# define RED		0x00960018
+# define WHITE		0xFFFFFF
+# define BLACK		0x00000
 
 /* --------------- EXIT --------------------*/
-# define SUCCESS 0
-# define ERROR 1
+# define SUCCESS	0
+# define ERROR		1
 
 /* --------------- INTERNAL LIBRARY --------------------*/
 # include "./libft/libft.h"
 
 /* --------------- EXTERNAL LIBRARY --------------------*/
 # include <string.h>
+# include <math.h>
 
 /* --------------- STRUCTURES --------------------*/
 typedef struct s_img
