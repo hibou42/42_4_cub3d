@@ -6,7 +6,7 @@
 /*   By: nrossel <nrossel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/04 10:23:53 by aschaefe          #+#    #+#             */
-/*   Updated: 2023/10/04 14:25:42 by nrossel          ###   ########.fr       */
+/*   Updated: 2023/10/06 09:51:18 by nrossel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,6 @@ void	init_struct(t_cube *cube)
 	cube->map->maps = NULL;
 	cube->map->offset_x = WIN_WIDTH / 2;
 	cube->map->offset_y = WIN_HIGHT / 2;
-	cube->map->zoom = 20;
 	info = (t_info *)malloc(sizeof(t_info));
 	cube->info = info;
 	cube->info->next = NULL;

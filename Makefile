@@ -25,7 +25,14 @@ SRC				=		cub3d.c \
 						error/flood_feed.c \
 						design/draw_pixel.c \
 
+
 OBJS			=		$(SRC:.c=.o)
+
+#***** Message compilation // En phase de test //*****#
+
+TOTAL_FILES		= $(words $(SRC))
+COMPILED_FILE	= 0
+MESSAGE			= "Compilation en cours : $(COMPILED_FILES)/$(TOTAL_FILES) ($(shell expr $(COMPILED_FILES) \* 100 / $(TOTAL_FILES))%)"
 
 #***** Libft / MiniLbx *****#
 
@@ -85,7 +92,12 @@ logo :
 
 %.o:		%.c ./libft/libft.h Makefile cub3d.h
 			@$(CC) $(CFLAGS) -c $< -o $@
-			@$(CHARG_LINE)
+			$(eval COMPILED_FILES=$(shell echo $$(($(COMPILED_FILES)+1))))
+			@printf "%s" $(MESSAGE)
+			@sleep 0.1
+			@printf "\r"
+#@printf "\r\033[K"
+# @$(CHARG_LINE)
 
 $(NAME) :	${OBJS}
 			@$(BS_N)

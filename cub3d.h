@@ -6,7 +6,7 @@
 /*   By: nrossel <nrossel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/10 16:53:08 by aschaefe          #+#    #+#             */
-/*   Updated: 2023/10/06 08:34:30 by nrossel          ###   ########.fr       */
+/*   Updated: 2023/10/06 10:07:16 by nrossel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,12 +49,13 @@
 # define SPRITE		64
 
 /* --------------- MAP TYPE --------------------*/
-# define TYPE		2
+# define TYPE		3
 
 /* --------------- WINDOW --------------------*/
 # define WIN_WIDTH	1920
 # define WIN_HIGHT	1080
 # define WIN_NAME	"Cub3D"
+# define ZOOM		50
 
 /* --------------- COLORS --------------------*/
 # define GREEN		0x7CFC00
@@ -103,7 +104,6 @@ typedef struct s_map
 	int		hight;
 	int		offset_x;
 	int		offset_y;
-	float	zoom;
 
 }		t_map;
 
