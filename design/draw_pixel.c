@@ -6,7 +6,7 @@
 /*   By: nrossel <nrossel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/27 08:34:28 by nrossel           #+#    #+#             */
-/*   Updated: 2023/10/09 13:57:23 by nrossel          ###   ########.fr       */
+/*   Updated: 2023/10/09 18:17:30 by nrossel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ static int	draw_player(t_cube *cube);
 static void	draw_map(t_cube *cube, char **map);
 static void	black_screen(t_img *img);
 static void draw_wall(t_cube *cube, int start_x, int start_y);
+static void	display_roof(t_img *img, int *color);
+static void	display_floor(t_img *img, int *color);
 
 /* --------------- Window design --------------------*/
 int	render(t_cube *cube)
@@ -24,6 +26,8 @@ int	render(t_cube *cube)
 	if (cube->mlx.mlx_win == NULL)
 		return (ERROR);
 	black_screen(&(cube->img));
+	display_roof(&(cube->img), cube->mlx.rgb_roof);
+	display_floor(&(cube->img), cube->mlx.rgb_floor);
 	draw_map(cube, cube->map->maps);
 	draw_player(cube);
 	mlx_put_image_to_window(cube->mlx.mlx_ptr, cube->mlx.mlx_win,
@@ -78,144 +82,35 @@ static void	draw_map(t_cube *cube, char **map)
 	int		j;
 	int		x;
 	int		y;
-	float	x1;
-	float	y1;
+	double	x1;
+	double	y1;
 	int		start_x;
-	int		start_y;
-	
+	int		start_y;	
 	start_x = cube->map->offset_x - ((cube->map->width / 2) * ZOOM - 1);
 	start_y = cube->map->offset_y - ((cube->map->hight / 2) * ZOOM - 1);
-	if (TYPE == 1) // -->> map with red point in square center
+	j = 0;
+	draw_wall(cube, start_x, start_y);
+	while (j < cube->map->hight)
 	{
-		j = 0;
-		while (j < cube->map->hight)
+		i = 0;
+		y = start_y + (ZOOM * j);
+		while (i < cube->map->width)
 		{
-			i = 0;
-			y = start_y + (ZOOM * j);
-			while (i < cube->map->width)
+			x = start_x + (ZOOM * i);
+			if (map[j][i] == '0')
 			{
-				x = start_x + (ZOOM * i);
-				if (map[j][i] == '0')
+				y1 = y + 1;
+				while (y1 <= y + (ZOOM - 1))
 				{
-					y1 = y - (ZOOM / 2);
-					while (y1 < y + (ZOOM / 2))
-					{
-						x1 = x - (ZOOM / 2);
-						while (x1 < x + (ZOOM / 2))
-							img_pix_put(&(cube->img), x1++, y1, BLACK);
-						y1++;
-					}
+					x1 = x + 1;
+					while (x1 <= x + (ZOOM - 1))
+						img_pix_put(&(cube->img), x1++, y1, BLACK);
+					y1++;
 				}
-				else if (map[j][i] == '1')
-				{
-					y1 = y - (ZOOM / 2);
-					while (y1 < y + (ZOOM / 2))
-					{
-						x1 = x - (ZOOM / 2);
-						while (x1 < x + (ZOOM / 2))
-							img_pix_put(&(cube->img), x1++, y1, WHITE);
-						y1++;
-					}
-				}
-				// img_pix_put(&(cube->img), x, y, RED);
-				i++;
 			}
-			j++;
+			i++;
 		}
-	}
-	else if (TYPE == 2) // -->> map with red point in the corner
-	{
-		j = 0;
-		while (j < cube->map->hight)
-		{
-			i = 0;
-			y = start_y + (ZOOM * j);
-			while (i < cube->map->width)
-			{
-				x = start_x + (ZOOM * i);
-				if (map[j][i] == '0')
-				{
-					y1 = y;
-					while (y1 < y + ZOOM)
-					{
-						x1 = x;
-						while (x1 < x + ZOOM)
-							img_pix_put(&(cube->img), x1++, y1, BLACK);
-						y1++;
-					}
-				}
-				else if (map[j][i] == '1')
-				{
-					y1 = y;
-					while (y1 < y + ZOOM)
-					{
-						x1 = x;
-						while (x1 < x + ZOOM)
-							img_pix_put(&(cube->img), x1++, y1, WHITE);
-						y1++;
-					}
-				}
-				// img_pix_put(&(cube->img), x, y, RED);
-				i++;
-			}
-			j++;
-		}
-	}
-	else if (TYPE == 3) // -->> First, draw all map with walls, and after draw free space, red point in corner
-	{
-		j = 0;
-		draw_wall(cube, start_x, start_y);
-		while (j < cube->map->hight)
-		{
-			i = 0;
-			y = start_y + (ZOOM * j);
-			while (i < cube->map->width)
-			{
-				x = start_x + (ZOOM * i);
-				if (map[j][i] == '0')
-				{
-					y1 = y + 1;
-					while (y1 <= y + (ZOOM - 1))
-					{
-						x1 = x + 1;
-						while (x1 <= x + (ZOOM - 1))
-							img_pix_put(&(cube->img), x1++, y1, BLACK);
-						y1++;
-					}
-				}
-				// img_pix_put(&(cube->img), x, y, RED);
-				i++;
-			}
-			j++;
-		}
-	}
-	if (TYPE == 4) // -->> first, draw all map with walls, and after draw free space, red point in center
-	{
-		j = 0;
-		draw_wall(cube, start_x, start_y);
-		while (j < cube->map->hight)
-		{
-			i = 0;
-			y = start_y + (ZOOM * j);
-			while (i < cube->map->width)
-			{
-				x = start_x + (ZOOM * i);
-				if (map[j][i] == '0')
-				{
-					y1 = y - (ZOOM / 2);
-					while (y1 < y + (ZOOM / 2))
-					{
-						x1 = x - (ZOOM / 2);
-						while (x1 < x + (ZOOM / 2))
-							img_pix_put(&(cube->img), x1++, y1, BLACK);
-						y1++;
-					}
-				}
-				// img_pix_put(&(cube->img), x, y, RED);
-				i++;
-			}
-			j++;
-		}
+		j++;
 	}
 }
 
@@ -250,3 +145,42 @@ static void	black_screen(t_img *img)
 		y++;
 	}
 }
+
+/* --------------- Roof --------------------*/
+static void	display_roof(t_img *img, int color[])
+{
+	int	x;
+	int	y;
+	int	f_color;
+
+	x = 0;
+	y = 0;
+	f_color = (color[0] * 65536) + (color[1] * 256) + color[2];
+	while (y <= WIN_HIGHT / 2)
+	{
+		x = 0;
+		while (x <= WIN_WIDTH)
+			img_pix_put(img, x++, y, f_color);
+		y++;
+	}
+}
+
+/* --------------- Floor --------------------*/
+static void	display_floor(t_img *img, int color[])
+{
+	int	x;
+	int	y;
+	int	f_color;
+
+	x = 0;
+	y = WIN_HIGHT / 2;
+	f_color = (color[0] * 65536) + (color[1] * 256) + color[2];
+	while (y <= WIN_HIGHT)
+	{
+		x = 0;
+		while (x <= WIN_WIDTH)
+			img_pix_put(img, x++, y, f_color);
+		y++;
+	}
+}
+

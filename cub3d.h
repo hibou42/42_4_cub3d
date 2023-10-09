@@ -6,7 +6,7 @@
 /*   By: nrossel <nrossel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/10 16:53:08 by aschaefe          #+#    #+#             */
-/*   Updated: 2023/10/09 12:56:06 by nrossel          ###   ########.fr       */
+/*   Updated: 2023/10/09 17:48:31 by nrossel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,8 @@
 #  define S_KEY					1
 #  define D_KEY					2
 #  define W_KEY					13
+#  define Q_KEY					
+#  define E_KEY					
 #  define ESC 					53
 #  define ZOOM_IN				4
 #  define ZOOM_OUT				5
@@ -40,6 +42,8 @@
 #  define S_KEY					115
 #  define D_KEY					100
 #  define W_KEY					119
+#  define Q_KEY					
+#  define E_KEY					
 #  define ESC					65307
 #  define ZOOM_IN				4
 #  define ZOOM_OUT				5
@@ -75,6 +79,9 @@
 # include <string.h>
 # include <math.h>
 
+/* --------------- MATH INFO --------------------*/
+# define PI		3,1415926535
+
 /* --------------- STRUCTURES --------------------*/
 typedef struct s_img
 {
@@ -94,7 +101,9 @@ typedef struct s_mlx
 	char	*path_we;
 	char	*path_ea;
 	char	**floor_color;
+	int		rgb_floor[3];
 	char	**roof_color;
+	int		rgb_roof[3];
 
 }		t_mlx;
 
@@ -110,9 +119,10 @@ typedef struct s_map
 
 typedef struct s_game
 {
-	float	player_x;
-	float	player_y;
+	double	player_x;
+	double	player_y;
 	char	*direction;
+	int		p_dir;
 
 }		t_game;
 
@@ -143,6 +153,7 @@ void	parsing(t_cube *cube);
 void	check_parsing(t_cube *cube);
 void	add_info(t_cube *cube, char *str);
 void	add_map(t_cube *cube, t_info *tmp);
+void	convert_char_to_int(t_cube *cube, int choice);
 
 /* --------------- Events --------------------*/
 int		deal_key(int key, t_cube *cube);

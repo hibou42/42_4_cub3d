@@ -6,7 +6,7 @@
 /*   By: nrossel <nrossel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/06 15:37:23 by aschaefe          #+#    #+#             */
-/*   Updated: 2023/10/03 12:41:24 by nrossel          ###   ########.fr       */
+/*   Updated: 2023/10/09 17:48:09 by nrossel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,6 +111,7 @@ void	add_tab1(t_cube *cube, char *str)
 		ft_printf("Error : Color deja attribue\n");
 		close_window(cube);
 	}
+	convert_char_to_int(cube, 1);
 }
 
 void	add_tab2(t_cube *cube, char *str)
@@ -134,4 +135,5 @@ void	add_tab2(t_cube *cube, char *str)
 		ft_printf("Error : Color deja attribue\n");
 		close_window(cube);
 	}
+	convert_char_to_int(cube, 2);
 }

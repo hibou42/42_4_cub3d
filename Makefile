@@ -18,7 +18,8 @@ SRC				=		cub3d.c \
 						parsing/add_infos.c \
 						parsing/add_map.c \
 						parsing/update_map.c \
-						game/game.c \
+						parsing/convert.c \
+						events/events.c \
 						error/exit.c \
 						error/arg.c \
 						error/check_parsing.c \

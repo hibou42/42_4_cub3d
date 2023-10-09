@@ -6,7 +6,7 @@
 /*   By: nrossel <nrossel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/06 15:37:23 by aschaefe          #+#    #+#             */
-/*   Updated: 2023/10/09 13:56:36 by nrossel          ###   ########.fr       */
+/*   Updated: 2023/10/09 17:01:51 by nrossel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,10 @@ void	add_player_in_struct(t_cube *cube)
 				else
 					problem(cube, 1);
 			}
-			x++;
+			else if (tmp == '0' || tmp == '1' || tmp == ' ')
+				x++;
+			else
+				problem(cube, 3);
 		}
 		y++;
 	}
@@ -68,9 +71,20 @@ void	add_player_in_struct(t_cube *cube)
 
 void	add_player_in_struct2(t_cube *cube, int x, int y, char *direction)
 {
+	char tmp;
+	
+	tmp = cube->map->maps[y][x];
 	cube->game->player_x = x + 0.5;
 	cube->game->player_y = y + 0.5;
 	cube->game->direction = ft_substr(direction, 0, 1);
+	if (tmp == 'N')
+		cube->game->p_dir = 0;
+	if (tmp == 'S')
+		cube->game->p_dir = 180;
+	if (tmp == 'E')
+		cube->game->p_dir = 90;
+	if (tmp == 'W')
+		cube->game->p_dir = 270;
 	cube->map->maps[y][x] = '0';
 }
 

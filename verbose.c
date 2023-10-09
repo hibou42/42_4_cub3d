@@ -6,7 +6,7 @@
 /*   By: nrossel <nrossel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/04 10:23:53 by aschaefe          #+#    #+#             */
-/*   Updated: 2023/10/03 17:05:17 by nrossel          ###   ########.fr       */
+/*   Updated: 2023/10/09 18:08:43 by nrossel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ void    verbose(t_cube *cube)
 			printf("Floor %d = |%s|\n", i, cube->mlx.floor_color[i]);
 		else
 			printf("Floor ???\n");
+		printf("RGB Floor %d\n", cube->mlx.rgb_floor[i]);
 		i++;
 	}
 	i = 0;
@@ -48,13 +49,16 @@ void    verbose(t_cube *cube)
 			printf("Roof %d = |%s|\n", i, cube->mlx.roof_color[i]);
 		else
 			printf("Roof ???\n");
+		printf("RGB Roof %d\n", cube->mlx.rgb_roof[i]);
 		i++;
 	}
+	i = 0;
+	
 	
     // info map print
 	printf("player x %f\n", cube->game->player_x);
 	printf("player y %f\n", cube->game->player_y);
-	printf("player direction %s\n", cube->game->direction);
+	printf("player direction %s %d\n", cube->game->direction, cube->game->p_dir);
 	printf("map width %d\n", cube->map->width);
 	printf("map hight %d\n", cube->map->hight);
 
