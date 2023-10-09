@@ -96,7 +96,6 @@ logo :
 			@printf "%s" $(MESSAGE)
 			@sleep 0.1
 			@printf "\r"
-#@printf "\r\033[K"
 # @$(CHARG_LINE)
 
 $(NAME) :	${OBJS}

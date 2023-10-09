@@ -6,7 +6,7 @@
 /*   By: nrossel <nrossel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/27 08:34:28 by nrossel           #+#    #+#             */
-/*   Updated: 2023/10/06 10:21:04 by nrossel          ###   ########.fr       */
+/*   Updated: 2023/10/09 09:31:13 by nrossel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void		img_pix_put(t_img *img, int x, int y, int color);
 static int	draw_player(t_cube *cube);
 static void	draw_map(t_cube *cube, char **map);
 static void	black_screen(t_img *img);
-static void draw_background_map(t_cube *cube, int start_x, int start_y);
+static void draw_wall(t_cube *cube, int start_x, int start_y);
 
 /* --------------- Window design --------------------*/
 int	render(t_cube *cube)
@@ -57,6 +57,8 @@ static int	draw_player(t_cube *cube)
 	start_mapy = cube->map->offset_y - ((cube->map->hight / 2) * ZOOM);
 	pos_player_x = start_mapx + (cube->game->player_x * ZOOM);
 	pos_player_y = start_mapy + (cube->game->player_y * ZOOM);
+	// pos_player_x = start_mapx + (cube->game->player_x * ZOOM + (ZOOM / 2));
+	// pos_player_y = start_mapy + (cube->game->player_y * ZOOM + (ZOOM / 2));
 	j = pos_player_y - (ZOOM / 10);
 	while (j < pos_player_y + 2)
 	{
@@ -115,7 +117,7 @@ static void	draw_map(t_cube *cube, char **map)
 						y1++;
 					}
 				}
-				img_pix_put(&(cube->img), x, y, RED);
+				// img_pix_put(&(cube->img), x, y, RED);
 				i++;
 			}
 			j++;
@@ -153,16 +155,16 @@ static void	draw_map(t_cube *cube, char **map)
 						y1++;
 					}
 				}
-				img_pix_put(&(cube->img), x, y, RED);
+				// img_pix_put(&(cube->img), x, y, RED);
 				i++;
 			}
 			j++;
 		}
 	}
-	else if (TYPE == 3) // -->> test
+	else if (TYPE == 3) // -->> First, draw all map with walls, and after draw free space, red point in corner
 	{
 		j = 0;
-		draw_background_map(cube, start_x, start_y);
+		draw_wall(cube, start_x, start_y);
 		while (j < cube->map->hight)
 		{
 			i = 0;
@@ -172,16 +174,44 @@ static void	draw_map(t_cube *cube, char **map)
 				x = start_x + (ZOOM * i);
 				if (map[j][i] == '0')
 				{
-					y1 = y;
-					while (y1 <= y + ZOOM)
+					y1 = y + 1;
+					while (y1 <= y + (ZOOM - 1))
 					{
-						x1 = x;
-						while (x1 <= x + ZOOM)
+						x1 = x + 1;
+						while (x1 <= x + (ZOOM - 1))
 							img_pix_put(&(cube->img), x1++, y1, BLACK);
 						y1++;
 					}
 				}
-				img_pix_put(&(cube->img), x, y, RED);
+				// img_pix_put(&(cube->img), x, y, RED);
+				i++;
+			}
+			j++;
+		}
+	}
+	if (TYPE == 4) // -->> first, draw all map with walls, and after draw free space, red point in center
+	{
+		j = 0;
+		draw_wall(cube, start_x, start_y);
+		while (j < cube->map->hight)
+		{
+			i = 0;
+			y = start_y + (ZOOM * j);
+			while (i < cube->map->width)
+			{
+				x = start_x + (ZOOM * i);
+				if (map[j][i] == '0')
+				{
+					y1 = y - (ZOOM / 2);
+					while (y1 < y + (ZOOM / 2))
+					{
+						x1 = x - (ZOOM / 2);
+						while (x1 < x + (ZOOM / 2))
+							img_pix_put(&(cube->img), x1++, y1, BLACK);
+						y1++;
+					}
+				}
+				// img_pix_put(&(cube->img), x, y, RED);
 				i++;
 			}
 			j++;
@@ -189,7 +219,7 @@ static void	draw_map(t_cube *cube, char **map)
 	}
 }
 
-static void draw_background_map(t_cube *cube, int start_x, int start_y)
+static void draw_wall(t_cube *cube, int start_x, int start_y)
 {
 	int	x;
 	int	y;
