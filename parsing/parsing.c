@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aschaefe <aschaefe@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nrossel <nrossel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/06 15:37:23 by aschaefe          #+#    #+#             */
-/*   Updated: 2023/10/02 17:32:52 by aschaefe         ###   ########.fr       */
+/*   Updated: 2023/10/09 13:56:36 by nrossel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,8 +68,8 @@ void	add_player_in_struct(t_cube *cube)
 
 void	add_player_in_struct2(t_cube *cube, int x, int y, char *direction)
 {
-	cube->game->player_x = x;
-	cube->game->player_y = y;
+	cube->game->player_x = x + 0.5;
+	cube->game->player_y = y + 0.5;
 	cube->game->direction = ft_substr(direction, 0, 1);
 	cube->map->maps[y][x] = '0';
 }

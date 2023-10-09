@@ -6,7 +6,7 @@
 /*   By: nrossel <nrossel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/27 08:34:28 by nrossel           #+#    #+#             */
-/*   Updated: 2023/10/09 09:31:13 by nrossel          ###   ########.fr       */
+/*   Updated: 2023/10/09 13:57:23 by nrossel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,26 +46,26 @@ void	img_pix_put(t_img *img, int x, int y, int color)
 /* --------------- Draw player --------------------*/
 static int	draw_player(t_cube *cube)
 {
-	int	i;
-	int	j;
-	int	pos_player_x;
-	int	pos_player_y;
+	int	x;
+	int	y;
+	int	p_x;
+	int	p_y;
 	int	start_mapx;
 	int	start_mapy;
 
 	start_mapx = cube->map->offset_x - ((cube->map->width / 2) * ZOOM);
 	start_mapy = cube->map->offset_y - ((cube->map->hight / 2) * ZOOM);
-	pos_player_x = start_mapx + (cube->game->player_x * ZOOM);
-	pos_player_y = start_mapy + (cube->game->player_y * ZOOM);
-	// pos_player_x = start_mapx + (cube->game->player_x * ZOOM + (ZOOM / 2));
-	// pos_player_y = start_mapy + (cube->game->player_y * ZOOM + (ZOOM / 2));
-	j = pos_player_y - (ZOOM / 10);
-	while (j < pos_player_y + 2)
+	p_x = start_mapx + (cube->game->player_x * ZOOM);
+	p_y = start_mapy + (cube->game->player_y * ZOOM);
+	// p_x = start_mapx + (cube->game->player_x * ZOOM + (ZOOM / 2));
+	// p_y = start_mapy + (cube->game->player_y * ZOOM + (ZOOM / 2));
+	y = p_y - 2;
+	while (y < p_y + 2)
 	{
-		i = pos_player_x - (ZOOM / 10);
-		while (i < pos_player_x + 2)
-			img_pix_put(&(cube->img), i++, j, GREEN);
-		j++;
+		x = p_x - 2;
+		while (x < p_x + 2)
+			img_pix_put(&(cube->img), x++, y, GREEN);
+		y++;
 	}
 	
 	return (0);

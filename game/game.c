@@ -6,11 +6,13 @@
 /*   By: nrossel <nrossel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/04 10:23:53 by aschaefe          #+#    #+#             */
-/*   Updated: 2023/10/06 10:58:46 by nrossel          ###   ########.fr       */
+/*   Updated: 2023/10/09 13:33:45 by nrossel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
+
+static char	move_map(int key, char **map, float p_x, float p_y);
 
 /*
 void	move(t_map *map, int move_y, int move_x)
@@ -47,46 +49,48 @@ int	deal_key(int key, t_cube *cube)
 {
 	float	p_x;
 	float	p_y;
+	char		wall;
 
 	p_x = cube->game->player_x;
 	p_y = cube->game->player_y;
-	if (key == LEFT_KEY || key == A_KEY)
+	wall = move_map(key, cube->map->maps, p_x, p_y);
+	if ((key == LEFT_KEY || key == A_KEY) && wall == '0')
 	{
-		if (cube->map->maps[(int)p_y][(int)(p_x - 0.1)] == '0')
-		{
-			cube->game->player_x -= 0.1;
-			printf("Gauche + %f\n", cube->game->player_x);
-		}
+		cube->game->player_x -= 0.1;
+		printf("Gauche + %f\n", cube->game->player_x);
 	}
-	else if (key == DOWN_KEY || key == S_KEY)
+	else if ((key == DOWN_KEY || key == S_KEY) && wall == '0')
 	{
-		if (cube->map->maps[(int)(p_y + 0.1)][(int)p_x] == '0')
-		{
-			cube->game->player_y += 0.1;
-			printf("Bas + %f\n", cube->game->player_y);
-		}
+		cube->game->player_y += 0.1;
+		printf("Bas + %f\n", cube->game->player_y);
 	}
-	else if (key == RIGHT_KEY || key == D_KEY)
+	else if ((key == RIGHT_KEY || key == D_KEY) && wall == '0')
 	{
-		if (cube->map->maps[(int)p_y][(int)(p_x + 0.1)] == '0')
-		{
-			cube->game->player_x += 0.1;
-			printf("Droite + %f\n", cube->game->player_x);
-		}
+		cube->game->player_x += 0.1;
+		printf("Droite + %f\n", cube->game->player_x);
 	}
-	else if (key == UP_KEY || key == W_KEY)
+	else if ((key == UP_KEY || key == W_KEY) && wall == '0')
 	{
-		if (cube->map->maps[(int)(p_y - 0.1)][(int)p_x] == '0')
-		{
-			cube->game->player_y -= 0.1;
-			printf("Haut + %f\n", cube->game->player_y);
-		}
+		cube->game->player_y -= 0.1;
+		printf("Haut + %f\n", cube->game->player_y);
 	}
 	else if (key == ESC)
 		close_window(cube);
 	return (0);
 }
 
+static char	move_map(int key, char **map, float p_x, float p_y)
+{
+	if (key == LEFT_KEY || key == A_KEY)
+		return (map[(int)(p_y)][(int)(p_x - 0.1)]);
+	else if (key == RIGHT_KEY || key == D_KEY)
+		return (map[(int)(p_y)][(int)(p_x + 0.1)]);
+	else if (key == UP_KEY || key == W_KEY)
+		return (map[(int)(p_y - 0.1)][(int)p_x]);
+	else if (key == DOWN_KEY || key == S_KEY)
+		return (map[(int)(p_y + 0.1)][(int)p_x]);
+	return ('E');
+}
 
 
 // int	mouse_handle(int mousekey, t_cube *cube)

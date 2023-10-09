@@ -6,7 +6,7 @@
 /*   By: nrossel <nrossel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/10 16:53:08 by aschaefe          #+#    #+#             */
-/*   Updated: 2023/10/09 09:29:34 by nrossel          ###   ########.fr       */
+/*   Updated: 2023/10/09 12:56:06 by nrossel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,19 +49,20 @@
 # define SPRITE		64
 
 /* --------------- MAP TYPE --------------------*/
-# define TYPE		2
+# define TYPE		3
 
 /* --------------- WINDOW --------------------*/
 # define WIN_WIDTH	1920
 # define WIN_HIGHT	1080
 # define WIN_NAME	"Cub3D"
-# define ZOOM		10
+# define ZOOM		50
 
 /* --------------- COLORS --------------------*/
 # define GREEN		0x7CFC00
 # define RED		0x00960018
 # define WHITE		0xFFFFFF
 # define BLACK		0x00000
+# define GRAY		0xF0F0F2
 
 /* --------------- EXIT --------------------*/
 # define SUCCESS	0
