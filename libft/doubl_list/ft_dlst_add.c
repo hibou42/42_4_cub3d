@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_dlst_add.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nrossel <nrossel@student.42.fr>            +#+  +:+       +#+        */
+/*   By: aschaefe <aschaefe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/21 09:53:17 by nrossel           #+#    #+#             */
-/*   Updated: 2023/02/22 17:00:01 by nrossel          ###   ########.fr       */
+/*   Updated: 2023/10/10 16:55:40 by aschaefe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../../include/libft.h"
+#include "../libft.h"
 
 void	ft_dlst_addnode(t_dlist **list, t_node *node, size_t position)
 {

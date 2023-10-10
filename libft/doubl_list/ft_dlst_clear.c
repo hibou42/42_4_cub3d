@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_dlst_clear.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jdefayes <jdefayes@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aschaefe <aschaefe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/17 09:10:30 by nrossel           #+#    #+#             */
-/*   Updated: 2023/08/23 22:02:49 by jdefayes         ###   ########.fr       */
+/*   Updated: 2023/10/10 16:55:40 by aschaefe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../../include/libft.h"
+#include "../libft.h"
 
 void	ft_dlst_clear(t_dlist **dlst, void (*del)(void *))
 {

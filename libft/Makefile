@@ -59,6 +59,15 @@ SRCS	=	ft_atoi.c \
 			core_x.c \
 			core_xx.c \
 			ft_puthex.c \
+			doubl_list/ft_dlst_add.c \
+			doubl_list/ft_dlst_addback.c \
+			doubl_list/ft_dlst_addfront.c \
+			doubl_list/ft_dlst_clear.c \
+			doubl_list/ft_dlst_delone.c \
+			doubl_list/ft_dlst_new.c \
+			doubl_list/ft_dlst_newcontent.c \
+			doubl_list/ft_pop_back.c \
+			doubl_list/ft_pop_front.c \
 
 OBJS	= ${SRCS:.c=.o}
 
@@ -89,7 +98,7 @@ BS_N			=		echo "\n"
 
 TOTAL_FILES_SRC	= $(words $(SRC))
 COMPILED_FILE	= 0
-MESSAGE			= "Compilation en cours : $(COMPILED_FILES)/54 ($(shell expr $(COMPILED_FILES) \* 100 / 54)%)"
+MESSAGE			= "Compilation en cours : $(COMPILED_FILES)/63 ($(shell expr $(COMPILED_FILES) \* 100 / 63)%)"
 
 
 #***** Compilation *****#

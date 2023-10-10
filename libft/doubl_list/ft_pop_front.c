@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_pop_front.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nrossel <nrossel@student.42.fr>            +#+  +:+       +#+        */
+/*   By: aschaefe <aschaefe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 17:25:35 by nrossel           #+#    #+#             */
-/*   Updated: 2023/02/24 18:41:00 by nrossel          ###   ########.fr       */
+/*   Updated: 2023/10/10 16:55:40 by aschaefe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../../include/libft.h"
+#include "../libft.h"
 
 t_node	*ft_pop_front(t_dlist **lst)
 {

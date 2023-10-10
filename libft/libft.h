@@ -6,7 +6,7 @@
 /*   By: aschaefe <aschaefe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/04 10:23:53 by aschaefe          #+#    #+#             */
-/*   Updated: 2023/01/13 17:51:41 by aschaefe         ###   ########.fr       */
+/*   Updated: 2023/10/10 17:01:26 by aschaefe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,20 @@ typedef struct s_list
 	void			*content;
 	struct s_list	*next;
 }					t_list;
+
+typedef struct s_node
+{
+	double			nb;
+	struct s_node	*next;
+	struct s_node	*prev;
+}	t_node;
+
+typedef struct s_dlist
+{
+	t_node			*head;
+	t_node			*tail;
+	size_t			len;
+}	t_dlist;
 
 /* ***** Libft ***** */
 
@@ -82,6 +96,19 @@ char	**ft_split(char const *str, char c);
 t_list	*ft_lstnew(void *content);
 t_list	*ft_lstlast(t_list *lst);
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
+
+/* ***** doubl_chained_list ***** */
+
+t_node		*ft_pop_back(t_dlist **lst);
+t_node		*ft_pop_front(t_dlist **lst);
+t_dlist		*ft_dlst_new();
+void		ft_dlst_addback(t_dlist **lst, t_node *new);
+void		ft_dlst_addfront(t_dlist **lst, t_node *new);
+void		ft_dlst_delone(t_node *lst, void (*del)(void *));
+void		ft_dlst_clear(t_dlist **dlst, void (*del)(void *));
+t_node		*ft_dlst_newcontent(double *data);
+void		ft_dlst_addnode(t_dlist **list, t_node *node, size_t position);
+
 
 /* ***** gnl ***** */
 

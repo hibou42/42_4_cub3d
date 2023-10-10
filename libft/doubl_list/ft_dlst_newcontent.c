@@ -3,32 +3,26 @@
 /*                                                        :::      ::::::::   */
 /*   ft_dlst_newcontent.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nrossel <nrossel@student.42.fr>            +#+  +:+       +#+        */
+/*   By: aschaefe <aschaefe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 10:20:14 by nrossel           #+#    #+#             */
-/*   Updated: 2023/08/26 07:34:17 by nrossel          ###   ########.fr       */
+/*   Updated: 2023/10/10 17:00:45 by aschaefe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../../include/libft.h"
+#include "../libft.h"
 
-t_node	*ft_dlst_newcontent(void *data, t_dlist **trash_lst)
+t_node	*ft_dlst_newcontent(double *data)
 {
 	t_node	*new_node;
-	int		*data_mllc;
 
-	data_mllc = NULL;
-	new_node = my_malloc(1, sizeof(t_node), trash_lst);
+	new_node = malloc(sizeof(t_node));
 	if (!new_node)
 		return (0);
 	if (data)
 	{
-		data_mllc = my_malloc(1, sizeof(void), trash_lst);
-		if (!data_mllc)
-			return (0);
-		data_mllc = data;
+		new_node->nb = *data;
 	}
-	new_node->data = data_mllc;
 	new_node->next = NULL;
 	new_node->prev = NULL;
 	return (new_node);
