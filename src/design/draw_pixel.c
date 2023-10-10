@@ -6,7 +6,7 @@
 /*   By: nrossel <nrossel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/27 08:34:28 by nrossel           #+#    #+#             */
-/*   Updated: 2023/10/10 08:49:57 by nrossel          ###   ########.fr       */
+/*   Updated: 2023/10/10 11:04:15 by nrossel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,10 +59,10 @@ static int	draw_player(t_cube *cube)
 
 	start_mapx = cube->map->offset_x - ((cube->map->width / 2) * ZOOM);
 	start_mapy = cube->map->offset_y - ((cube->map->hight / 2) * ZOOM);
-	p_x = start_mapx + (cube->game->player_x * ZOOM);
-	p_y = start_mapy + (cube->game->player_y * ZOOM);
-	// p_x = start_mapx + (cube->game->player_x * ZOOM + (ZOOM / 2));
-	// p_y = start_mapy + (cube->game->player_y * ZOOM + (ZOOM / 2));
+	// p_x = start_mapx + (cube->game->player_x * ZOOM);
+	// p_y = start_mapy + (cube->game->player_y * ZOOM);
+	p_x = start_mapx + (cube->game->player_x * ZOOM + (ZOOM / 2));
+	p_y = start_mapy + (cube->game->player_y * ZOOM + (ZOOM / 2));
 	y = p_y - 2;
 	while (y < p_y + 2)
 	{
@@ -183,4 +183,3 @@ static void	display_floor(t_img *img, int color[])
 		y++;
 	}
 }
-
