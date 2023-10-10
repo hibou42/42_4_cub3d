@@ -94,8 +94,8 @@ logo :
 %.o:		%.c ./libft/libft.h Makefile cub3d.h
 			@$(CC) $(CFLAGS) -c $< -o $@
 			$(eval COMPILED_FILES=$(shell echo $$(($(COMPILED_FILES)+1))))
-			@printf "%s" $(MESSAGE)
-			@sleep 0.1
+			@printf "$(GREEN)%s$(ENDCOLOR)" $(MESSAGE)
+			@sleep 0.001
 			@printf "\r"
 # @$(CHARG_LINE)
 

@@ -85,6 +85,13 @@ END_CLEAN		=		echo "$(RED)Cleaning in progress$(ENDCOLOR)"
 CHARG_LINE		=		echo "$(BLUE)    $(ENDCOLOR)\c"
 BS_N			=		echo "\n"
 
+#***** Message compilation // En phase de test //*****#
+
+TOTAL_FILES_SRC	= $(words $(SRC))
+COMPILED_FILE	= 0
+MESSAGE			= "Compilation en cours : $(COMPILED_FILES)/54 ($(shell expr $(COMPILED_FILES) \* 100 / 54)%)"
+
+
 #***** Compilation *****#
 
 .c.o:
@@ -95,12 +102,16 @@ all: 	start ${NAME}
 start:
 		@${START}
 
-%.o: %.c
+%.o:	%.c
 		@${CC} ${CFLAGS} -c $< -o $@
-		@$(CHARG_LINE)
+		$(eval COMPILED_FILES=$(shell echo $$(($(COMPILED_FILES)+1))))
+		@printf "$(BLUE_T)%s$(ENDCOLOR)" $(MESSAGE)
+		@sleep 0.001
+		@printf "\r"
+# @$(CHARG_LINE)
 
 ${NAME}: ${OBJS}
-		@$(BS_N)
+#		@$(BS_N)
 		@${AR} ${NAME} ${OBJS}
 		@$(END_COMP_LIB)
 
