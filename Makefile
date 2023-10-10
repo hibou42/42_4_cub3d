@@ -8,23 +8,23 @@ MAKEFLAGS += --no-print-directory
 
 #***** Sources / Objs *****#
 
-SRC				=		cub3d.c \
-						verbose.c \
-						init/struct.c \
-						init/mlx.c \
-						init/add_read_arg.c \
-						parsing/parsing.c \
-						parsing/parsing_utils.c \
-						parsing/add_infos.c \
-						parsing/add_map.c \
-						parsing/update_map.c \
-						parsing/convert.c \
-						events/events.c \
-						error/exit.c \
-						error/arg.c \
-						error/check_parsing.c \
-						error/flood_feed.c \
-						design/draw_pixel.c \
+SRC				=		src/cub3d.c \
+						src/verbose.c \
+						src/init/struct.c \
+						src/init/mlx.c \
+						src/init/add_read_arg.c \
+						src/parsing/parsing.c \
+						src/parsing/parsing_utils.c \
+						src/parsing/add_infos.c \
+						src/parsing/add_map.c \
+						src/parsing/update_map.c \
+						src/parsing/convert.c \
+						src/events/events.c \
+						src/error/exit.c \
+						src/error/arg.c \
+						src/error/check_parsing.c \
+						src/error/flood_feed.c \
+						src/design/draw_pixel.c \
 
 
 OBJS			=		$(SRC:.c=.o)
