@@ -6,7 +6,7 @@
 /*   By: nrossel <nrossel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/06 15:37:23 by aschaefe          #+#    #+#             */
-/*   Updated: 2023/10/10 08:49:57 by nrossel          ###   ########.fr       */
+/*   Updated: 2023/10/11 17:06:42 by nrossel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,8 +74,8 @@ void	add_player_in_struct2(t_cube *cube, int x, int y, char *direction)
 	char tmp;
 	
 	tmp = cube->map->maps[y][x];
-	cube->game->player_x = x + 0.5;
-	cube->game->player_y = y + 0.5;
+	cube->game->p_x = x + 0.5;
+	cube->game->p_y = y + 0.5;
 	cube->game->direction = ft_substr(direction, 0, 1);
 	if (tmp == 'N')
 		cube->game->p_dir = 0;

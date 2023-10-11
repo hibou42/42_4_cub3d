@@ -25,6 +25,7 @@ SRC				=		src/cub3d.c \
 						src/error/check_parsing.c \
 						src/error/flood_feed.c \
 						src/design/draw_pixel.c \
+						src/math/math.c
 
 
 OBJS			=		$(SRC:.c=.o)
