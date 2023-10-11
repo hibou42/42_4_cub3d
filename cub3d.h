@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nrossel <nrossel@student.42.fr>            +#+  +:+       +#+        */
+/*   By: aschaefe <aschaefe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/10 16:53:08 by aschaefe          #+#    #+#             */
-/*   Updated: 2023/10/10 10:49:46 by nrossel          ###   ########.fr       */
+/*   Updated: 2023/10/11 17:07:55 by aschaefe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,9 +122,18 @@ typedef struct s_game
 	double	player_x;
 	double	player_y;
 	char	*direction;
-	int		p_dir;
+	double	dir_x;
+	double	dir_y;
+	double	plane_x;
+	double	plane_y;
 
 }		t_game;
+
+typedef struct s_cl
+{
+	double			nb;
+	struct s_cl		*next;
+}	t_cl;
 
 typedef struct s_info
 {
@@ -140,6 +149,7 @@ typedef struct s_cube
 	struct s_info	*info;
 	struct s_game	*game;
 	struct s_img	img;
+	struct s_cl		*cl;
 	char			**cpy_data;
 
 }		t_cube;
@@ -171,9 +181,26 @@ void	update_map(t_cube *cube);
 void	init_struct(t_cube *cube);
 void	check_arg(int argc, char **argv);
 void	add_read_arg(t_cube *cube, char **argv);
+void	init_cl(t_cube *cube);
 
 /* --------------- Verbose --------------------*/
 void	verbose(t_cube *cube);
+
+
+
+
+
+
+
+
+
+
+void	test(t_cube *cube);
+
+
+
+
+
 
 
 #endif

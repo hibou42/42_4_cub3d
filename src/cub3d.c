@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nrossel <nrossel@student.42.fr>            +#+  +:+       +#+        */
+/*   By: aschaefe <aschaefe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/04 10:23:53 by aschaefe          #+#    #+#             */
-/*   Updated: 2023/10/10 08:50:24 by nrossel          ###   ########.fr       */
+/*   Updated: 2023/10/11 16:54:12 by aschaefe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,8 @@ int	main(int argc, char **argv)
 	parsing(&cube);
 	check_parsing(&cube);
 	update_map(&cube);
+	init_cl(&cube);
+	test(&cube);
 	verbose(&cube);
 	start_mlx(&cube);
 	cube.img.mlx_img = mlx_new_image(cube.mlx.mlx_ptr, WIN_WIDTH, WIN_HIGHT);

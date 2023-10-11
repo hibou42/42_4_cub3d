@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   verbose.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nrossel <nrossel@student.42.fr>            +#+  +:+       +#+        */
+/*   By: aschaefe <aschaefe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/04 10:23:53 by aschaefe          #+#    #+#             */
-/*   Updated: 2023/10/10 08:50:27 by nrossel          ###   ########.fr       */
+/*   Updated: 2023/10/11 17:05:43 by aschaefe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,8 @@ void    verbose(t_cube *cube)
     // info map print
 	printf("player x %f\n", cube->game->player_x);
 	printf("player y %f\n", cube->game->player_y);
-	printf("player direction %s %d\n", cube->game->direction, cube->game->p_dir);
+	printf("player direction x %f\n", cube->game->dir_x);
+	printf("player direction y %f\n", cube->game->dir_y);
 	printf("map width %d\n", cube->map->width);
 	printf("map hight %d\n", cube->map->hight);
 
@@ -72,5 +73,16 @@ void    verbose(t_cube *cube)
 			i++;
 		}
 	}
+	printf("\n");
+	i = 0;
+	t_cl	*tmp = cube->cl;
+
+	while (tmp)
+	{
+		tmp = tmp->next;
+		i++;
+	}
+	printf("nb of cl %d\n", i);
+	
 	printf("\nEND\n");
 }

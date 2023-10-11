@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   struct.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nrossel <nrossel@student.42.fr>            +#+  +:+       +#+        */
+/*   By: aschaefe <aschaefe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/04 10:23:53 by aschaefe          #+#    #+#             */
-/*   Updated: 2023/10/10 10:49:01 by nrossel          ###   ########.fr       */
+/*   Updated: 2023/10/11 15:21:51 by aschaefe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,10 @@
 
 void	init_struct(t_cube *cube)
 {
-	t_mlx	mlx;
-	t_map	*map;
-	t_info	*info;
-	t_game	*game;
+	t_mlx		mlx;
+	t_map		*map;
+	t_info		*info;
+	t_game		*game;
 
 	mlx = (t_mlx){};
 	cube->mlx = mlx;

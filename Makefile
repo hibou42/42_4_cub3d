@@ -9,10 +9,12 @@ MAKEFLAGS += --no-print-directory
 #***** Sources / Objs *****#
 
 SRC				=		src/cub3d.c \
+						src/test.c \
 						src/verbose.c \
 						src/init/struct.c \
 						src/init/mlx.c \
 						src/init/add_read_arg.c \
+						src/init/cl.c \
 						src/parsing/parsing.c \
 						src/parsing/parsing_utils.c \
 						src/parsing/add_infos.c \
