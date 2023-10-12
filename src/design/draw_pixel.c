@@ -6,7 +6,7 @@
 /*   By: nrossel <nrossel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/27 08:34:28 by nrossel           #+#    #+#             */
-/*   Updated: 2023/10/11 17:41:24 by nrossel          ###   ########.fr       */
+/*   Updated: 2023/10/12 10:38:14 by nrossel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@ static void	black_screen(t_img *img);
 static void draw_wall(t_cube *cube, int start_x, int start_y);
 static void	roof_n_floor(t_img *img, int *color);
 static void	display_fow(t_cube *cube);
-static void	start_cardinal(int dir, double *ns, double *ew);
 
 /* --------------- Window design --------------------*/
 int	render(t_cube *cube)
@@ -29,9 +28,9 @@ int	render(t_cube *cube)
 	roof_n_floor(&(cube->img), cube->mlx.rgb_roof);
 	roof_n_floor(&(cube->img), cube->mlx.rgb_floor);
 	draw_map(cube, cube->map->maps);
-	draw_player(cube);
+	draw_player(cube); 
 	display_fow(cube);
-	vector_xy(cube->game, &cube->img);
+	vector_xy(cube->game, &cube->img, cube);
 	mlx_put_image_to_window(cube->mlx.mlx_ptr, cube->mlx.mlx_win,
 		cube->img.mlx_img, 0, 0);
 	return (0);
@@ -54,22 +53,23 @@ static int	draw_player(t_cube *cube)
 {
 	int	x;
 	int	y;
-	int	p_x;
-	int	p_y;
-	int	start_mapx;
-	int	start_mapy;
+	// int	p_x;
+	// int	p_y;
+	// int	start_mapx;
+	// int	start_mapy;
 
-	start_mapx = cube->map->offset_x - ((cube->map->width / 2) * ZOOM);
-	start_mapy = cube->map->offset_y - ((cube->map->hight / 2) * ZOOM);
-	p_x = start_mapx + (cube->game->p_x * ZOOM);
-	p_y = start_mapy + (cube->game->p_y * ZOOM);
-	// p_x = start_mapx + (cube->game->p_x * ZOOM + (ZOOM / 2));
-	// p_y = start_mapy + (cube->game->p_y * ZOOM + (ZOOM / 2));
-	y = p_y - 2;
-	while (y < p_y + 2)
+	// start_mapx = cube->map->offset_x - ((cube->map->width / 2) * ZOOM);
+	// start_mapy = cube->map->offset_y - ((cube->map->hight / 2) * ZOOM);
+	// p_x = start_mapx + (cube->game->p_x * ZOOM);
+	// p_y = start_mapy + (cube->game->p_y * ZOOM);
+	// // p_x = start_mapx + (cube->game->p_x * ZOOM + (ZOOM / 2));
+	// // p_y = start_mapy + (cube->game->p_y * ZOOM + (ZOOM / 2));
+	// printf("px = %f | py = %f\n", cube->game->px_scr, cube->game->py_scr);
+	y = cube->game->py_scr - 2;
+	while (y < cube->game->py_scr + 2)
 	{
-		x = p_x - 2;
-		while (x < p_x + 2)
+		x = cube->game->px_scr - 2;
+		while (x < cube->game->px_scr + 2)
 			img_pix_put(&(cube->img), x++, y, GREEN);
 		y++;
 	}
@@ -171,38 +171,23 @@ static void	roof_n_floor(t_img *img, int color[])
 static void	display_fow(t_cube *cube)
 {
 	int		px;
-	double	dir_ns;
-	double	dir_ew;
 	double	p_x;
 	double	p_y;
 	double	angle_a;
 
-	dir_ns = 0;
-	dir_ew = 0;
 	angle_a = 30;
-	p_x = (cube->map->offset_x - ((cube->map->width / 2) * ZOOM)) + (cube->game->p_x * ZOOM);
-	p_y = (cube->map->offset_y - ((cube->map->hight / 2) * ZOOM)) + (cube->game->p_y * ZOOM);
+	p_x = cube->game->px_scr;
+	p_y = cube->game->py_scr;
 	px = 0;
-	start_cardinal(cube->game->p_dir, &dir_ns, &dir_ew);
 	while (px < 20)
 	{
-		img_pix_put(&(cube->img), p_x + dir_ew, p_y + dir_ns, GREEN);
-		p_y += dir_ns;
-		p_x += dir_ew;
+		// if (cube->map->maps[(int)p_y][(int)p_x] != 0)
+			img_pix_put(&(cube->img), p_x + cube->game->dir_x, p_y + cube->game->dir_y, GREEN);
+		p_y += cube->game->dir_y;
+		p_x += cube->game->dir_x;
 		px++;
 	}
 }
 
-static void	start_cardinal(int dir, double *ns, double *ew)
-{
-	if (dir == 0) // -->> Nord
-		*ns = -1;
-	else if (dir == 90) // -->> Est
-		*ew = 1;
-	else if (dir == 180) // -->> Sud
-		*ew = 1;
-	else if (dir == 270) // -->> Ouest
-		*ew = -1;
-}
 
 

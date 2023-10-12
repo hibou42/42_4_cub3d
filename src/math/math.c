@@ -6,11 +6,13 @@
 /*   By: nrossel <nrossel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/11 15:28:52 by nrossel           #+#    #+#             */
-/*   Updated: 2023/10/11 17:49:21 by nrossel          ###   ########.fr       */
+/*   Updated: 2023/10/12 10:38:18 by nrossel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../cub3d.h"
+
+// int	s_to_m(int xy, double p, t_cube *cube);
 
 double	pyth(double a, double b)
 {
@@ -18,7 +20,7 @@ double	pyth(double a, double b)
 }
 
 /* --------------- Calcul du delta --------------------*/
-double	ft_delta(t_point2d *v)
+void	ft_delta(t_point2d *v)
 {
 	double	delta_x;
 	double	delta_y;
@@ -32,47 +34,59 @@ double	ft_delta(t_point2d *v)
 		step = fabs(delta_y);
 	v->d_x = delta_x / step;
 	v->d_y = delta_y / step;
-	return (step);
 }
 
 /* --------------- Tan Opp Adj - Pythagore --------------------*/
-double	tan_opp_adj(int define, double angle_a, double adj, double opp)
+double	ft_opp(double radian, double adj)
 {
-	if (define == 1) // -->> cherche Tangente
-		return (opp / adj);
-	else if (define == 2) // -->> cherche opposé
-		return (adj * atan(angle_a));
-	else if (define == 3) // -->> cherche adjacent
-		return (opp / atan(angle_a));
-	return (0);
+	return (adj * tan(radian));
 }
 
-void	vector_xy(t_game *game, t_img *img)
+double	ft_radian(double angle)
+{
+	return ((angle / 180) * PI);
+}
+
+void	vector_xy(t_game *game, t_img *img, t_cube *cube)
 {
 	double		opp;
 	double		dist;
 	double		angle;
-	int			step;
+	double		radian;
+	double		step;
 	t_point2d	p;
 
-	dist = 20;
-	angle = 30;
-	opp = tan_opp_adj(2, angle, dist, 0);
-	p.x = game->p_x;
-	p.y = game->p_y;
-	p.vx = game->p_x - opp;
-	p.vy = game->p_y + dist;
-	step = ft_delta(&p);
-	printf("opp = %f\ndist = %f\nangle = %f\nstep = %d\n", opp, dist, angle, step);
-	printf("--------------------------------------------------\n");
-	printf("p.x = %f - p.y = %f\n", p.x, p.y);
-	printf("p.vx = %f - p.vy = %f\n", p.vx, p.vy);
-	printf("p.d_x = %f - p.d_y = %f\n", p.d_x, p.d_y);
+	(void) game;
+	dist = 100;
+	angle = 33;
+	radian = ft_radian(angle);
+	opp = ft_opp(radian, dist);
+	p.x = cube->game->px_scr;
+	p.y = cube->game->py_scr;
+	p.vx = p.x - opp;
+	p.vy = p.y - dist;
+	step = pyth(dist, opp);
+	// printf("opp = %f\ndist = %f\nradian = %f\nstep = %f\n", opp, dist, radian, step);
+	// printf("--------------------------------------------------\n");
+	// printf("p.x = %f - p.y = %f\n", p.x, p.y);
+	// printf("p.vx = %f - p.vy = %f\n", p.vx, p.vy);
+	// printf("p.d_x = %f - p.d_y = %f\n", p.d_x, p.d_y);
 	while (step > 0)
 	{
+		// if (cube->map->maps[s_to_m(2, p.y, cube)][s_to_m(1, p.x, cube)] != 0)
+		// 	break;
 		img_pix_put(img, p.x, p.y, GREEN);
 		p.x += p.d_x;
 		p.y += p.d_y;
 		step--;
 	}
 }
+
+// int	s_to_m(int xy, double p, t_cube *cube) //-->> Screen point to map point
+// {
+// 	if (xy == 1)
+// 		return (p - (cube->game->p_x * 20) + ((cube->map->width / 2) * ZOOM) - cube->map->offset_x);
+// 	else if (xy == 2)
+// 		return (p - (cube->game->p_y * 20) + ((cube->map->hight / 2) * ZOOM) - cube->map->offset_y);
+// 	return (0);
+// }

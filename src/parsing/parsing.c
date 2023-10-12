@@ -6,7 +6,7 @@
 /*   By: nrossel <nrossel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/06 15:37:23 by aschaefe          #+#    #+#             */
-/*   Updated: 2023/10/11 17:06:42 by nrossel          ###   ########.fr       */
+/*   Updated: 2023/10/11 18:07:59 by nrossel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 void	add_player_in_struct(t_cube *cube);
 void	add_player_in_struct2(t_cube *cube, int x, int y, char *direction);
+void	add_plane_in_struct(t_cube *cube);
 void	problem(t_cube *cube, int choice);
 
 void	parsing(t_cube *cube)
@@ -36,6 +37,7 @@ void	parsing(t_cube *cube)
 		tmp = tmp->next;
 	}
 	add_player_in_struct(cube);
+	add_plane_in_struct(cube);
 }
 
 void	add_player_in_struct(t_cube *cube)
@@ -77,15 +79,41 @@ void	add_player_in_struct2(t_cube *cube, int x, int y, char *direction)
 	cube->game->p_x = x + 0.5;
 	cube->game->p_y = y + 0.5;
 	cube->game->direction = ft_substr(direction, 0, 1);
-	if (tmp == 'N')
-		cube->game->p_dir = 0;
-	if (tmp == 'S')
-		cube->game->p_dir = 180;
-	if (tmp == 'E')
-		cube->game->p_dir = 90;
-	if (tmp == 'W')
-		cube->game->p_dir = 270;
+	if (tmp == 'N' || tmp == 'S')
+	{
+		cube->game->dir_x = 0;
+		if (tmp == 'N')
+			cube->game->dir_y = -1;
+		else
+			cube->game->dir_y = 1;
+	}
+	if (tmp == 'E' || tmp == 'W')
+	{
+		cube->game->dir_y = 0;
+		if (tmp == 'E')
+			cube->game->dir_x = 1;
+		else
+			cube->game->dir_x = -1;
+	}
 	cube->map->maps[y][x] = '0';
+	
+}
+
+void	add_plane_in_struct(t_cube *cube)
+{
+	char tmp;
+	
+	tmp = cube->game->direction[0];
+	if (tmp == 'N' || tmp == 'S')
+	{
+		cube->game->plane_x = 0.66;
+		cube->game->plane_y = 0;
+	}
+	if (tmp == 'E' || tmp == 'W')
+	{
+		cube->game->plane_x = 0;
+		cube->game->plane_y = 0.66;
+	}
 }
 
 void	problem(t_cube *cube, int choice)

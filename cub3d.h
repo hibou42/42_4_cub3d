@@ -6,7 +6,7 @@
 /*   By: nrossel <nrossel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/10 16:53:08 by aschaefe          #+#    #+#             */
-/*   Updated: 2023/10/11 17:41:45 by nrossel          ###   ########.fr       */
+/*   Updated: 2023/10/12 10:27:22 by nrossel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,7 @@
 # include <math.h>
 
 /* --------------- MATH INFO --------------------*/
-# define PI		3,1415926535
+# define PI		3.1415926535
 
 /* --------------- STRUCTURES --------------------*/
 typedef struct s_img
@@ -129,11 +129,22 @@ typedef struct s_point2d
 
 typedef struct s_game
 {
-	double		p_x;
-	double		p_y;
-	char		*direction;
-	int			p_dir;
+	double	p_x; // -->> position x du joueur sur la map
+	double	p_y; // -->> position y du joueur sur la map
+	double	px_scr; // -->> position x du joueur à l'écran
+	double	py_scr; // -->> position y du joueur à l'écran
+	char	*direction;
+	double	dir_x;
+	double	dir_y;
+	double	plane_x;
+	double	plane_y;
 }		t_game;
+
+typedef struct s_cl
+{
+	double			nb;
+	struct s_cl		*next;
+}	t_cl;
 
 typedef struct s_info
 {
@@ -149,6 +160,7 @@ typedef struct s_cube
 	struct s_info	*info;
 	struct s_game	*game;
 	struct s_img	img;
+	struct s_cl		*cl;
 	char			**cpy_data;
 
 }		t_cube;
@@ -168,9 +180,9 @@ void	convert_char_to_int(t_cube *cube, int choice);
 
 /* --------------- Math --------------------*/
 double	pyth(double a, double b);
-double	tan_opp_adj(int define, double angle_a, double adj, double opp);
-double	ft_delta(t_point2d *v);
-void	vector_xy(t_game *game, t_img *img);
+double	ft_opp(double radian, double adj);
+void	ft_delta(t_point2d *v);
+void	vector_xy(t_game *game, t_img *img, t_cube *cube);
 
 /* --------------- Events --------------------*/
 int		deal_key(int key, t_cube *cube);
@@ -188,9 +200,26 @@ void	update_map(t_cube *cube);
 void	init_struct(t_cube *cube);
 void	check_arg(int argc, char **argv);
 void	add_read_arg(t_cube *cube, char **argv);
+void	init_cl(t_cube *cube);
 
 /* --------------- Verbose --------------------*/
 void	verbose(t_cube *cube);
+
+
+
+
+
+
+
+
+
+
+void	test(t_cube *cube);
+
+
+
+
+
 
 
 #endif
