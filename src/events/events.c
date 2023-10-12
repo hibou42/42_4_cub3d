@@ -6,7 +6,7 @@
 /*   By: nrossel <nrossel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/04 10:23:53 by aschaefe          #+#    #+#             */
-/*   Updated: 2023/10/11 17:06:42 by nrossel          ###   ########.fr       */
+/*   Updated: 2023/10/12 13:30:48 by nrossel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,32 +49,21 @@ int	deal_key(int key, t_cube *cube)
 {
 	double	p_x;
 	double	p_y;
-	char		wall;
+	char	wall;
 
-	printf("key = %d\n", key);
 	p_x = cube->game->p_x;
 	p_y = cube->game->p_y;
 	wall = move_map(key, cube->map->maps, p_x, p_y);
 	if ((key == LEFT_KEY || key == A_KEY) && wall == '0')
-	{
 		cube->game->p_x -= 0.1;
-		printf("Gauche + %f\n", cube->game->p_x);
-	}
 	else if ((key == DOWN_KEY || key == S_KEY) && wall == '0')
-	{
 		cube->game->p_y += 0.1;
-		printf("Bas + %f\n", cube->game->p_y);
-	}
 	else if ((key == RIGHT_KEY || key == D_KEY) && wall == '0')
-	{
 		cube->game->p_x += 0.1;
-		printf("Droite + %f\n", cube->game->p_x);
-	}
 	else if ((key == UP_KEY || key == W_KEY) && wall == '0')
-	{
 		cube->game->p_y -= 0.1;
-		printf("Haut + %f\n", cube->game->p_y);
-	}
+	// else if (key == Q_KEY)
+	// else if (key == E_KEY)
 	else if (key == ESC)
 		close_window(cube);
 	return (0);

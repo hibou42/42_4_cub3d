@@ -6,7 +6,7 @@
 /*   By: nrossel <nrossel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/10 16:53:08 by aschaefe          #+#    #+#             */
-/*   Updated: 2023/10/12 13:14:53 by nrossel          ###   ########.fr       */
+/*   Updated: 2023/10/12 14:05:29 by nrossel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -134,8 +134,8 @@ typedef struct s_game
 	double	px_scr; // -->> position x du joueur à l'écran
 	double	py_scr; // -->> position y du joueur à l'écran
 	char	*direction;
-	double	dir_x;
-	double	dir_y;
+	double	dir_x; // -->> Nord = -1 / Sud = +1 / EW = 0
+	double	dir_y; // -->> West = -1 / East = +1 / NS = 0
 	double	plane_x;
 	double	plane_y;
 }		t_game;
@@ -167,7 +167,7 @@ typedef struct s_cube
 
 
 /* --------------- FUNCTIONS --------------------*/
-/* --------------- Pixel --------------------*/
+/* --------------- Visual --------------------*/
 int		render(t_cube *data);
 void	img_pix_put(t_img *img, int x, int y, int color);
 
@@ -188,9 +188,9 @@ void	update_map(t_cube *cube);
 
 /* --------------- Math --------------------*/
 void	ft_delta(t_point2d *v);
+double	ft_radian(double angle);
 double	pyth(double a, double b);
 double	ft_opp(double radian, double adj);
-void	vector_xy(t_game *game, t_img *img, t_cube *cube);
 
 /* --------------- Events --------------------*/
 int		deal_key(int key, t_cube *cube);
