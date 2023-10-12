@@ -6,13 +6,11 @@
 /*   By: nrossel <nrossel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/11 15:28:52 by nrossel           #+#    #+#             */
-/*   Updated: 2023/10/12 10:38:18 by nrossel          ###   ########.fr       */
+/*   Updated: 2023/10/12 13:13:35 by nrossel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../cub3d.h"
-
-// int	s_to_m(int xy, double p, t_cube *cube);
 
 double	pyth(double a, double b)
 {
@@ -66,11 +64,6 @@ void	vector_xy(t_game *game, t_img *img, t_cube *cube)
 	p.vx = p.x - opp;
 	p.vy = p.y - dist;
 	step = pyth(dist, opp);
-	// printf("opp = %f\ndist = %f\nradian = %f\nstep = %f\n", opp, dist, radian, step);
-	// printf("--------------------------------------------------\n");
-	// printf("p.x = %f - p.y = %f\n", p.x, p.y);
-	// printf("p.vx = %f - p.vy = %f\n", p.vx, p.vy);
-	// printf("p.d_x = %f - p.d_y = %f\n", p.d_x, p.d_y);
 	while (step > 0)
 	{
 		// if (cube->map->maps[s_to_m(2, p.y, cube)][s_to_m(1, p.x, cube)] != 0)
@@ -82,11 +75,3 @@ void	vector_xy(t_game *game, t_img *img, t_cube *cube)
 	}
 }
 
-// int	s_to_m(int xy, double p, t_cube *cube) //-->> Screen point to map point
-// {
-// 	if (xy == 1)
-// 		return (p - (cube->game->p_x * 20) + ((cube->map->width / 2) * ZOOM) - cube->map->offset_x);
-// 	else if (xy == 2)
-// 		return (p - (cube->game->p_y * 20) + ((cube->map->hight / 2) * ZOOM) - cube->map->offset_y);
-// 	return (0);
-// }

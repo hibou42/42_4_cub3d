@@ -6,7 +6,7 @@
 /*   By: nrossel <nrossel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/10 16:53:08 by aschaefe          #+#    #+#             */
-/*   Updated: 2023/10/12 10:27:22 by nrossel          ###   ########.fr       */
+/*   Updated: 2023/10/12 13:14:53 by nrossel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -176,12 +176,20 @@ void	parsing(t_cube *cube);
 void	check_parsing(t_cube *cube);
 void	add_info(t_cube *cube, char *str);
 void	add_map(t_cube *cube, t_info *tmp);
+void	check_arg(int argc, char **argv);
 void	convert_char_to_int(t_cube *cube, int choice);
+void	add_read_arg(t_cube *cube, char **argv);
+
+/* --------------- Initialization --------------------*/
+void	init_gen(t_cube * cube, int ac, char **av);
+void	init_struct(t_cube *cube);
+void	init_cl(t_cube *cube);
+void	update_map(t_cube *cube);
 
 /* --------------- Math --------------------*/
+void	ft_delta(t_point2d *v);
 double	pyth(double a, double b);
 double	ft_opp(double radian, double adj);
-void	ft_delta(t_point2d *v);
 void	vector_xy(t_game *game, t_img *img, t_cube *cube);
 
 /* --------------- Events --------------------*/
@@ -192,15 +200,9 @@ int		close_window(t_cube *cube);
 /* --------------- ? --------------------*/
 int		is_empty(char *str);
 int		is_only_nb(char *str);
-int		game(int key, t_cube *cube);
 void	free_maps(t_cube *cube);
 void	start_mlx(t_cube *cube);
 void	flood_feed(t_cube *cube);
-void	update_map(t_cube *cube);
-void	init_struct(t_cube *cube);
-void	check_arg(int argc, char **argv);
-void	add_read_arg(t_cube *cube, char **argv);
-void	init_cl(t_cube *cube);
 
 /* --------------- Verbose --------------------*/
 void	verbose(t_cube *cube);

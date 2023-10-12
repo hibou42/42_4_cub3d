@@ -6,7 +6,7 @@
 /*   By: nrossel <nrossel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/04 10:23:53 by aschaefe          #+#    #+#             */
-/*   Updated: 2023/10/12 10:39:13 by nrossel          ###   ########.fr       */
+/*   Updated: 2023/10/12 11:26:39 by nrossel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,4 @@ void	init_struct(t_cube *cube)
 	game = (t_game *)malloc(sizeof(t_game));
 	cube->game = game;
 	cube->game->direction = NULL;
-	cube->game->px_scr = (cube->map->offset_x - ((cube->map->width / 2) * ZOOM)) + (cube->game->p_x * ZOOM);
-	cube->game->py_scr = (cube->map->offset_y - ((cube->map->hight / 2) * ZOOM)) + (cube->game->p_y * ZOOM);
-	printf("Init || px = %f | py = %f\n", cube->game->p_x, cube->game->p_y);
-	printf("Init || p_x = %f | p_y = %f\n", cube->game->px_scr, cube->game->py_scr);
 }
