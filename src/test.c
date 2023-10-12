@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   test.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aschaefe <aschaefe@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nrossel <nrossel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/04 10:23:53 by aschaefe          #+#    #+#             */
-/*   Updated: 2023/10/12 14:59:34 by aschaefe         ###   ########.fr       */
+/*   Updated: 2023/10/12 16:28:30 by nrossel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ void	test(t_cube *cube)
 	{
 		cameraX = 2 * node->index / (double)WIN_WIDTH - 1; //x-coordinate in camera space
 		node->rayDirX = cube->game->dir_x + cube->game->plane_x * cameraX;
-		node->rayDirY = cube->game->dir_y + cube->game->plane_x * cameraX;
+		node->rayDirY = cube->game->dir_y + cube->game->plane_y * cameraX;
 
 		//which box of the map we're in
 		int mapX = (int)cube->game->p_x;
@@ -42,7 +42,7 @@ void	test(t_cube *cube)
 		double sideDistX;
 		double sideDistY;
 
-		double deltaDistY = sqrt(1 + (node->rayDirX* node->rayDirX) / (node->rayDirY * node->rayDirY));
+		double deltaDistY = sqrt(1 + (node->rayDirX * node->rayDirX) / (node->rayDirY * node->rayDirY));
 		double deltaDistX = sqrt(1 + (node->rayDirY * node->rayDirY) / (node->rayDirX * node->rayDirX));
 
 		//what direction to step in x or y-direction (either +1 or -1)
@@ -105,16 +105,16 @@ void	test(t_cube *cube)
 			node->perpWallDist = (sideDistY - deltaDistY);
 
 		//Calculate height of line to draw on screen
-		node->lineHeight = (int)(cube->map->hight / cube->cl->perpWallDist);
+		node->lineHeight = (int)(WIN_HIGHT / node->perpWallDist);
 
 		//calculate lowest and highest pixel to fill in current stripe
-		node->drawStart = -node->lineHeight / 2 + cube->map->hight / 2;
+		node->drawStart = (((-node->lineHeight) / 2) + (WIN_HIGHT / 2));
 
 		if(node->drawStart < 0)
 			node->drawStart = 0;
-		node->drawEnd = node->lineHeight / 2 + cube->map->hight / 2;
-		if(node->drawEnd >= cube->map->hight)
-			node->drawEnd = cube->map->hight - 1;
+		node->drawEnd = ((node->lineHeight / 2) + (WIN_HIGHT / 2));
+		if(node->drawEnd >= WIN_HIGHT)
+			node->drawEnd = WIN_HIGHT - 1;
 
 		node = node->next;
 	}

@@ -6,7 +6,7 @@
 /*   By: nrossel <nrossel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/04 10:23:53 by aschaefe          #+#    #+#             */
-/*   Updated: 2023/10/12 13:30:48 by nrossel          ###   ########.fr       */
+/*   Updated: 2023/10/12 16:14:34 by nrossel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,7 @@ int	deal_key(int key, t_cube *cube)
 	// else if (key == E_KEY)
 	else if (key == ESC)
 		close_window(cube);
+	test(cube);
 	return (0);
 }
 

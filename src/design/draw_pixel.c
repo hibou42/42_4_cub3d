@@ -6,7 +6,7 @@
 /*   By: nrossel <nrossel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/27 08:34:28 by nrossel           #+#    #+#             */
-/*   Updated: 2023/10/12 14:52:09 by nrossel          ###   ########.fr       */
+/*   Updated: 2023/10/12 16:21:53 by nrossel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,9 @@ static void	draw_map(t_cube *cube, char **map);
 static void	black_screen(t_img *img);
 static void draw_wall(t_cube *cube, int start_x, int start_y);
 static void	roof_n_floor(t_img *img, int *color);
-static void	display_fow(t_cube *cube);
-static void	vector_xy(t_game *game, t_img *img, t_cube *cube, int angle);
+// static void	display_fov(t_cube *cube);
+// static void	vector_xy(t_game *game, t_img *img, t_cube *cube, int angle);
+static void	display_fov(t_cl *list, t_img *img);
 
 /* --------------- Window design --------------------*/
 int	render(t_cube *cube)
@@ -34,8 +35,8 @@ int	render(t_cube *cube)
 	roof_n_floor(&(cube->img), cube->mlx.rgb_floor);
 	draw_map(cube, cube->map->maps);
 	draw_player(cube); 
-	display_fow(cube);
-	vector_xy(cube->game, &cube->img, cube, 33);
+	display_fov(cube->cl, &cube->img);
+	// vector_xy(cube->game, &cube->img, cube, 33);
 	mlx_put_image_to_window(cube->mlx.mlx_ptr, cube->mlx.mlx_win,
 		cube->img.mlx_img, 0, 0);
 	return (0);
@@ -162,57 +163,72 @@ static void	roof_n_floor(t_img *img, int color[])
 }
 
 /* --------------- Display FOW --------------------*/
-static void	display_fow(t_cube *cube)
+static void	display_fov(t_cl *list, t_img *img)
 {
-	int		px;
-	double	p_x;
-	double	p_y;
-	double	dir_x;
-	double	dir_y;
+	t_cl	*tmp;
+	int		i;
 
-	dir_x = cube->game->dir_x / 10;
-	dir_y = cube->game->dir_y / 10;
-	p_x = cube->game->px_scr;
-	p_y = cube->game->py_scr;
-	px = 0;
-	while (px < 30)
+	tmp = list;
+	while (tmp)
 	{
-		if (cube->map->maps[(int)(cube->game->p_y + (dir_y)][(int)(cube->game->p_x + dir_x)] != '0')
-			break;
-		img_pix_put(&(cube->img), p_x + cube->game->dir_x, p_y + cube->game->dir_y, GREEN);
-		p_y += cube->game->dir_y;
-		p_x += cube->game->dir_x;
-		px++;
+		printf("start = %d | end = %d | lineheight = %d | index = %f\n", tmp->drawStart, tmp->drawEnd,tmp->lineHeight ,tmp->index);
+		i = list->drawStart;
+		while (i <= list->drawEnd)
+			img_pix_put(img, tmp->index, i++, RED);
+		tmp = tmp->next;
 	}
 }
+// static void	display_fow(t_cube *cube)
+// {
+// 	int		px;
+// 	double	p_x;
+// 	double	p_y;
+// 	double	dir_x;
+// 	double	dir_y;
 
-void	vector_xy(t_game *game, t_img *img, t_cube *cube, int angle)
-{
-	double		opp;
-	double		dist;
-	double		radian;
-	double		step;
-	t_point2d	p;
+// 	dir_x = cube->game->dir_x / 10;
+// 	dir_y = cube->game->dir_y / 10;
+// 	p_x = cube->game->px_scr;
+// 	p_y = cube->game->py_scr;
+// 	px = 0;
+// 	while (px < 30)
+// 	{
+// 		if (cube->map->maps[(int)(cube->game->p_y + (dir_y))][(int)(cube->game->p_x + dir_x)] != '0')
+// 			break;
+// 		img_pix_put(&(cube->img), p_x + cube->game->dir_x, p_y + cube->game->dir_y, GREEN);
+// 		p_y += cube->game->dir_y;
+// 		p_x += cube->game->dir_x;
+// 		px++;
+// 	}
+// }
 
-	(void) game;
-	dist = 100;
-	radian = ft_radian(angle);
-	opp = ft_opp(radian, dist);
-	p.x = cube->game->px_scr;
-	p.y = cube->game->py_scr;
-	p.vx = p.x - opp;
-	p.vy = p.y - dist;
-	step = pyth(dist, opp);
-	while (step > 0)
-	{
-		// if (cube->map->maps[s_to_m(2, p.y, cube)][s_to_m(1, p.x, cube)] != 0)
-		// 	break;
-		img_pix_put(img, p.x, p.y, GREEN);
-		p.x += p.d_x;
-		p.y += p.d_y;
-		step--;
-	}
-}
+// void	vector_xy(t_game *game, t_img *img, t_cube *cube, int angle)
+// {
+// 	double		opp;
+// 	double		dist;
+// 	double		radian;
+// 	double		step;
+// 	t_point2d	p;
+
+// 	(void) game;
+// 	dist = 100;
+// 	radian = ft_radian(angle);
+// 	opp = ft_opp(radian, dist);
+// 	p.x = cube->game->px_scr;
+// 	p.y = cube->game->py_scr;
+// 	p.vx = p.x - opp;
+// 	p.vy = p.y - dist;
+// 	step = pyth(dist, opp);
+// 	while (step > 0)
+// 	{
+// 		// if (cube->map->maps[s_to_m(2, p.y, cube)][s_to_m(1, p.x, cube)] != 0)
+// 		// 	break;
+// 		img_pix_put(img, p.x, p.y, GREEN);
+// 		p.x += p.d_x;
+// 		p.y += p.d_y;
+// 		step--;
+// 	}
+// }
 
 
 
