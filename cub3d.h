@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nrossel <nrossel@student.42.fr>            +#+  +:+       +#+        */
+/*   By: aschaefe <aschaefe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/10 16:53:08 by aschaefe          #+#    #+#             */
-/*   Updated: 2023/10/12 13:14:53 by nrossel          ###   ########.fr       */
+/*   Updated: 2023/10/12 14:40:54 by aschaefe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -142,8 +142,15 @@ typedef struct s_game
 
 typedef struct s_cl
 {
-	double			nb;
-	struct s_cl		*next;
+	double		index;
+	double		rayDirX;
+	double		rayDirY;
+	double		perpWallDist;
+	int			side;
+	int			lineHeight;
+	int			drawStart;
+	int			drawEnd;
+	struct s_cl	*next;
 }	t_cl;
 
 typedef struct s_info
