@@ -6,7 +6,7 @@
 /*   By: nrossel <nrossel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/10 16:53:08 by aschaefe          #+#    #+#             */
-/*   Updated: 2023/10/18 15:11:43 by nrossel          ###   ########.fr       */
+/*   Updated: 2023/10/18 16:17:30 by nrossel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,8 @@
 #  define S_KEY					1
 #  define D_KEY					2
 #  define W_KEY					13
-#  define Q_KEY					
-#  define E_KEY					
+#  define Q_KEY					12
+#  define E_KEY					14
 #  define ESC 					53
 #  define ZOOM_IN				4
 #  define ZOOM_OUT				5
