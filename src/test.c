@@ -6,7 +6,7 @@
 /*   By: nrossel <nrossel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/04 10:23:53 by aschaefe          #+#    #+#             */
-/*   Updated: 2023/10/18 15:01:32 by nrossel          ###   ########.fr       */
+/*   Updated: 2023/10/18 16:15:21 by nrossel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,6 +92,7 @@ void	test(t_cube *cube)
 
 			if (cube->map->maps[mapY][mapX] == '1')
 				hit = 1;
+
 		}
 
 		//Calculate distance of perpendicular ray (Euclidean distance would give fisheye effect!)
