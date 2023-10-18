@@ -6,7 +6,7 @@
 /*   By: aschaefe <aschaefe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/10 16:53:08 by aschaefe          #+#    #+#             */
-/*   Updated: 2023/10/17 16:21:43 by aschaefe         ###   ########.fr       */
+/*   Updated: 2023/10/18 16:11:25 by aschaefe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,7 +104,6 @@ typedef struct s_mlx
 	int		rgb_floor[3];
 	char	**roof_color;
 	int		rgb_roof[3];
-
 }		t_mlx;
 
 typedef struct s_map
@@ -114,7 +113,6 @@ typedef struct s_map
 	int		hight;
 	int		offset_x;
 	int		offset_y;
-
 }		t_map;
 
 typedef struct s_point2d
@@ -143,21 +141,35 @@ typedef struct s_game
 typedef struct s_cl
 {
 	double		index;
-	double		rayDirX;
-	double		rayDirY;
-	double		perpWallDist;
+	double		ray_dir_x;
+	double		ray_dir_y;
+	double		perp_wall_dist;
 	int			side;
-	int			lineHeight;
-	int			drawStart;
-	int			drawEnd;
+	int			line_height;
+	int			draw_start;
+	int			draw_end;
+	double		cam_x;
+	double		side_x;
+	double		side_y;
+	int			step_x;
+	int			step_y;
+	double		delta_y;
+	double		delta_x;
+	int			hit;
+	int			map_x;
+	int			map_y;
 	struct s_cl	*next;
 }	t_cl;
+
+typedef struct s_raycasting
+{
+	
+}		t_raycasting;
 
 typedef struct s_info
 {
 	char			*str;
 	struct s_info	*next;
-
 }		t_info;
 
 typedef struct s_cube
@@ -169,7 +181,6 @@ typedef struct s_cube
 	struct s_img	img;
 	struct s_cl		*cl;
 	char			**cpy_data;
-
 }		t_cube;
 
 
@@ -186,6 +197,11 @@ void	add_map(t_cube *cube, t_info *tmp);
 void	check_arg(int argc, char **argv);
 void	convert_char_to_int(t_cube *cube, int choice);
 void	add_read_arg(t_cube *cube, char **argv);
+int		is_empty(char *str);
+int		is_only_nb(char *str);
+void	free_maps(t_cube *cube);
+void	start_mlx(t_cube *cube);
+void	flood_feed(t_cube *cube);
 
 /* --------------- Initialization --------------------*/
 void	init_gen(t_cube * cube, int ac, char **av);
@@ -198,37 +214,19 @@ void	ft_delta(t_point2d *v);
 double	ft_radian(double angle);
 double	pyth(double a, double b);
 double	ft_opp(double radian, double adj);
+void	raycasting(t_cube *cube);
+void	init_zero(t_cl *node);
+void	init_for_calc(t_cube *cube, t_cl *node);
+void	initial_step(t_cube *cube, t_cl *node);
+void	dda(t_cube *cube, t_cl *node);
+void	calc_final_ray(t_cube *cube, t_cl *node);
 
 /* --------------- Events --------------------*/
 int		deal_key(int key, t_cube *cube);
 int		mouse_handle(int mousekey, t_cube *cube);
 int		close_window(t_cube *cube);
 
-/* --------------- ? --------------------*/
-int		is_empty(char *str);
-int		is_only_nb(char *str);
-void	free_maps(t_cube *cube);
-void	start_mlx(t_cube *cube);
-void	flood_feed(t_cube *cube);
-
 /* --------------- Verbose --------------------*/
 void	verbose(t_cube *cube);
-
-
-
-
-
-
-
-
-
-
-void	test(t_cube *cube);
-
-
-
-
-
-
 
 #endif

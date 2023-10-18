@@ -9,7 +9,6 @@ MAKEFLAGS += --no-print-directory
 #***** Sources / Objs *****#
 
 SRC				=		src/cub3d.c \
-						src/test.c \
 						src/verbose.c \
 						src/init/struct.c \
 						src/init/add_read_arg.c \
@@ -28,6 +27,8 @@ SRC				=		src/cub3d.c \
 						src/error/flood_feed.c \
 						src/design/draw_pixel.c \
 						src/math/math.c \
+						src/math/raycasting1.c \
+						src/math/raycasting2.c \
 						src/init/init_gen.c
 
 
