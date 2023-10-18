@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw_pixel.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nrossel <nrossel@student.42.fr>            +#+  +:+       +#+        */
+/*   By: aschaefe <aschaefe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/27 08:34:28 by nrossel           #+#    #+#             */
-/*   Updated: 2023/10/12 16:21:53 by nrossel          ###   ########.fr       */
+/*   Updated: 2023/10/17 14:13:51 by aschaefe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ int	render(t_cube *cube)
 	roof_n_floor(&(cube->img), cube->mlx.rgb_roof);
 	roof_n_floor(&(cube->img), cube->mlx.rgb_floor);
 	draw_map(cube, cube->map->maps);
-	draw_player(cube); 
+	draw_player(cube);
 	display_fov(cube->cl, &cube->img);
 	// vector_xy(cube->game, &cube->img, cube, 33);
 	mlx_put_image_to_window(cube->mlx.mlx_ptr, cube->mlx.mlx_win,
@@ -165,15 +165,19 @@ static void	roof_n_floor(t_img *img, int color[])
 /* --------------- Display FOW --------------------*/
 static void	display_fov(t_cl *list, t_img *img)
 {
+	static int	test;
 	t_cl	*tmp;
 	int		i;
 
 	tmp = list;
+	printf("test = %d\n", test);
+	test++;
 	while (tmp)
 	{
-		printf("start = %d | end = %d | lineheight = %d | index = %f\n", tmp->drawStart, tmp->drawEnd,tmp->lineHeight ,tmp->index);
-		i = list->drawStart;
-		while (i <= list->drawEnd)
+		if (tmp->index == 0 || tmp->index == WIN_WIDTH / 2|| tmp->index == WIN_WIDTH - 1)
+			printf("start = %d | end = %d | lineheight = %d | index = %d\n", tmp->drawStart, tmp->drawEnd,tmp->lineHeight ,(int)tmp->index);
+		i = tmp->drawStart;
+		while (i <= tmp->drawEnd)
 			img_pix_put(img, tmp->index, i++, RED);
 		tmp = tmp->next;
 	}

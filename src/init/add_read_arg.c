@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   add_read_arg.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nrossel <nrossel@student.42.fr>            +#+  +:+       +#+        */
+/*   By: aschaefe <aschaefe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/04 10:23:53 by aschaefe          #+#    #+#             */
-/*   Updated: 2023/10/12 10:48:24 by nrossel          ###   ########.fr       */
+/*   Updated: 2023/10/18 12:17:08 by aschaefe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,9 +34,9 @@ void	add_read_arg(t_cube *cube, char **argv)
 	close(fd);
 }
 
-void    add_new_chain(t_cube *cube, char *buffer)
+void	add_new_chain(t_cube *cube, char *buffer)
 {
-    t_info  *new;
+	t_info  *new;
     t_info  *tmp;
 
     new = (t_info *)malloc(sizeof(t_info));

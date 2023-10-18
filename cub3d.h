@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nrossel <nrossel@student.42.fr>            +#+  +:+       +#+        */
+/*   By: aschaefe <aschaefe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/10 16:53:08 by aschaefe          #+#    #+#             */
-/*   Updated: 2023/10/12 15:06:05 by nrossel          ###   ########.fr       */
+/*   Updated: 2023/10/17 16:21:43 by aschaefe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,10 +56,10 @@
 # define TYPE		3
 
 /* --------------- WINDOW --------------------*/
-# define WIN_WIDTH	960
+# define WIN_WIDTH	1660
 # define WIN_HIGHT	540
 # define WIN_NAME	"Cub3D"
-# define ZOOM		20
+# define ZOOM		10
 
 /* --------------- COLORS --------------------*/
 # define GREEN		0x7CFC00

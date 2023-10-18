@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_parsing.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nrossel <nrossel@student.42.fr>            +#+  +:+       +#+        */
+/*   By: aschaefe <aschaefe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/04 10:37:51 by aschaefe          #+#    #+#             */
-/*   Updated: 2023/10/10 08:49:57 by nrossel          ###   ########.fr       */
+/*   Updated: 2023/10/18 12:37:02 by aschaefe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,11 +21,11 @@ void	check_parsing(t_cube *cube)
 {
 	if (is_valid_path(cube->mlx.path_no) != 0)
 		dead_path_color(cube, 0);
-	if (is_valid_path(cube->mlx.path_no) != 0)
+	if (is_valid_path(cube->mlx.path_so) != 0)
 		dead_path_color(cube, 0);
-	if (is_valid_path(cube->mlx.path_no) != 0)
+	if (is_valid_path(cube->mlx.path_we) != 0)
 		dead_path_color(cube, 0);
-	if (is_valid_path(cube->mlx.path_no) != 0)
+	if (is_valid_path(cube->mlx.path_ea) != 0)
 		dead_path_color(cube, 0);
 	if (is_valid_color(cube->mlx.floor_color) != 0)
 		dead_path_color(cube, 1);

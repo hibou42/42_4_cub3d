@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   events.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nrossel <nrossel@student.42.fr>            +#+  +:+       +#+        */
+/*   By: aschaefe <aschaefe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/04 10:23:53 by aschaefe          #+#    #+#             */
-/*   Updated: 2023/10/12 16:14:34 by nrossel          ###   ########.fr       */
+/*   Updated: 2023/10/17 16:06:42 by aschaefe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,11 +62,12 @@ int	deal_key(int key, t_cube *cube)
 		cube->game->p_x += 0.1;
 	else if ((key == UP_KEY || key == W_KEY) && wall == '0')
 		cube->game->p_y -= 0.1;
-	// else if (key == Q_KEY)
+	//else if (key == Q_KEY)
 	// else if (key == E_KEY)
 	else if (key == ESC)
 		close_window(cube);
 	test(cube);
+	render(cube);
 	return (0);
 }
 
