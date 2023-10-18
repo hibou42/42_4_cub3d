@@ -6,7 +6,7 @@
 /*   By: nrossel <nrossel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/27 08:34:28 by nrossel           #+#    #+#             */
-/*   Updated: 2023/10/13 13:31:44 by nrossel          ###   ########.fr       */
+/*   Updated: 2023/10/18 15:12:59 by nrossel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,16 +26,12 @@ int	render(t_cube *cube)
 {
 	if (cube->mlx.mlx_win == NULL)
 		return (ERROR);
-	cube->game->px_scr = (cube->map->offset_x - ((cube->map->width / 2) * ZOOM))
-		+ (cube->game->p_x * ZOOM);
-	cube->game->py_scr = (cube->map->offset_y - ((cube->map->hight / 2) * ZOOM))
-		+ (cube->game->p_y * ZOOM);
 	black_screen(&(cube->img));
 	roof_n_floor(&(cube->img), cube->mlx.rgb_roof);
 	roof_n_floor(&(cube->img), cube->mlx.rgb_floor);
-	draw_map(cube, cube->map->maps);
-	draw_player(cube); 
 	display_fov(cube->cl, &cube->img);
+	draw_map(cube, cube->map->maps);
+	draw_player(cube);
 	// vector_xy(cube->game, &cube->img, cube, 33);
 	mlx_put_image_to_window(cube->mlx.mlx_ptr, cube->mlx.mlx_win,
 		cube->img.mlx_img, 0, 0);
@@ -59,12 +55,18 @@ static int	draw_player(t_cube *cube)
 {
 	int	x;
 	int	y;
-
-	y = cube->game->py_scr - 2;
-	while (y < cube->game->py_scr + 2)
+	double	px_scr;
+	double	py_scr;
+	
+	px_scr = (cube->map->offset_x - ((cube->map->width / 2) * ZOOM))
+		+ (cube->game->p_x * ZOOM);
+	py_scr = (cube->map->offset_y - ((cube->map->hight / 2) * ZOOM))
+		+ (cube->game->p_y * ZOOM);
+	y = py_scr - 2;
+	while (y < py_scr + 2)
 	{
-		x = cube->game->px_scr - 2;
-		while (x < cube->game->px_scr + 2)
+		x = px_scr - 2;
+		while (x < px_scr + 2)
 			img_pix_put(&(cube->img), x++, y, GREEN);
 		y++;
 	}
@@ -165,15 +167,19 @@ static void	roof_n_floor(t_img *img, int color[])
 /* --------------- Display FOW --------------------*/
 static void	display_fov(t_cl *list, t_img *img)
 {
+	static int	test;
 	t_cl	*tmp;
 	int		y;
 
 	tmp = list;
+	printf("test = %d\n", test);
+	test++;
 	while (tmp)
 	{
-		// printf("start = %d | end = %d | lineheight = %d | index = %d\n", tmp->drawStart, tmp->drawEnd,tmp->lineHeight ,(int)tmp->index);
-		y = list->drawStart;
-		while (y <= list->drawEnd)
+		if (tmp->index == 0 || tmp->index == WIN_WIDTH / 2|| tmp->index == WIN_WIDTH - 1)
+			printf("start = %d | end = %d | lineheight = %d | index = %d\n", tmp->drawStart, tmp->drawEnd,tmp->lineHeight ,(int)tmp->index);
+		y = tmp->drawStart;
+		while (y <= tmp->drawEnd)
 			img_pix_put(img, tmp->index, y++, RED);
 		tmp = tmp->next;
 	}

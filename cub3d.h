@@ -6,7 +6,7 @@
 /*   By: nrossel <nrossel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/10 16:53:08 by aschaefe          #+#    #+#             */
-/*   Updated: 2023/10/13 09:06:09 by nrossel          ###   ########.fr       */
+/*   Updated: 2023/10/18 15:11:43 by nrossel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,10 +56,10 @@
 # define TYPE		3
 
 /* --------------- WINDOW --------------------*/
-# define WIN_WIDTH	960
+# define WIN_WIDTH	1660
 # define WIN_HIGHT	540
 # define WIN_NAME	"Cub3D"
-# define ZOOM		20
+# define ZOOM		10
 
 /* --------------- COLORS --------------------*/
 # define GREEN		0x7CFC00
@@ -131,8 +131,8 @@ typedef struct s_game
 {
 	double	p_x; // -->> position x du joueur sur la map
 	double	p_y; // -->> position y du joueur sur la map
-	double	px_scr; // -->> position x du joueur à l'écran
-	double	py_scr; // -->> position y du joueur à l'écran
+	// double	px_scr; // -->> position x du joueur à l'écran
+	// double	py_scr; // -->> position y du joueur à l'écran
 	char	*direction;
 	double	dir_x; // -->> Nord = -1 / Sud = +1 / EW = 0
 	double	dir_y; // -->> West = -1 / East = +1 / NS = 0

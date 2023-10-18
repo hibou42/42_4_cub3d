@@ -6,7 +6,7 @@
 /*   By: nrossel <nrossel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/04 10:23:53 by aschaefe          #+#    #+#             */
-/*   Updated: 2023/10/12 16:14:34 by nrossel          ###   ########.fr       */
+/*   Updated: 2023/10/18 15:20:08 by nrossel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,11 +62,12 @@ int	deal_key(int key, t_cube *cube)
 		cube->game->p_x += 0.1;
 	else if ((key == UP_KEY || key == W_KEY) && wall == '0')
 		cube->game->p_y -= 0.1;
-	// else if (key == Q_KEY)
+	//else if (key == Q_KEY)
 	// else if (key == E_KEY)
 	else if (key == ESC)
 		close_window(cube);
 	test(cube);
+	render(cube);
 	return (0);
 }
 
@@ -75,7 +76,7 @@ static char	move_map(int key, char **map, double p_x, double p_y)
 	if (key == LEFT_KEY || key == A_KEY)
 		return (map[(int)(p_y)][(int)(p_x - 0.2)]);
 	else if (key == RIGHT_KEY || key == D_KEY)
-		return (map[(int)(p_y)][(int)(p_x + 0.1)]);
+		return (map[(int)(p_y)][(int)(p_x + 0.2)]);
 	else if (key == UP_KEY || key == W_KEY)
 		return (map[(int)(p_y - 0.3)][(int)p_x]);
 	else if (key == DOWN_KEY || key == S_KEY)
