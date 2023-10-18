@@ -6,7 +6,7 @@
 /*   By: aschaefe <aschaefe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/04 10:23:53 by aschaefe          #+#    #+#             */
-/*   Updated: 2023/10/18 14:19:34 by aschaefe         ###   ########.fr       */
+/*   Updated: 2023/10/18 16:17:03 by aschaefe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,10 +62,11 @@ int	deal_key(int key, t_cube *cube)
 		cube->game->p_x += 0.1;
 	else if ((key == UP_KEY || key == W_KEY) && wall == '0')
 		cube->game->p_y -= 0.1;
-	//else if (key == Q_KEY)
+	// else if (key == Q_KEY)
 	// else if (key == E_KEY)
 	else if (key == ESC)
 		close_window(cube);
+	printf("key %d\n", key);
 	raycasting(cube);
 	render(cube);
 	return (0);

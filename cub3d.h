@@ -6,7 +6,7 @@
 /*   By: aschaefe <aschaefe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/10 16:53:08 by aschaefe          #+#    #+#             */
-/*   Updated: 2023/10/18 16:11:25 by aschaefe         ###   ########.fr       */
+/*   Updated: 2023/10/18 16:17:32 by aschaefe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,8 @@
 #  define S_KEY					1
 #  define D_KEY					2
 #  define W_KEY					13
-#  define Q_KEY					
-#  define E_KEY					
+#  define Q_KEY					12
+#  define E_KEY					14
 #  define ESC 					53
 #  define ZOOM_IN				4
 #  define ZOOM_OUT				5
@@ -160,11 +160,6 @@ typedef struct s_cl
 	int			map_y;
 	struct s_cl	*next;
 }	t_cl;
-
-typedef struct s_raycasting
-{
-	
-}		t_raycasting;
 
 typedef struct s_info
 {
