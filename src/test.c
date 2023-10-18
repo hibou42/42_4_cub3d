@@ -6,7 +6,7 @@
 /*   By: nrossel <nrossel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/04 10:23:53 by aschaefe          #+#    #+#             */
-/*   Updated: 2023/10/12 16:28:30 by nrossel          ###   ########.fr       */
+/*   Updated: 2023/10/13 13:27:15 by nrossel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 void	test(t_cube *cube)
 {
 	t_cl	*node;
-	double cameraX;
+	double cameraX = 0;
 
 	node = cube->cl;
 
@@ -34,20 +34,21 @@ void	test(t_cube *cube)
 		cameraX = 2 * node->index / (double)WIN_WIDTH - 1; //x-coordinate in camera space
 		node->rayDirX = cube->game->dir_x + cube->game->plane_x * cameraX;
 		node->rayDirY = cube->game->dir_y + cube->game->plane_y * cameraX;
+		// printf("raydirX = %f | raydirY = %f\n", node->rayDirX ,node->rayDirY);
 
 		//which box of the map we're in
 		int mapX = (int)cube->game->p_x;
 		int mapY = (int)cube->game->p_y;
 		//length of ray from current position to next x or y-side
-		double sideDistX;
-		double sideDistY;
+		double sideDistX = 0;
+		double sideDistY = 0;
 
 		double deltaDistY = sqrt(1 + (node->rayDirX * node->rayDirX) / (node->rayDirY * node->rayDirY));
 		double deltaDistX = sqrt(1 + (node->rayDirY * node->rayDirY) / (node->rayDirX * node->rayDirX));
-
+		
 		//what direction to step in x or y-direction (either +1 or -1)
-		int stepX;
-		int stepY;
+		int stepX = 0;
+		int stepY = 0;
 
 
 		 //was a NS or a EW wall hit?
@@ -100,19 +101,20 @@ void	test(t_cube *cube)
 		
 		//Calculate distance of perpendicular ray (Euclidean distance would give fisheye effect!)
 		if(node->side == 0)
-			node->perpWallDist = (sideDistX - deltaDistX);
+			node->perpWallDist = (mapX - cube->game->p_x + (1 - stepX) / 2) / node->rayDirX;
+			// node->perpWallDist = (sideDistX - deltaDistX);
 		else
-			node->perpWallDist = (sideDistY - deltaDistY);
+			node->perpWallDist = (mapY - cube->game->p_y + (1 - stepY) / 2) / node->rayDirY;
+			// node->perpWallDist = (sideDistY - deltaDistY);
 
 		//Calculate height of line to draw on screen
 		node->lineHeight = (int)(WIN_HIGHT / node->perpWallDist);
 
 		//calculate lowest and highest pixel to fill in current stripe
-		node->drawStart = (((-node->lineHeight) / 2) + (WIN_HIGHT / 2));
-
+		node->drawStart = (-node->lineHeight / 2) + (WIN_HIGHT / 2);
 		if(node->drawStart < 0)
 			node->drawStart = 0;
-		node->drawEnd = ((node->lineHeight / 2) + (WIN_HIGHT / 2));
+		node->drawEnd = (node->lineHeight / 2) + (WIN_HIGHT / 2);
 		if(node->drawEnd >= WIN_HIGHT)
 			node->drawEnd = WIN_HIGHT - 1;
 

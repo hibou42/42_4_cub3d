@@ -6,7 +6,7 @@
 /*   By: nrossel <nrossel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/10 16:53:08 by aschaefe          #+#    #+#             */
-/*   Updated: 2023/10/12 15:06:05 by nrossel          ###   ########.fr       */
+/*   Updated: 2023/10/13 09:06:09 by nrossel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -136,20 +136,20 @@ typedef struct s_game
 	char	*direction;
 	double	dir_x; // -->> Nord = -1 / Sud = +1 / EW = 0
 	double	dir_y; // -->> West = -1 / East = +1 / NS = 0
-	double	plane_x;
-	double	plane_y;
+	double	plane_x; // -->> vecteur du plan EW
+	double	plane_y; // -->> vecteur du plan NS
 }		t_game;
 
 typedef struct s_cl
 {
-	double		index;
-	double		rayDirX;
-	double		rayDirY;
-	double		perpWallDist;
-	int			side;
-	int			lineHeight;
-	int			drawStart;
-	int			drawEnd;
+	double		index; // -->> axe x
+	double		rayDirX; // -->> vecteur x rayon
+	double		rayDirY; // -->> vexteur y rayon
+	double		perpWallDist; // -->> distance du joueur au mur 
+	int			side; // -->> Nord, Sud, East or West
+	int			lineHeight; // -->> Hauteur du mur a dessiner
+	int			drawStart; // -->> 1er pixel a dessiner axe y
+	int			drawEnd; // -->> dernier pixel a dessiner axe Y
 	struct s_cl	*next;
 }	t_cl;
 

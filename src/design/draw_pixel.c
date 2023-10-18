@@ -6,7 +6,7 @@
 /*   By: nrossel <nrossel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/27 08:34:28 by nrossel           #+#    #+#             */
-/*   Updated: 2023/10/12 16:21:53 by nrossel          ###   ########.fr       */
+/*   Updated: 2023/10/13 13:31:44 by nrossel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -166,15 +166,15 @@ static void	roof_n_floor(t_img *img, int color[])
 static void	display_fov(t_cl *list, t_img *img)
 {
 	t_cl	*tmp;
-	int		i;
+	int		y;
 
 	tmp = list;
 	while (tmp)
 	{
-		printf("start = %d | end = %d | lineheight = %d | index = %f\n", tmp->drawStart, tmp->drawEnd,tmp->lineHeight ,tmp->index);
-		i = list->drawStart;
-		while (i <= list->drawEnd)
-			img_pix_put(img, tmp->index, i++, RED);
+		// printf("start = %d | end = %d | lineheight = %d | index = %d\n", tmp->drawStart, tmp->drawEnd,tmp->lineHeight ,(int)tmp->index);
+		y = list->drawStart;
+		while (y <= list->drawEnd)
+			img_pix_put(img, tmp->index, y++, RED);
 		tmp = tmp->next;
 	}
 }
