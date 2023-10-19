@@ -6,7 +6,7 @@
 /*   By: nrossel <nrossel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/04 10:23:53 by aschaefe          #+#    #+#             */
-/*   Updated: 2023/10/19 16:30:28 by nrossel          ###   ########.fr       */
+/*   Updated: 2023/10/19 16:56:50 by nrossel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int	deal_key(int key, t_cube *cube)
 	p_y = cube->game->p_y;
 	if ((key == UP_KEY || key == W_KEY))
 	{
-		if (cube->map->maps[(int)p_y][(int)(p_x + (cube->game->dir_x * 0.1))] == '0') // -->> Segfault
+		if (cube->map->maps[(int)p_y][(int)(p_x + (cube->game->dir_x * 0.1))] == '0')
 			p_x += cube->game->dir_x * 0.1;
 		if (cube->map->maps[(int)(p_y + (cube->game->dir_y * 0.1))][(int)p_x] == '0')
 			p_y += cube->game->dir_y * 0.1;
@@ -73,16 +73,4 @@ int	deal_key(int key, t_cube *cube)
 	return (0);
 }
 
-// static char	move_map(int key, char **map, double p_x, double p_y)
-// {
-// 	if (key == LEFT_KEY || key == A_KEY)
-// 		return (map[(int)(p_y)][(int)(p_x - 0.2)]);
-// 	else if (key == RIGHT_KEY || key == D_KEY)
-// 		return (map[(int)(p_y)][(int)(p_x + 0.2)]);
-// 	else if (key == UP_KEY || key == W_KEY)
-// 		return (map[(int)(p_y - 0.3)][(int)p_x]);
-// 	else if (key == DOWN_KEY || key == S_KEY)
-// 		return (map[(int)(p_y + 0.1)][(int)p_x]);
-// 	return ('X');
-// }
 
