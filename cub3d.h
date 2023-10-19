@@ -6,7 +6,7 @@
 /*   By: aschaefe <aschaefe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/10 16:53:08 by aschaefe          #+#    #+#             */
-/*   Updated: 2023/10/18 16:17:32 by aschaefe         ###   ########.fr       */
+/*   Updated: 2023/10/19 16:28:10 by aschaefe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,6 +88,8 @@ typedef struct s_img
 	void	*mlx_img;
 	char	*addr;
 	int		bpp;
+	int		width;
+	int		height;
 	int		line_len;
 	int		endian;
 }		t_img;
@@ -97,9 +99,13 @@ typedef struct s_mlx
 	void	*mlx_ptr;
 	void	*mlx_win;
 	char	*path_no;
+	t_img	*texture_no;
 	char	*path_so;
+	t_img	*texture_so;
 	char	*path_we;
+	t_img	*texture_we;
 	char	*path_ea;
+	t_img	*texture_ea;
 	char	**floor_color;
 	int		rgb_floor[3];
 	char	**roof_color;
@@ -158,6 +164,7 @@ typedef struct s_cl
 	int			hit;
 	int			map_x;
 	int			map_y;
+	double		wall_x;
 	struct s_cl	*next;
 }	t_cl;
 
@@ -215,6 +222,7 @@ void	init_for_calc(t_cube *cube, t_cl *node);
 void	initial_step(t_cube *cube, t_cl *node);
 void	dda(t_cube *cube, t_cl *node);
 void	calc_final_ray(t_cube *cube, t_cl *node);
+void	texture(t_cube *cube, t_cl *node);
 
 /* --------------- Events --------------------*/
 int		deal_key(int key, t_cube *cube);

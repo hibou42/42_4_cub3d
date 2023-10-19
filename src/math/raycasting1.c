@@ -6,7 +6,7 @@
 /*   By: aschaefe <aschaefe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/11 15:28:52 by nrossel           #+#    #+#             */
-/*   Updated: 2023/10/18 16:13:10 by aschaefe         ###   ########.fr       */
+/*   Updated: 2023/10/19 16:24:26 by aschaefe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,13 @@ void	raycasting(t_cube *cube)
 
 void	init_zero(t_cl *node)
 {
+	node->ray_dir_x = 0;
+	node->ray_dir_y = 0;
+	node->perp_wall_dist = 0;
+	node->side = 0;
+	node->line_height = 0;
+	node->draw_start = 0;
+	node->draw_end = 0;
 	node->cam_x = 0;
 	node->side_x = 0;
 	node->side_y = 0;
@@ -40,17 +47,5 @@ void	init_zero(t_cl *node)
 	node->hit = 0;
 	node->map_x = 0;
 	node->map_y = 0;
-}
-
-void	init_for_calc(t_cube *cube, t_cl *node)
-{
-	node->cam_x = 2 * node->index / (double)WIN_WIDTH - 1;
-	node->ray_dir_x = cube->game->dir_x + (cube->game->plane_x * node->cam_x);
-	node->ray_dir_y = cube->game->dir_y + (cube->game->plane_y * node->cam_x);
-	node->delta_y = sqrt(1 + (node->ray_dir_x * node->ray_dir_x)
-			/ (node->ray_dir_y * node->ray_dir_y));
-	node->delta_x = sqrt(1 + (node->ray_dir_y * node->ray_dir_y)
-			/ (node->ray_dir_x * node->ray_dir_x));
-	node->map_x = (int)cube->game->p_x;
-	node->map_y = (int)cube->game->p_y;
+	node->wall_x = 0;
 }

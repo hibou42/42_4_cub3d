@@ -6,7 +6,7 @@
 /*   By: aschaefe <aschaefe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/04 10:23:53 by aschaefe          #+#    #+#             */
-/*   Updated: 2023/10/18 16:17:03 by aschaefe         ###   ########.fr       */
+/*   Updated: 2023/10/19 11:33:08 by aschaefe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,6 @@ int	deal_key(int key, t_cube *cube)
 	// else if (key == E_KEY)
 	else if (key == ESC)
 		close_window(cube);
-	printf("key %d\n", key);
 	raycasting(cube);
 	render(cube);
 	return (0);
