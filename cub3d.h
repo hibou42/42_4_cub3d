@@ -6,7 +6,7 @@
 /*   By: nrossel <nrossel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/10 16:53:08 by aschaefe          #+#    #+#             */
-/*   Updated: 2023/10/18 16:17:30 by nrossel          ###   ########.fr       */
+/*   Updated: 2023/10/19 14:09:06 by nrossel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,7 +104,6 @@ typedef struct s_mlx
 	int		rgb_floor[3];
 	char	**roof_color;
 	int		rgb_roof[3];
-
 }		t_mlx;
 
 typedef struct s_map
@@ -114,7 +113,6 @@ typedef struct s_map
 	int		hight;
 	int		offset_x;
 	int		offset_y;
-
 }		t_map;
 
 typedef struct s_point2d
@@ -131,8 +129,6 @@ typedef struct s_game
 {
 	double	p_x; // -->> position x du joueur sur la map
 	double	p_y; // -->> position y du joueur sur la map
-	// double	px_scr; // -->> position x du joueur à l'écran
-	// double	py_scr; // -->> position y du joueur à l'écran
 	char	*direction;
 	double	dir_x; // -->> Nord = -1 / Sud = +1 / EW = 0
 	double	dir_y; // -->> West = -1 / East = +1 / NS = 0
@@ -142,14 +138,24 @@ typedef struct s_game
 
 typedef struct s_cl
 {
-	double		index; // -->> axe x
-	double		rayDirX; // -->> vecteur x rayon
-	double		rayDirY; // -->> vexteur y rayon
-	double		perpWallDist; // -->> distance du joueur au mur 
-	int			side; // -->> Nord, Sud, East or West
-	int			lineHeight; // -->> Hauteur du mur a dessiner
-	int			drawStart; // -->> 1er pixel a dessiner axe y
-	int			drawEnd; // -->> dernier pixel a dessiner axe Y
+	double		index;
+	double		ray_dir_x;
+	double		ray_dir_y;
+	double		perp_wall_dist;
+	int			side;
+	int			line_height;
+	int			draw_start;
+	int			draw_end;
+	double		cam_x;
+	double		side_x;
+	double		side_y;
+	int			step_x;
+	int			step_y;
+	double		delta_y;
+	double		delta_x;
+	int			hit;
+	int			map_x;
+	int			map_y;
 	struct s_cl	*next;
 }	t_cl;
 
@@ -157,7 +163,6 @@ typedef struct s_info
 {
 	char			*str;
 	struct s_info	*next;
-
 }		t_info;
 
 typedef struct s_cube
@@ -169,7 +174,6 @@ typedef struct s_cube
 	struct s_img	img;
 	struct s_cl		*cl;
 	char			**cpy_data;
-
 }		t_cube;
 
 
@@ -186,6 +190,11 @@ void	add_map(t_cube *cube, t_info *tmp);
 void	check_arg(int argc, char **argv);
 void	convert_char_to_int(t_cube *cube, int choice);
 void	add_read_arg(t_cube *cube, char **argv);
+int		is_empty(char *str);
+int		is_only_nb(char *str);
+void	free_maps(t_cube *cube);
+void	start_mlx(t_cube *cube);
+void	flood_feed(t_cube *cube);
 
 /* --------------- Initialization --------------------*/
 void	init_gen(t_cube * cube, int ac, char **av);
@@ -198,37 +207,19 @@ void	ft_delta(t_point2d *v);
 double	ft_radian(double angle);
 double	pyth(double a, double b);
 double	ft_opp(double radian, double adj);
+void	raycasting(t_cube *cube);
+void	init_zero(t_cl *node);
+void	init_for_calc(t_cube *cube, t_cl *node);
+void	initial_step(t_cube *cube, t_cl *node);
+void	dda(t_cube *cube, t_cl *node);
+void	calc_final_ray(t_cube *cube, t_cl *node);
 
 /* --------------- Events --------------------*/
 int		deal_key(int key, t_cube *cube);
 int		mouse_handle(int mousekey, t_cube *cube);
 int		close_window(t_cube *cube);
 
-/* --------------- ? --------------------*/
-int		is_empty(char *str);
-int		is_only_nb(char *str);
-void	free_maps(t_cube *cube);
-void	start_mlx(t_cube *cube);
-void	flood_feed(t_cube *cube);
-
 /* --------------- Verbose --------------------*/
 void	verbose(t_cube *cube);
-
-
-
-
-
-
-
-
-
-
-void	test(t_cube *cube);
-
-
-
-
-
-
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: nrossel <nrossel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/27 08:34:28 by nrossel           #+#    #+#             */
-/*   Updated: 2023/10/18 15:12:59 by nrossel          ###   ########.fr       */
+/*   Updated: 2023/10/19 16:51:14 by nrossel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,6 @@ static void	draw_map(t_cube *cube, char **map);
 static void	black_screen(t_img *img);
 static void draw_wall(t_cube *cube, int start_x, int start_y);
 static void	roof_n_floor(t_img *img, int *color);
-// static void	display_fov(t_cube *cube);
-// static void	vector_xy(t_game *game, t_img *img, t_cube *cube, int angle);
 static void	display_fov(t_cl *list, t_img *img);
 
 /* --------------- Window design --------------------*/
@@ -32,7 +30,6 @@ int	render(t_cube *cube)
 	display_fov(cube->cl, &cube->img);
 	draw_map(cube, cube->map->maps);
 	draw_player(cube);
-	// vector_xy(cube->game, &cube->img, cube, 33);
 	mlx_put_image_to_window(cube->mlx.mlx_ptr, cube->mlx.mlx_win,
 		cube->img.mlx_img, 0, 0);
 	return (0);
@@ -167,74 +164,22 @@ static void	roof_n_floor(t_img *img, int color[])
 /* --------------- Display FOW --------------------*/
 static void	display_fov(t_cl *list, t_img *img)
 {
-	static int	test;
 	t_cl	*tmp;
 	int		y;
 
 	tmp = list;
-	printf("test = %d\n", test);
-	test++;
 	while (tmp)
 	{
-		if (tmp->index == 0 || tmp->index == WIN_WIDTH / 2|| tmp->index == WIN_WIDTH - 1)
-			printf("start = %d | end = %d | lineheight = %d | index = %d\n", tmp->drawStart, tmp->drawEnd,tmp->lineHeight ,(int)tmp->index);
-		y = tmp->drawStart;
-		while (y <= tmp->drawEnd)
+		// if (tmp->index == 0 || tmp->index == WIN_WIDTH / 2|| tmp->index == WIN_WIDTH - 1)
+		// 	printf("start = %d | end = %d | line_height = %d | index = %d\n", tmp->draw_start, tmp->draw_end,tmp->line_height ,(int)tmp->index);
+		y = tmp->draw_start;
+		while (y <= tmp->draw_end)
 			img_pix_put(img, tmp->index, y++, RED);
 		tmp = tmp->next;
 	}
 }
-// static void	display_fow(t_cube *cube)
-// {
-// 	int		px;
-// 	double	p_x;
-// 	double	p_y;
-// 	double	dir_x;
-// 	double	dir_y;
 
-// 	dir_x = cube->game->dir_x / 10;
-// 	dir_y = cube->game->dir_y / 10;
-// 	p_x = cube->game->px_scr;
-// 	p_y = cube->game->py_scr;
-// 	px = 0;
-// 	while (px < 30)
-// 	{
-// 		if (cube->map->maps[(int)(cube->game->p_y + (dir_y))][(int)(cube->game->p_x + dir_x)] != '0')
-// 			break;
-// 		img_pix_put(&(cube->img), p_x + cube->game->dir_x, p_y + cube->game->dir_y, GREEN);
-// 		p_y += cube->game->dir_y;
-// 		p_x += cube->game->dir_x;
-// 		px++;
-// 	}
-// }
 
-// void	vector_xy(t_game *game, t_img *img, t_cube *cube, int angle)
-// {
-// 	double		opp;
-// 	double		dist;
-// 	double		radian;
-// 	double		step;
-// 	t_point2d	p;
-
-// 	(void) game;
-// 	dist = 100;
-// 	radian = ft_radian(angle);
-// 	opp = ft_opp(radian, dist);
-// 	p.x = cube->game->px_scr;
-// 	p.y = cube->game->py_scr;
-// 	p.vx = p.x - opp;
-// 	p.vy = p.y - dist;
-// 	step = pyth(dist, opp);
-// 	while (step > 0)
-// 	{
-// 		// if (cube->map->maps[s_to_m(2, p.y, cube)][s_to_m(1, p.x, cube)] != 0)
-// 		// 	break;
-// 		img_pix_put(img, p.x, p.y, GREEN);
-// 		p.x += p.d_x;
-// 		p.y += p.d_y;
-// 		step--;
-// 	}
-// }
 
 
 

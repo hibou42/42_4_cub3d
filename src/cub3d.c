@@ -6,7 +6,7 @@
 /*   By: aschaefe <aschaefe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/04 10:23:53 by aschaefe          #+#    #+#             */
-/*   Updated: 2023/10/17 13:25:08 by aschaefe         ###   ########.fr       */
+/*   Updated: 2023/10/18 13:52:00 by aschaefe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int	main(int ac, char **av)
 
 	cube = (t_cube){};
 	init_gen(&cube, ac, av);
-	test(&cube);
+	raycasting(&cube);
 	//verbose(&cube);
 	start_mlx(&cube);
 	mlx_loop(cube.mlx.mlx_ptr);
