@@ -29,6 +29,7 @@ SRC				=		src/cub3d.c \
 						src/math/math.c \
 						src/math/raycasting1.c \
 						src/math/raycasting2.c \
+						src/math/texture.c \
 						src/init/init_gen.c
 
 

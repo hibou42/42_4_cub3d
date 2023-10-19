@@ -6,7 +6,7 @@
 /*   By: nrossel <nrossel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/04 10:23:53 by aschaefe          #+#    #+#             */
-/*   Updated: 2023/10/19 16:56:50 by nrossel          ###   ########.fr       */
+/*   Updated: 2023/10/19 17:08:43 by nrossel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,6 @@ int	deal_key(int key, t_cube *cube)
 	}
 	else if (key == ESC)
 		close_window(cube);
-	printf("Pos_x = %f | Pos_y = %f\n", cube->game->p_x, cube->game->p_y);
 	raycasting(cube);
 	render(cube);
 	return (0);
