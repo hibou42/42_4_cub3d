@@ -6,7 +6,7 @@
 /*   By: aschaefe <aschaefe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/06 15:37:23 by aschaefe          #+#    #+#             */
-/*   Updated: 2023/10/19 13:37:24 by aschaefe         ###   ########.fr       */
+/*   Updated: 2023/10/19 17:06:15 by aschaefe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,13 +104,23 @@ void	add_plane_in_struct(t_cube *cube)
 	char tmp;
 	
 	tmp = cube->game->direction[0];
+	cube->game->plane_x = 0;
+	cube->game->plane_y = 0;
 	if (tmp == 'N' || tmp == 'S')
 	{
+		// if (tmp == 'N')
+		// 	cube->game->plane_y = 0.66;
+		// else
+		// 	cube->game->plane_y = -0.66;
 		cube->game->plane_x = 0.66;
 		cube->game->plane_y = 0;
 	}
 	if (tmp == 'E' || tmp == 'W')
 	{
+		// if (tmp == 'E')
+		// 	cube->game->plane_x = 0.66;
+		// else
+		// 	cube->game->plane_x = -0.66;
 		cube->game->plane_x = 0;
 		cube->game->plane_y = 0.66;
 	}

@@ -3,10 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aschaefe <aschaefe@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nrossel <nrossel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/10 16:53:08 by aschaefe          #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2023/10/19 16:28:10 by aschaefe         ###   ########.fr       */
+=======
+/*   Updated: 2023/10/19 14:09:06 by nrossel          ###   ########.fr       */
+>>>>>>> 905d2698000d15fa9453732ec23d7e593e242937
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -135,13 +139,11 @@ typedef struct s_game
 {
 	double	p_x; // -->> position x du joueur sur la map
 	double	p_y; // -->> position y du joueur sur la map
-	double	px_scr; // -->> position x du joueur à l'écran
-	double	py_scr; // -->> position y du joueur à l'écran
 	char	*direction;
 	double	dir_x; // -->> Nord = -1 / Sud = +1 / EW = 0
 	double	dir_y; // -->> West = -1 / East = +1 / NS = 0
-	double	plane_x;
-	double	plane_y;
+	double	plane_x; // -->> vecteur du plan EW
+	double	plane_y; // -->> vecteur du plan NS
 }		t_game;
 
 typedef struct s_cl
