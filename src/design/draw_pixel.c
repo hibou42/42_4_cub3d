@@ -6,7 +6,7 @@
 /*   By: aschaefe <aschaefe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/27 08:34:28 by nrossel           #+#    #+#             */
-/*   Updated: 2023/10/19 17:04:09 by aschaefe         ###   ########.fr       */
+/*   Updated: 2023/10/19 17:08:42 by aschaefe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ static void	draw_map(t_cube *cube, char **map);
 static void	black_screen(t_img *img);
 static void draw_wall(t_cube *cube, int start_x, int start_y);
 static void	roof_n_floor(t_img *img, int *color);
-static void	display_fov(t_cl *list, t_img *img);
+static void	display_fov(t_cube *cube);
 
 /* --------------- Window design --------------------*/
 int	render(t_cube *cube)
@@ -27,7 +27,7 @@ int	render(t_cube *cube)
 	black_screen(&(cube->img));
 	roof_n_floor(&(cube->img), cube->mlx.rgb_roof);
 	roof_n_floor(&(cube->img), cube->mlx.rgb_floor);
-	display_fov(cube->cl, &cube->img);
+	display_fov(cube);
 	draw_map(cube, cube->map->maps);
 	draw_player(cube);
 	mlx_put_image_to_window(cube->mlx.mlx_ptr, cube->mlx.mlx_win,
@@ -166,7 +166,7 @@ static void	roof_n_floor(t_img *img, int color[])
 static void	display_fov(t_cube *cube)
 {
 	t_cl	*tmp;
-	int		y;
+	int		i;
 
 	tmp = cube->cl;
 	while (tmp)
