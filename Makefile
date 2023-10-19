@@ -51,8 +51,8 @@ MMLX			=		$(MAKE) -C mlx
 
 ifeq ($(shell uname), Linux)
 MLXLIB			=		./mlx-linux/libmlx.a
-MINILBX			=		-L ./mlx-linux/ -lmlx -Ilmlx -lXext -lX11
-MMLX			=		$(MAKE) -C mlx-linux
+MINILBX			=		-L ./mlx-linux/ -lmlx -Ilmlx -lXext -lX11 -lm
+MMLX			=		$(MAKE) -C mlx-linux 
 endif
 
 #***** Couleurs *****#

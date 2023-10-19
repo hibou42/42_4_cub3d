@@ -174,8 +174,8 @@ static void	display_fov(t_cube *cube)
 		i = tmp->draw_start;
 		while (i <= tmp->draw_end)
 		{
-			// img_pix_put(&cube->img, tmp->index, i++, RED);
-			texture(cube, tmp);
+			img_pix_put(&cube->img, tmp->index, i, RED);
+			// texture(cube, tmp);
 			i++;
 		}
 		tmp = tmp->next;

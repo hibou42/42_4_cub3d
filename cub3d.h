@@ -42,8 +42,8 @@
 #  define S_KEY					115
 #  define D_KEY					100
 #  define W_KEY					119
-#  define Q_KEY					
-#  define E_KEY					
+#  define Q_KEY					113
+#  define E_KEY					101
 #  define ESC					65307
 #  define ZOOM_IN				4
 #  define ZOOM_OUT				5
