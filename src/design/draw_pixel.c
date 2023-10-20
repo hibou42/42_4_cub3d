@@ -6,7 +6,7 @@
 /*   By: aschaefe <aschaefe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/27 08:34:28 by nrossel           #+#    #+#             */
-/*   Updated: 2023/10/19 17:08:42 by aschaefe         ###   ########.fr       */
+/*   Updated: 2023/10/20 11:10:43 by aschaefe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -166,18 +166,21 @@ static void	roof_n_floor(t_img *img, int color[])
 static void	display_fov(t_cube *cube)
 {
 	t_cl	*tmp;
-	int		i;
+	// int		i;
 
 	tmp = cube->cl;
 	while (tmp)
 	{
+		/*
 		i = tmp->draw_start;
 		while (i <= tmp->draw_end)
 		{
-			img_pix_put(&cube->img, tmp->index, i, RED);
-			// texture(cube, tmp);
+			//img_pix_put(&cube->img, tmp->index, i, RED);
+			
 			i++;
 		}
+		*/
+		texture(cube, tmp);
 		tmp = tmp->next;
 	}
 }

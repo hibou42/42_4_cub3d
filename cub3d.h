@@ -6,7 +6,7 @@
 /*   By: aschaefe <aschaefe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/10 16:53:08 by aschaefe          #+#    #+#             */
-/*   Updated: 2023/10/19 17:07:18 by aschaefe         ###   ########.fr       */
+/*   Updated: 2023/10/20 12:08:46 by aschaefe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,8 +56,8 @@
 # define TYPE		3
 
 /* --------------- WINDOW --------------------*/
-# define WIN_WIDTH	1660
-# define WIN_HIGHT	540
+# define WIN_WIDTH	1920
+# define WIN_HIGHT	1080
 # define WIN_NAME	"Cub3D"
 # define ZOOM		10
 

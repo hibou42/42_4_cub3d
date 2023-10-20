@@ -6,7 +6,7 @@
 /*   By: aschaefe <aschaefe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/04 10:23:53 by aschaefe          #+#    #+#             */
-/*   Updated: 2023/10/19 17:05:31 by aschaefe         ###   ########.fr       */
+/*   Updated: 2023/10/20 12:12:19 by aschaefe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,27 +27,19 @@ int	deal_key(int key, t_cube *cube)
 	p_y = cube->game->p_y;
 	if ((key == UP_KEY || key == W_KEY))
 	{
-		if (cube->map->maps[(int)p_y][(int)(p_x + (cube->game->dir_x * 0.1))] == '0') // -->> Segfault
-			p_x += cube->game->dir_x * 0.1;
+		if (cube->map->maps[(int)p_y][(int)(p_x + (cube->game->dir_x * 0.1))] == '0')
+			cube->game->p_x += cube->game->dir_x * 0.1;
 		if (cube->map->maps[(int)(p_y + (cube->game->dir_y * 0.1))][(int)p_x] == '0')
-			p_y += cube->game->dir_y * 0.1;
+			cube->game->p_y += cube->game->dir_y * 0.1;
 	}
 	else if ((key == DOWN_KEY || key == S_KEY))
 	{
 		if (cube->map->maps[(int)p_y][(int)(p_x - (cube->game->dir_x * 0.1))] == '0')
-			p_x -= cube->game->dir_x * 0.1;
+			cube->game->p_x -= cube->game->dir_x * 0.1;
 		if (cube->map->maps[(int)(p_y - (cube->game->dir_y * 0.1))][(int)p_x] == '0')
-			p_y -= cube->game->dir_y * 0.1;
+			cube->game->p_y -= cube->game->dir_y * 0.1;
 	}
 	else if ((key == RIGHT_KEY || key == D_KEY))
-	{
-		
-	}
-	else if ((key == LEFT_KEY || key == A_KEY))
-	{
-		
-	}
-	else if (key == E_KEY)
 	{
 		old_dirx = cube->game->dir_x;
 		cube->game->dir_x = cube->game->dir_x * cos(rotSpeed) - cube->game->dir_y * sin(rotSpeed);
@@ -56,7 +48,7 @@ int	deal_key(int key, t_cube *cube)
 		cube->game->plane_x = cube->game->plane_x * cos(rotSpeed) - cube->game->plane_y * sin(rotSpeed);
 		cube->game->plane_y = old_planex * sin(rotSpeed) + cube->game->plane_y * cos(rotSpeed);
 	}
-	else if (key == Q_KEY)
+	else if ((key == LEFT_KEY || key == A_KEY))
 	{
 		old_dirx = cube->game->dir_x;
 		cube->game->dir_x = cube->game->dir_x * cos(-rotSpeed) - cube->game->dir_y * sin(-rotSpeed);
