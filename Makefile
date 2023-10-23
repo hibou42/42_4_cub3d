@@ -1,6 +1,6 @@
 #***** Name *****#
 
-NAME			=		cub3d
+NAME			=		cub3D
 
 #***** Makeflags *****#
 
@@ -21,6 +21,7 @@ SRC				=		src/cub3d.c \
 						src/parsing/update_map.c \
 						src/parsing/convert.c \
 						src/events/events.c \
+						src/events/keys.c \
 						src/error/exit.c \
 						src/error/arg.c \
 						src/error/check_parsing.c \
@@ -35,7 +36,7 @@ SRC				=		src/cub3d.c \
 
 OBJS			=		$(SRC:.c=.o)
 
-#***** Message compilation // En phase de test //*****#
+#***** Message compilation *****#
 
 TOTAL_FILES		= $(words $(SRC))
 COMPILED_FILE	= 0
@@ -51,8 +52,8 @@ MMLX			=		$(MAKE) -C mlx
 
 ifeq ($(shell uname), Linux)
 MLXLIB			=		./mlx-linux/libmlx.a
-MINILBX			=		-L ./mlx-linux/ -lmlx -Ilmlx -lXext -lX11
-MMLX			=		$(MAKE) -C mlx-linux
+MINILBX			=		-L ./mlx-linux/ -lmlx -Ilmlx -lXext -lX11 -lm
+MMLX			=		$(MAKE) -C mlx-linux 
 endif
 
 #***** Couleurs *****#
@@ -77,7 +78,7 @@ BS_N			=		echo "\n"
 #***** Flags *****#
 
 CC				=		gcc
-CFLAGS			=		-Wall -Wextra -Werror -g
+CFLAGS			=		-Wall -Wextra -Werror
 L				=		$(CFLAGS) -fsanitize=address
 RM				=		rm -f
 

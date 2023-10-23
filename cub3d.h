@@ -6,7 +6,7 @@
 /*   By: nrossel <nrossel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/10 16:53:08 by aschaefe          #+#    #+#             */
-/*   Updated: 2023/10/23 08:46:18 by nrossel          ###   ########.fr       */
+/*   Updated: 2023/10/23 13:01:53 by nrossel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,8 +42,8 @@
 #  define S_KEY					115
 #  define D_KEY					100
 #  define W_KEY					119
-#  define Q_KEY					
-#  define E_KEY					
+#  define Q_KEY					113
+#  define E_KEY					101
 #  define ESC					65307
 #  define ZOOM_IN				4
 #  define ZOOM_OUT				5
@@ -56,8 +56,8 @@
 # define TYPE		3
 
 /* --------------- WINDOW --------------------*/
-# define WIN_WIDTH	1660
-# define WIN_HIGHT	540
+# define WIN_WIDTH	1920
+# define WIN_HIGHT	1080
 # define WIN_NAME	"Cub3D"
 # define ZOOM		10
 
@@ -224,7 +224,11 @@ void	texture(t_cube *cube, t_cl *node);
 
 /* --------------- Events --------------------*/
 int		deal_key(int key, t_cube *cube);
-int		mouse_handle(int mousekey, t_cube *cube);
+int		deal_mouse(int key, t_cube *cube);
+void	press_up_key(t_cube *cube, double speed);
+void	press_down_key(t_cube *cube, double speed);
+void	press_left_key(t_cube *cube, double speed);
+void	press_right_key(t_cube *cube, double speed);
 int		close_window(t_cube *cube);
 
 /* --------------- Verbose --------------------*/

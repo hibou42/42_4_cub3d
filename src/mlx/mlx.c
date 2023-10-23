@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mlx.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aschaefe <aschaefe@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nrossel <nrossel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/06 15:37:23 by aschaefe          #+#    #+#             */
-/*   Updated: 2023/10/19 16:39:54 by aschaefe         ###   ########.fr       */
+/*   Updated: 2023/10/23 13:55:54 by nrossel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,5 +53,6 @@ static void	ft_mlx_hook(t_cube *cube)
 	raycasting(cube);
 	render(cube);
 	mlx_hook(cube->mlx.mlx_win, 2, 1L << 0, deal_key, cube);
+	// mlx_hook(cube->mlx.mlx_win, 6, 1L << 0, deal_mouse, cube);
 	mlx_hook(cube->mlx.mlx_win, 17, 1L << 0, close_window, cube);
 }
