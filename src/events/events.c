@@ -6,7 +6,7 @@
 /*   By: nrossel <nrossel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/04 10:23:53 by aschaefe          #+#    #+#             */
-/*   Updated: 2023/10/19 17:08:43 by nrossel          ###   ########.fr       */
+/*   Updated: 2023/10/19 17:17:04 by nrossel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,16 +28,18 @@ int	deal_key(int key, t_cube *cube)
 	if ((key == UP_KEY || key == W_KEY))
 	{
 		if (cube->map->maps[(int)p_y][(int)(p_x + (cube->game->dir_x * 0.1))] == '0')
-			p_x += cube->game->dir_x * 0.1;
-		if (cube->map->maps[(int)(p_y + (cube->game->dir_y * 0.1))][(int)p_x] == '0')
-			p_y += cube->game->dir_y * 0.1;
+			cube->game->p_y -= 0.1;
+			// p_x += cube->game->dir_x * 0.1;
+		// if (cube->map->maps[(int)(p_y + (cube->game->dir_y * 0.1))][(int)p_x] == '0')
+		// 	cube->game->p_y += 0.1;
+			// p_y += cube->game->dir_y * 0.1;
 	}
 	else if ((key == DOWN_KEY || key == S_KEY))
 	{
 		if (cube->map->maps[(int)p_y][(int)(p_x - (cube->game->dir_x * 0.1))] == '0')
-			p_x -= cube->game->dir_x * 0.1;
+			cube->game->p_x -= cube->game->dir_x * 0.1;
 		if (cube->map->maps[(int)(p_y - (cube->game->dir_y * 0.1))][(int)p_x] == '0')
-			p_y -= cube->game->dir_y * 0.1;
+			cube->game->p_y -= cube->game->dir_y * 0.1;
 	}
 	else if ((key == RIGHT_KEY || key == D_KEY))
 	{
