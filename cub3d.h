@@ -230,6 +230,7 @@ void	press_down_key(t_cube *cube, double speed);
 void	press_left_key(t_cube *cube, double speed);
 void	press_right_key(t_cube *cube, double speed);
 int		close_window(t_cube *cube);
+void	free_info(t_cube *cube);
 
 /* --------------- Verbose --------------------*/
 void	verbose(t_cube *cube);

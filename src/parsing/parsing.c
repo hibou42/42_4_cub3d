@@ -29,7 +29,7 @@ void	parsing(t_cube *cube)
 			if (is_only_nb(tmp->str) == 0)
 			{
 				add_map(cube, tmp);
-				tmp->next = NULL;
+				break;
 			}
 			else
 				add_info(cube, tmp->str);

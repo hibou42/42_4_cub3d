@@ -46,14 +46,14 @@ void	add_path1(t_cube *cube, int nb, char *str)
 	if (nb == 1)
 	{
 		if (cube->mlx.path_no == NULL)
-			cube->mlx.path_no = ft_substr(str, 3, ft_strlen(str) - 4);
+			cube->mlx.path_no = ft_substr(str, 3, ft_strlen(str) - 3);
 		else
 			stop = 1;
 	}
 	if (nb == 2)
 	{
 		if (cube->mlx.path_so == NULL)
-			cube->mlx.path_so = ft_substr(str, 3, ft_strlen(str) - 4);
+			cube->mlx.path_so = ft_substr(str, 3, ft_strlen(str) - 3);
 		else
 			stop = 1;
 	}
@@ -72,14 +72,14 @@ void	add_path2(t_cube *cube, int nb, char *str)
 	if (nb == 3)
 	{
 		if (cube->mlx.path_we == NULL)
-			cube->mlx.path_we = ft_substr(str, 3, ft_strlen(str) - 4);
+			cube->mlx.path_we = ft_substr(str, 3, ft_strlen(str) - 3);
 		else
 			stop = 1;
 	}
 	if (nb == 4)
 	{
 		if (cube->mlx.path_ea == NULL)
-			cube->mlx.path_ea = ft_substr(str, 3, ft_strlen(str) - 4);
+			cube->mlx.path_ea = ft_substr(str, 3, ft_strlen(str) - 3);
 		else
 			stop = 1;
 	}
@@ -99,7 +99,7 @@ void	add_tab1(t_cube *cube, char *str)
 	tmp = NULL;
 	if (cube->mlx.floor_color == NULL)
 	{
-		tmp = ft_substr(str, 2, ft_strlen(str) - 3);
+		tmp = ft_substr(str, 2, ft_strlen(str) - 2);
 		cube->mlx.floor_color = ft_split(tmp, ',');
 	}
 	else
@@ -123,7 +123,7 @@ void	add_tab2(t_cube *cube, char *str)
 	tmp = NULL;
 	if (cube->mlx.roof_color == NULL)
 	{
-		tmp = ft_substr(str, 2, ft_strlen(str) - 3);
+		tmp = ft_substr(str, 2, ft_strlen(str) - 2);
 		cube->mlx.roof_color = ft_split(tmp, ',');
 	}
 	else

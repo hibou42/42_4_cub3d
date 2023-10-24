@@ -23,6 +23,8 @@ int	close_window(t_cube *cube)
 	free_texture(cube);
 	free_info(cube);
 	free_cl(cube);
+	if (cube->game->direction)
+		free(cube->game->direction);
 	exit(1);
 }
 
@@ -41,6 +43,7 @@ void	free_maps(t_cube *cube)
 	}
 	free(cube->map->maps);
 	cube->map->maps = NULL;
+	
 	
 }
 
@@ -87,8 +90,6 @@ void	free_info(t_cube *cube)
 		tmp = NULL;
 		tmp = next_tmp;
 	}
-	if (cube->game->direction)
-		free(cube->game->direction);
 }
 
 void	free_cl(t_cube *cube)
