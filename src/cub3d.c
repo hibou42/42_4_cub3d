@@ -18,7 +18,6 @@ int	main(int ac, char **av)
 
 	cube = (t_cube){};
 	init_gen(&cube, ac, av);
-	//verbose(&cube);
 	start_mlx(&cube);
 	mlx_loop(cube.mlx.mlx_ptr);
 	mlx_destroy_image(cube.mlx.mlx_ptr, cube.img.mlx_img);

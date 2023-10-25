@@ -34,12 +34,12 @@ void	check_parsing(t_cube *cube)
 	flood_feed(cube);
 }
 
-int		is_valid_path(char *path)
+int	is_valid_path(char *path)
 {
-	int 	fd;
+	int		fd;
 	int		read_ret;
 	char	*buffer;
-	
+
 	if (path != NULL)
 	{
 		fd = open(path, 0);
@@ -58,7 +58,7 @@ int		is_valid_path(char *path)
 		return (1);
 }
 
-int		is_valid_ext(char *path)
+int	is_valid_ext(char *path)
 {
 	int	size;
 	int	res;
@@ -78,7 +78,7 @@ int		is_valid_ext(char *path)
 	return (res);
 }
 
-int		is_valid_color(char **tab)
+int	is_valid_color(char **tab)
 {
 	int	size;
 	int	tmp;

@@ -1,26 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_dlst_new.c                                      :+:      :+:    :+:   */
+/*   img_pix_put.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aschaefe <aschaefe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/13 18:10:54 by nrossel           #+#    #+#             */
-/*   Updated: 2023/10/10 16:58:31 by aschaefe         ###   ########.fr       */
+/*   Created: 2023/09/27 08:34:28 by nrossel           #+#    #+#             */
+/*   Updated: 2023/10/20 11:10:43 by aschaefe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../libft.h"
+#include "../../cub3d.h"
 
-t_dlist	*ft_dlst_new()
+/* --------------- Draw pixel --------------------*/
+void	img_pix_put(t_img *img, int x, int y, int color)
 {
-	t_dlist	*new_list;
+	char	*pixel;
 
-	new_list = malloc(sizeof(t_dlist));
-	if (!new_list)
-		return (NULL);
-	new_list->head = NULL;
-	new_list->tail = NULL;
-	new_list->len = 0;
-	return (new_list);
+	if (x >= 0 && x < WIN_WIDTH && y >= 0 && y < WIN_HIGHT)
+	{
+		pixel = img->addr + (y * img->line_len + x * (img->bpp / 8));
+		*(unsigned int *)pixel = color;
+	}
 }

@@ -34,4 +34,3 @@ void	init_struct(t_cube *cube)
 	cube->game = game;
 	cube->game->direction = NULL;
 }
-

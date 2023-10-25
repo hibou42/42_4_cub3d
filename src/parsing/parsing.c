@@ -12,7 +12,7 @@
 
 #include "../../cub3d.h"
 
-void	add_player_in_struct(t_cube *cube);
+void	add_player_in_struct(t_cube *cube, int x, int y);
 void	add_player_in_struct2(t_cube *cube, int x, int y, char *direction);
 void	add_plane_in_struct(t_cube *cube);
 void	problem(t_cube *cube, int choice);
@@ -29,24 +29,21 @@ void	parsing(t_cube *cube)
 			if (is_only_nb(tmp->str) == 0)
 			{
 				add_map(cube, tmp);
-				break;
+				break ;
 			}
 			else
 				add_info(cube, tmp->str);
 		}
 		tmp = tmp->next;
 	}
-	add_player_in_struct(cube);
+	add_player_in_struct(cube, 0, 0);
 	add_plane_in_struct(cube);
 }
 
-void	add_player_in_struct(t_cube *cube)
+void	add_player_in_struct(t_cube *cube, int x, int y)
 {
-	int		x;
-	int		y;
 	char	tmp;
 
-	y = 0;
 	while (y < cube->map->hight)
 	{
 		x = 0;
@@ -73,8 +70,8 @@ void	add_player_in_struct(t_cube *cube)
 
 void	add_player_in_struct2(t_cube *cube, int x, int y, char *direction)
 {
-	char tmp;
-	
+	char	tmp;
+
 	tmp = cube->map->maps[y][x];
 	cube->game->p_x = x + 0.5;
 	cube->game->p_y = y + 0.5;
@@ -96,13 +93,12 @@ void	add_player_in_struct2(t_cube *cube, int x, int y, char *direction)
 			cube->game->dir_x = -1;
 	}
 	cube->map->maps[y][x] = '0';
-	
 }
 
 void	add_plane_in_struct(t_cube *cube)
 {
-	char tmp;
-	
+	char	tmp;
+
 	tmp = cube->game->direction[0];
 	cube->game->plane_x = 0;
 	cube->game->plane_y = 0;

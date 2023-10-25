@@ -64,7 +64,6 @@ SRCS	=	ft_atoi.c \
 			doubl_list/ft_dlst_addfront.c \
 			doubl_list/ft_dlst_clear.c \
 			doubl_list/ft_dlst_delone.c \
-			doubl_list/ft_dlst_new.c \
 			doubl_list/ft_dlst_newcontent.c \
 			doubl_list/ft_pop_back.c \
 			doubl_list/ft_pop_front.c \

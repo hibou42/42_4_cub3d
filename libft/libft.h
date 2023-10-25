@@ -99,16 +99,14 @@ t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
 
 /* ***** doubl_chained_list ***** */
 
-t_node		*ft_pop_back(t_dlist **lst);
-t_node		*ft_pop_front(t_dlist **lst);
-t_dlist		*ft_dlst_new();
-void		ft_dlst_addback(t_dlist **lst, t_node *new);
-void		ft_dlst_addfront(t_dlist **lst, t_node *new);
-void		ft_dlst_delone(t_node *lst, void (*del)(void *));
-void		ft_dlst_clear(t_dlist **dlst, void (*del)(void *));
-t_node		*ft_dlst_newcontent(double *data);
-void		ft_dlst_addnode(t_dlist **list, t_node *node, size_t position);
-
+t_node	*ft_pop_back(t_dlist **lst);
+t_node	*ft_pop_front(t_dlist **lst);
+void	ft_dlst_addback(t_dlist **lst, t_node *new);
+void	ft_dlst_addfront(t_dlist **lst, t_node *new);
+void	ft_dlst_delone(t_node *lst, void (*del)(void *));
+void	ft_dlst_clear(t_dlist **dlst, void (*del)(void *));
+t_node	*ft_dlst_newcontent(double *data);
+void	ft_dlst_addnode(t_dlist **list, t_node *node, size_t position);
 
 /* ***** gnl ***** */
 

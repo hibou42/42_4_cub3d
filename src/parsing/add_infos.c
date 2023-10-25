@@ -19,7 +19,7 @@ void	add_tab2(t_cube *cube, char *str);
 
 void	add_info(t_cube *cube, char *str)
 {
-	if(ft_strncmp(str, "NO", 2) == 0)
+	if (ft_strncmp(str, "NO", 2) == 0)
 		add_path1(cube, 1, str);
 	else if (ft_strncmp(str, "SO", 2) == 0)
 		add_path1(cube, 2, str);

@@ -15,7 +15,6 @@
 int	check_extension(char **argv);
 int	is_access(char **argv);
 
-
 void	check_arg(int argc, char **argv)
 {
 	if (argc != 2)
@@ -55,7 +54,7 @@ int	check_extension(char **argv)
 	return (res);
 }
 
-int		is_access(char **argv)
+int	is_access(char **argv)
 {
 	int		fd;
 	int		read_ret;

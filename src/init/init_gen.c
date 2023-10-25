@@ -12,7 +12,7 @@
 
 #include "../../cub3d.h"
 
-void	init_gen(t_cube * cube, int ac, char **av)
+void	init_gen(t_cube *cube, int ac, char **av)
 {
 	init_struct(cube);
 	check_arg(ac, av);
