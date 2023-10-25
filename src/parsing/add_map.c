@@ -12,7 +12,7 @@
 
 #include "../../cub3d.h"
 
-int		nb_line(t_info *tmp);
+int	nb_line(t_info *tmp);
 
 void	add_map(t_cube *cube, t_info *tmp)
 {
@@ -31,7 +31,7 @@ void	add_map(t_cube *cube, t_info *tmp)
 	}
 }
 
-int		nb_line(t_info *tmp)
+int	nb_line(t_info *tmp)
 {
 	int	res;
 

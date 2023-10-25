@@ -29,10 +29,10 @@ void	ft_floor(t_cube *cube)
 {
 	if (ft_tablen(cube->mlx.floor_color) != 3)
 		problem2(cube, 1);
-	if (is_only_nb(cube->mlx.floor_color[0]) != 0 
-			&& is_only_nb(cube->mlx.floor_color[1]) != 0
-				&& is_only_nb(cube->mlx.floor_color[2]) != 0)
-		problem2(cube, 2);
+	if (is_only_nb(cube->mlx.floor_color[0]) != 0)
+		if (is_only_nb(cube->mlx.floor_color[1]) != 0)
+			if (is_only_nb(cube->mlx.floor_color[2]) != 0)
+				problem2(cube, 2);
 	cube->mlx.rgb_floor[0] = ft_atoi(cube->mlx.floor_color[0]);
 	cube->mlx.rgb_floor[1] = ft_atoi(cube->mlx.floor_color[1]);
 	cube->mlx.rgb_floor[2] = ft_atoi(cube->mlx.floor_color[2]);
@@ -48,10 +48,10 @@ void	ft_roof(t_cube *cube)
 {
 	if (ft_tablen(cube->mlx.roof_color) != 3)
 		problem2(cube, 1);
-	if (is_only_nb(cube->mlx.roof_color[0]) != 0
-			&& is_only_nb(cube->mlx.roof_color[1]) != 0
-				&& is_only_nb(cube->mlx.roof_color[2]) != 0)
-		problem2(cube, 2);
+	if (is_only_nb(cube->mlx.roof_color[0]) != 0)
+		if (is_only_nb(cube->mlx.roof_color[1]) != 0)
+			if (is_only_nb(cube->mlx.roof_color[2]) != 0)
+				problem2(cube, 2);
 	cube->mlx.rgb_roof[0] = ft_atoi(cube->mlx.roof_color[0]);
 	cube->mlx.rgb_roof[1] = ft_atoi(cube->mlx.roof_color[1]);
 	cube->mlx.rgb_roof[2] = ft_atoi(cube->mlx.roof_color[2]);
@@ -63,7 +63,7 @@ void	ft_roof(t_cube *cube)
 		problem2(cube, 3);
 }
 
-int		ft_tablen(char **tab)
+int	ft_tablen(char **tab)
 {
 	int	i;
 

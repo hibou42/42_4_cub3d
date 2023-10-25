@@ -40,9 +40,9 @@ void	flood_feed(t_cube *cube)
 	}
 }
 
-int		check_flood_feed(t_cube *cube, int x, int y)
+int	check_flood_feed(t_cube *cube, int x, int y)
 {
-	int x_max;
+	int	x_max;
 
 	x_max = ft_strlen(cube->map->maps[y]);
 	if (y == 0 || y == cube->map->hight)
@@ -59,4 +59,3 @@ int		check_flood_feed(t_cube *cube, int x, int y)
 		return (1);
 	return (0);
 }
-

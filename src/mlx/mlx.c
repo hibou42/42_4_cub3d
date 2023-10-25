@@ -13,14 +13,16 @@
 #include "../../cub3d.h"
 
 static void	ft_mlx_hook(t_cube *cube);
-t_img	*load_texture(t_cube *cube, char *path);
+t_img		*load_texture(t_cube *cube, char *path);
 
 void	start_mlx(t_cube *cube)
 {
 	cube->mlx.mlx_ptr = mlx_init();
-	cube->mlx.mlx_win = mlx_new_window(cube->mlx.mlx_ptr, WIN_WIDTH, WIN_HIGHT, WIN_NAME);
+	cube->mlx.mlx_win = mlx_new_window(cube->mlx.mlx_ptr,
+			WIN_WIDTH, WIN_HIGHT, WIN_NAME);
 	cube->img.mlx_img = mlx_new_image(cube->mlx.mlx_ptr, WIN_WIDTH, WIN_HIGHT);
-	cube->img.addr = mlx_get_data_addr(cube->img.mlx_img, &cube->img.bpp, &cube->img.line_len, &cube->img.endian);
+	cube->img.addr = mlx_get_data_addr(cube->img.mlx_img,
+			&cube->img.bpp, &cube->img.line_len, &cube->img.endian);
 	cube->mlx.texture_no = load_texture(cube, cube->mlx.path_no);
 	cube->mlx.texture_so = load_texture(cube, cube->mlx.path_so);
 	cube->mlx.texture_we = load_texture(cube, cube->mlx.path_we);
@@ -30,12 +32,13 @@ void	start_mlx(t_cube *cube)
 
 t_img	*load_texture(t_cube *cube, char *path)
 {
-	t_img *texture;
+	t_img	*texture;
 
 	texture = malloc(sizeof(t_img));
 	texture->width = 64;
 	texture->height = 64;
-	texture->mlx_img = mlx_xpm_file_to_image(cube->mlx.mlx_ptr, path, &texture->width, &texture->height);
+	texture->mlx_img = mlx_xpm_file_to_image(cube->mlx.mlx_ptr,
+			path, &texture->width, &texture->height);
 	if (!texture->mlx_img)
 	{
 		free(texture);
@@ -43,7 +46,8 @@ t_img	*load_texture(t_cube *cube, char *path)
 		close_window(cube);
 		return (NULL);
 	}
-	texture->addr = mlx_get_data_addr(texture->mlx_img, &texture->bpp, &texture->line_len, &texture->endian);
+	texture->addr = mlx_get_data_addr(texture->mlx_img,
+			&texture->bpp, &texture->line_len, &texture->endian);
 	return (texture);
 }
 
@@ -53,6 +57,5 @@ static void	ft_mlx_hook(t_cube *cube)
 	raycasting(cube);
 	render(cube);
 	mlx_hook(cube->mlx.mlx_win, 2, 1L << 0, deal_key, cube);
-	// mlx_hook(cube->mlx.mlx_win, 6, 1L << 0, deal_mouse, cube);
 	mlx_hook(cube->mlx.mlx_win, 17, 1L << 0, close_window, cube);
 }

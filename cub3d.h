@@ -6,7 +6,7 @@
 /*   By: nrossel <nrossel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/10 16:53:08 by aschaefe          #+#    #+#             */
-/*   Updated: 2023/10/25 12:23:12 by nrossel          ###   ########.fr       */
+/*   Updated: 2023/10/25 15:39:43 by nrossel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,6 @@
 #  define ESC 					53
 #  define ZOOM_IN				4
 #  define ZOOM_OUT				5
-
 
 /* --------------- LINUX OS --------------------*/
 # else
@@ -133,13 +132,13 @@ typedef struct s_point2d
 
 typedef struct s_game
 {
-	double	p_x; // -->> position x du joueur sur la map
-	double	p_y; // -->> position y du joueur sur la map
+	double	p_x;
+	double	p_y;
 	char	*direction;
-	double	dir_x; // -->> Nord = -1 / Sud = +1 / EW = 0
-	double	dir_y; // -->> West = -1 / East = +1 / NS = 0
-	double	plane_x; // -->> vecteur du plan EW
-	double	plane_y; // -->> vecteur du plan NS
+	double	dir_x;
+	double	dir_y;
+	double	plane_x;
+	double	plane_y;
 }		t_game;
 
 typedef struct s_cl
@@ -183,44 +182,44 @@ typedef struct s_cube
 	char			**cpy_data;
 }		t_cube;
 
-
 /* --------------- FUNCTIONS --------------------*/
 /* --------------- Visual --------------------*/
-int		render(t_cube *data);
-void	img_pix_put(t_img *img, int x, int y, int color);
+int			render(t_cube *data);
+int			render2(t_cube *data);
+void		img_pix_put(t_img *img, int x, int y, int color);
 
 /* --------------- Parsing --------------------*/
-void	parsing(t_cube *cube);
-void	check_parsing(t_cube *cube);
-void	add_info(t_cube *cube, char *str);
-void	add_map(t_cube *cube, t_info *tmp);
-void	check_arg(int argc, char **argv);
-void	convert_char_to_int(t_cube *cube, int choice);
-void	add_read_arg(t_cube *cube, char **argv);
-int		is_empty(char *str);
-int		is_only_nb(char *str);
-void	free_maps(t_cube *cube);
-void	start_mlx(t_cube *cube);
-void	flood_feed(t_cube *cube);
+void		parsing(t_cube *cube);
+void		check_parsing(t_cube *cube);
+void		add_info(t_cube *cube, char *str);
+void		add_map(t_cube *cube, t_info *tmp);
+void		check_arg(int argc, char **argv);
+void		convert_char_to_int(t_cube *cube, int choice);
+void		add_read_arg(t_cube *cube, char **argv);
+int			is_empty(char *str);
+int			is_only_nb(char *str);
+void		free_maps(t_cube *cube);
+void		start_mlx(t_cube *cube);
+void		flood_feed(t_cube *cube);
 
 /* --------------- Initialization --------------------*/
-void	init_gen(t_cube * cube, int ac, char **av);
-void	init_struct(t_cube *cube);
-void	init_cl(t_cube *cube);
-void	update_map(t_cube *cube);
+void		init_gen(t_cube *cube, int ac, char **av);
+void		init_struct(t_cube *cube);
+void		init_cl(t_cube *cube);
+void		update_map(t_cube *cube);
 
 /* --------------- Math --------------------*/
-void	ft_delta(t_point2d *v);
-double	ft_radian(double angle);
-double	pyth(double a, double b);
-double	ft_opp(double radian, double adj);
-void	raycasting(t_cube *cube);
-void	init_zero(t_cl *node);
-void	init_for_calc(t_cube *cube, t_cl *node);
-void	initial_step(t_cube *cube, t_cl *node);
-void	dda(t_cube *cube, t_cl *node);
-void	calc_final_ray(t_cube *cube, t_cl *node);
-void	texture(t_cube *cube, t_cl *node);
+void		ft_delta(t_point2d *v);
+double		ft_radian(double angle);
+double		pyth(double a, double b);
+double		ft_opp(double radian, double adj);
+void		raycasting(t_cube *cube);
+void		init_zero(t_cl *node);
+void		init_for_calc(t_cube *cube, t_cl *node);
+void		initial_step(t_cube *cube, t_cl *node);
+void		dda(t_cube *cube, t_cl *node);
+void		calc_final_ray(t_cube *cube, t_cl *node);
+void		texture(t_cube *cube, t_cl *node);
 
 /* --------------- Events --------------------*/
 int		deal_key(int key, t_cube *cube);
@@ -231,8 +230,5 @@ void	press_left_key(t_cube *cube, double speed);
 void	press_right_key(t_cube *cube, double speed);
 int		close_window(t_cube *cube);
 void	free_info(t_cube *cube);
-
-/* --------------- Verbose --------------------*/
-void	verbose(t_cube *cube);
 
 #endif

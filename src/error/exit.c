@@ -43,8 +43,6 @@ void	free_maps(t_cube *cube)
 	}
 	free(cube->map->maps);
 	cube->map->maps = NULL;
-	
-	
 }
 
 void	free_texture(t_cube *cube)

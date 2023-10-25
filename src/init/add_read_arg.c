@@ -22,9 +22,7 @@ void	add_read_arg(t_cube *cube, char **argv)
 	fd = open(argv[1], 0);
 	buffer = get_next_line(fd);
 	if (buffer)
-	{
 		cube->info->str = ft_strtrim(buffer, "\n");
-	}
 	else
 	{
 		ft_printf("Error : La fiche de donnee est vide\n");
@@ -39,21 +37,19 @@ void	add_read_arg(t_cube *cube, char **argv)
 			add_new_chain(cube, buffer);
 	}
 	if (buffer)
-	{
 		free(buffer);
-		buffer = NULL;
-	}
+	buffer = NULL;
 	close(fd);
 }
 
 void	add_new_chain(t_cube *cube, char *buffer)
 {
-	t_info  *new;
-    t_info  *tmp;
+	t_info	*new;
+	t_info	*tmp;
 
-    new = (t_info *)malloc(sizeof(t_info));
-    new->str = ft_strtrim(buffer, "\n");
-    new->next = NULL;
+	new = (t_info *)malloc(sizeof(t_info));
+	new->str = ft_strtrim(buffer, "\n");
+	new->next = NULL;
 	tmp = cube->info;
 	while (tmp->next != NULL)
 		tmp = tmp->next;
