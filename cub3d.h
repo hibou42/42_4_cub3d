@@ -6,7 +6,7 @@
 /*   By: nrossel <nrossel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/10 16:53:08 by aschaefe          #+#    #+#             */
-/*   Updated: 2023/10/23 13:01:53 by nrossel          ###   ########.fr       */
+/*   Updated: 2023/10/25 12:23:12 by nrossel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -224,7 +224,7 @@ void	texture(t_cube *cube, t_cl *node);
 
 /* --------------- Events --------------------*/
 int		deal_key(int key, t_cube *cube);
-int		deal_mouse(int key, t_cube *cube);
+// int		deal_mouse(int key, t_cube *cube);
 void	press_up_key(t_cube *cube, double speed);
 void	press_down_key(t_cube *cube, double speed);
 void	press_left_key(t_cube *cube, double speed);
