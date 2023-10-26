@@ -1,7 +1,7 @@
-NO ./texture/owl.xpm
-SO ./texture/dragon2.xpm
-WE ./texture/tree.xpm
-EA ./texture/wall.xpm
+NO ./owl.xpm
+SO ./dragon2.xpm
+WE ./tree.xpm
+EA ./wall.xpm
 
 F 220,100,0
 C 25,0,255
