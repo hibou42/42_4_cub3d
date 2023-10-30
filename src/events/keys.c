@@ -6,40 +6,64 @@
 /*   By: nrossel <nrossel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/23 12:36:59 by nrossel           #+#    #+#             */
-/*   Updated: 2023/10/23 12:48:41 by nrossel          ###   ########.fr       */
+/*   Updated: 2023/10/30 13:12:10 by nrossel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../cub3d.h"
 
-void	press_up_key(t_cube *cube, double speed)
+void	updown_key(int key, t_cube *cube, double speed)
 {
 	double	p_x;
 	double	p_y;
 
 	p_x = cube->game->p_x;
 	p_y = cube->game->p_y;
-	if (cube->map->maps[(int)p_y][(int)(p_x + (cube->game->dir_x * speed))]
-			== '0')
-		cube->game->p_x += cube->game->dir_x * speed;
-	if (cube->map->maps[(int)(p_y + (cube->game->dir_y * speed))][(int)p_x]
-			== '0')
-		cube->game->p_y += cube->game->dir_y * speed;
+	if (key == W_KEY)
+	{
+		if (cube->map->maps[(int)p_y][(int)(p_x + (cube->game->dir_x * speed))]
+				== '0')
+			cube->game->p_x += cube->game->dir_x * speed;
+		if (cube->map->maps[(int)(p_y + (cube->game->dir_y * speed))][(int)p_x]
+				== '0')
+			cube->game->p_y += cube->game->dir_y * speed;
+	}
+	else
+	{
+		if (cube->map->maps[(int)p_y][(int)(p_x - (cube->game->dir_x * speed))]
+				== '0')
+				cube->game->p_x -= cube->game->dir_x * speed;
+		if (cube->map->maps[(int)(p_y - (cube->game->dir_y * speed))][(int)p_x]
+				== '0')
+			cube->game->p_y -= cube->game->dir_y * speed;
+	}
 }
 
-void	press_down_key(t_cube *cube, double speed)
+void	ft_left_right(int key, double speed, t_cube *cube)
 {
 	double	p_x;
 	double	p_y;
 
 	p_x = cube->game->p_x;
 	p_y = cube->game->p_y;
-	if (cube->map->maps[(int)p_y][(int)(p_x - (cube->game->dir_x * speed))]
-			== '0')
-		cube->game->p_x -= cube->game->dir_x * speed;
-	if (cube->map->maps[(int)(p_y - (cube->game->dir_y * speed))][(int)p_x]
-			== '0')
-		cube->game->p_y -= cube->game->dir_y * speed;
+	if (key == A_KEY)
+	{
+		if (cube->map->maps[(int)p_y][(int)(p_x + (cube->game->dir_y * (speed * 2)))]
+				== '0')
+			cube->game->p_x += cube->game->dir_y * speed;
+		if (cube->map->maps[(int)(p_y - (cube->game->dir_x * (speed * 2)))][(int)(p_x)]
+				== '0')
+			cube->game->p_y -= cube->game->dir_x * speed;
+	}
+	else if (key == D_KEY)
+	{
+		if (cube->map->maps[(int)(p_y)][(int)(p_x - (cube->game->dir_y * (speed * 2)))]
+				== '0')
+			cube->game->p_x -= cube->game->dir_y * speed;
+		if (cube->map->maps[(int)(p_y + (cube->game->dir_x * (speed * 2)))][(int)p_x]
+				== '0')
+			cube->game->p_y += cube->game->dir_x * speed;
+	}
 }
 
 void	press_left_key(t_cube *cube, double speed)
