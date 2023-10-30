@@ -1,26 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   draw_pixel.c                                       :+:      :+:    :+:   */
+/*   draw_pixel2.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aschaefe <aschaefe@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nrossel <nrossel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/27 08:34:28 by nrossel           #+#    #+#             */
-/*   Updated: 2023/10/20 11:10:43 by aschaefe         ###   ########.fr       */
+/*   Updated: 2023/10/30 13:17:55 by nrossel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../cub3d.h"
 
-static void	roof_n_floor(t_img *img, int *color);
+static void	display_floor(t_img *img, int *color);
+static void	display_ceilling(t_img *img, int *color);
 static void	display_fov(t_cube *cube);
 static void	black_screen(t_img *img);
 
 int	render2(t_cube *cube)
 {
 	black_screen(&(cube->img));
-	roof_n_floor(&(cube->img), cube->mlx.rgb_roof);
-	roof_n_floor(&(cube->img), cube->mlx.rgb_floor);
+	display_floor(&(cube->img), cube->mlx.rgb_floor);
+	display_ceilling(&(cube->img), cube->mlx.rgb_roof);
 	display_fov(cube);
 	return (0);
 }
@@ -42,8 +43,28 @@ static void	black_screen(t_img *img)
 	}
 }
 
-/* --------------- Display roof & floor --------------------*/
-static void	roof_n_floor(t_img *img, int color[])
+/* --------------- Display floor --------------------*/
+static void	display_floor(t_img *img, int color[])
+{
+	int	x;
+	int	y;
+	int	f_color;
+
+	x = 0;
+	y = 0;
+	f_color = (color[0] * 65536) + (color[1] * 256) + color[2];
+	y = WIN_HIGHT / 2;
+	while (y <= WIN_HIGHT)
+	{
+		x = 0;
+		while (x <= WIN_WIDTH)
+			img_pix_put(img, x++, y, f_color);
+		y++;
+	}
+}
+
+/* --------------- Display ceilling --------------------*/
+static void	display_ceilling(t_img *img, int color[])
 {
 	int	x;
 	int	y;

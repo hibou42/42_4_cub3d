@@ -6,7 +6,7 @@
 /*   By: nrossel <nrossel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/23 12:36:59 by nrossel           #+#    #+#             */
-/*   Updated: 2023/10/30 13:12:10 by nrossel          ###   ########.fr       */
+/*   Updated: 2023/10/30 13:16:24 by nrossel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,15 +72,11 @@ void	press_left_key(t_cube *cube, double speed)
 	double	old_planex;
 
 	old_dirx = cube->game->dir_x;
-	cube->game->dir_x = cube->game->dir_x * cos(-speed)
-		- cube->game->dir_y * sin(-speed);
-	cube->game->dir_y = old_dirx * sin(-speed)
-		+ cube->game->dir_y * cos(-speed);
+	cube->game->dir_x = cube->game->dir_x * cos(-speed) - cube->game->dir_y * sin(-speed);
+	cube->game->dir_y = old_dirx * sin(-speed) + cube->game->dir_y * cos(-speed);
 	old_planex = cube->game->plane_x;
-	cube->game->plane_x = cube->game->plane_x * cos(-speed)
-		- cube->game->plane_y * sin(-speed);
-	cube->game->plane_y = old_planex * sin(-speed)
-		+ cube->game->plane_y * cos(-speed);
+	cube->game->plane_x = cube->game->plane_x * cos(-speed) - cube->game->plane_y * sin(-speed);
+	cube->game->plane_y = old_planex * sin(-speed) + cube->game->plane_y * cos(-speed);
 }
 
 void	press_right_key(t_cube *cube, double speed)
@@ -89,12 +85,9 @@ void	press_right_key(t_cube *cube, double speed)
 	double	old_planex;
 
 	old_dirx = cube->game->dir_x;
-	cube->game->dir_x = cube->game->dir_x * cos(speed)
-		- cube->game->dir_y * sin(speed);
+	cube->game->dir_x = cube->game->dir_x * cos(speed) - cube->game->dir_y * sin(speed);
 	cube->game->dir_y = old_dirx * sin(speed) + cube->game->dir_y * cos(speed);
 	old_planex = cube->game->plane_x;
-	cube->game->plane_x = cube->game->plane_x * cos(speed)
-		- cube->game->plane_y * sin(speed);
-	cube->game->plane_y = old_planex * sin(speed)
-		+ cube->game->plane_y * cos(speed);
+	cube->game->plane_x = cube->game->plane_x * cos(speed) - cube->game->plane_y * sin(speed);
+	cube->game->plane_y = old_planex * sin(speed) + cube->game->plane_y * cos(speed);
 }

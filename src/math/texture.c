@@ -6,7 +6,7 @@
 /*   By: aschaefe <aschaefe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/11 15:28:52 by nrossel           #+#    #+#             */
-/*   Updated: 2023/10/19 16:52:25 by aschaefe         ###   ########.fr       */
+/*   Updated: 2023/10/26 17:10:08 by aschaefe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,16 +22,16 @@ void	texture(t_cube *cube, t_cl *node)
 	if (node->side == 0)
 	{
 		if (node->ray_dir_x > 0)
-			current_texture = cube->mlx.texture_so;
+			current_texture = cube->mlx.texture_ea;
 		else
-			current_texture = cube->mlx.texture_no;
+			current_texture = cube->mlx.texture_we;
 	}
 	else
 	{
 		if (node->ray_dir_y > 0)
-			current_texture = cube->mlx.texture_ea;
+			current_texture = cube->mlx.texture_so;
 		else
-			current_texture = cube->mlx.texture_we;
+			current_texture = cube->mlx.texture_no;
 	}
 	calc_texture(cube, node, current_texture, 0);
 }

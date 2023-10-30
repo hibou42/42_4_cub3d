@@ -97,7 +97,7 @@ BS_N			=		echo "\n"
 
 TOTAL_FILES_SRC	= $(words $(SRC))
 COMPILED_FILE	= 0
-MESSAGE			= "Compilation en cours : $(COMPILED_FILES)/63 ($(shell expr $(COMPILED_FILES) \* 100 / 63)%)"
+MESSAGE			= "Compilation en cours : $(COMPILED_FILES)/62 ($(shell expr $(COMPILED_FILES) \* 100 / 63)%)"
 
 
 #***** Compilation *****#
