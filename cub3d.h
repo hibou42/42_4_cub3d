@@ -6,7 +6,7 @@
 /*   By: nrossel <nrossel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/10 16:53:08 by aschaefe          #+#    #+#             */
-/*   Updated: 2023/10/30 13:14:38 by nrossel          ###   ########.fr       */
+/*   Updated: 2023/10/30 14:59:44 by nrossel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -223,10 +223,10 @@ void		texture(t_cube *cube, t_cl *node);
 
 /* --------------- Events --------------------*/
 int		deal_key(int key, t_cube *cube);
-void	ft_left_right(int key, double speed, t_cube *cube);
-void	updown_key(int key, t_cube *cube, double speed);
-void	press_left_key(t_cube *cube, double speed);
-void	press_right_key(t_cube *cube, double speed);
+void	lateral_move(int key, double speed, t_cube *cube);
+void	updown_move(int key, t_cube *cube, double speed);
+void	left_key(t_cube *cube, double speed);
+void	right_key(t_cube *cube, double speed);
 int		close_window(t_cube *cube);
 void	free_info(t_cube *cube);
 
