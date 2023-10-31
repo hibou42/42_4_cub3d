@@ -6,7 +6,7 @@
 /*   By: nrossel <nrossel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/23 12:36:59 by nrossel           #+#    #+#             */
-/*   Updated: 2023/10/30 15:21:02 by nrossel          ###   ########.fr       */
+/*   Updated: 2023/10/31 10:57:37 by nrossel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,11 +66,13 @@ void	lateral_move(int key, double speed, t_cube *cube)
 	}
 }
 
-void	left_key(t_cube *cube, double speed)
+void	left_key(t_cube *cube)
 {
 	double	old_dirx;
 	double	old_planex;
+	double	speed;
 
+	speed = 0.05;
 	old_dirx = cube->game->dir_x;
 	cube->game->dir_x = cube->game->dir_x * cos(-speed)
 		- cube->game->dir_y * sin(-speed);
@@ -83,11 +85,13 @@ void	left_key(t_cube *cube, double speed)
 		+ cube->game->plane_y * cos(-speed);
 }
 
-void	right_key(t_cube *cube, double speed)
+void	right_key(t_cube *cube)
 {
 	double	old_dirx;
 	double	old_planex;
+	double	speed;
 
+	speed = 0.05;
 	old_dirx = cube->game->dir_x;
 	cube->game->dir_x = cube->game->dir_x * cos(speed)
 		- cube->game->dir_y * sin(speed);

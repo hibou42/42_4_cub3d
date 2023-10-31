@@ -6,25 +6,24 @@
 /*   By: nrossel <nrossel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/04 10:23:53 by aschaefe          #+#    #+#             */
-/*   Updated: 2023/10/30 15:17:37 by nrossel          ###   ########.fr       */
+/*   Updated: 2023/10/31 10:55:11 by nrossel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../cub3d.h"
 
 static void	ft_move(int key, double speed, t_cube *cube);
-static void	ft_rot(int key, double speed, t_cube *cube);
+static void	ft_rot(int key, t_cube *cube);
 
 int	deal_key(int key, t_cube *cube)
 {
 	double	speed;
 
-	speed = 0.15;
-	fprintf(stderr, "key = %d\n", key);
+	speed = 0.11;
 	if (key == W_KEY || key == S_KEY || key == A_KEY || key == D_KEY)
 		ft_move(key, speed, cube);
 	else if (key == RIGHT_KEY || key == LEFT_KEY)
-		ft_rot(key, speed, cube);
+		ft_rot(key, cube);
 	else if (key == ESC)
 		close_window(cube);
 	raycasting(cube);
@@ -44,10 +43,10 @@ static void	ft_move(int key, double speed, t_cube *cube)
 		lateral_move(D_KEY, speed, cube);
 }
 
-static void	ft_rot(int key, double speed, t_cube *cube)
+static void	ft_rot(int key, t_cube *cube)
 {
 	if (key == RIGHT_KEY)
-		right_key(cube, speed);
+		right_key(cube);
 	else if (key == LEFT_KEY)
-		left_key(cube, speed);
+		left_key(cube);
 }
